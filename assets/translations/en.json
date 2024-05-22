@@ -1,3 +1,6 @@
 {
-
+  "app_name" : "Worklin",
+  "onboard_title" : "Make Your Work Space Better.",
+  "onboard_description" : "Worklin helps to make your workspace collaborative, easy and fun.",
+  "get_started": "Get Started"
 }
