@@ -43,10 +43,6 @@ class OnboardingPage extends StatelessWidget {
                   AppNavigator.pushReplacement(context, const SignInPage());
                 },
                 buttonText: LocaleKeys.get_started.tr(),
-                icon: const Icon(
-                  Icons.arrow_right_alt,
-                  color: Colors.white,
-                ),
               ),
             ],
           ),

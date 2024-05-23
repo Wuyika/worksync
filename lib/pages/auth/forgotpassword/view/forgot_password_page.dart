@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
+import 'package:worklin/pages/main_page/view/main_page.dart';
+import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/typography.dart';
 import 'package:worklin/utils/widgets/button.dart';
@@ -107,10 +109,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               slideToNextPage();
             },
             buttonText: LocaleKeys.continue_t.tr(),
-            icon: const Icon(
-              Icons.arrow_right_alt,
-              color: Colors.white,
-            ),
           ),
         ],
       ),
@@ -144,12 +142,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           ),
           const SizedBox(height: 60),
           PrimaryButton(
-            onPress: () {},
+            onPress: () {
+              slideToNextPage();
+            },
             buttonText: LocaleKeys.verify.tr(),
-            icon: const Icon(
-              Icons.arrow_right_alt,
-              color: Colors.white,
-            ),
           ),
         ],
       ),
@@ -196,12 +192,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           ),
           const SizedBox(height: 60),
           PrimaryButton(
-            onPress: () {},
+            onPress: () {
+              AppNavigator.pushReplacement(context, const MainPage());
+            },
             buttonText: LocaleKeys.confirm.tr(),
-            icon: const Icon(
-              Icons.arrow_right_alt,
-              color: Colors.white,
-            ),
           ),
         ],
       ),

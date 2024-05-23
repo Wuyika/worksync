@@ -29,9 +29,17 @@ class $AssetsAppIconsGen {
 class $AssetsAppImagesGen {
   const $AssetsAppImagesGen();
 
+  /// File path: assets/app_images/avatar1.png
+  AssetGenImage get avatar1 =>
+      const AssetGenImage('assets/app_images/avatar1.png');
+
   /// File path: assets/app_images/hand_wave.png
   AssetGenImage get handWave =>
       const AssetGenImage('assets/app_images/hand_wave.png');
+
+  /// File path: assets/app_images/no_report.png
+  AssetGenImage get noReport =>
+      const AssetGenImage('assets/app_images/no_report.png');
 
   /// File path: assets/app_images/onboardingImage1.png
   AssetGenImage get onboardingImage1 =>
@@ -55,7 +63,9 @@ class $AssetsAppImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        avatar1,
         handWave,
+        noReport,
         onboardingImage1,
         onboardingImage2,
         onboardingImage3,
@@ -89,6 +99,16 @@ class $AssetsAppIconsSvgGen {
   /// File path: assets/app_icons/svg/calendar-tick.svg
   String get calendarTick => 'assets/app_icons/svg/calendar-tick.svg';
 
+  /// File path: assets/app_icons/svg/calendar-tick_white.svg
+  String get calendarTickWhite =>
+      'assets/app_icons/svg/calendar-tick_white.svg';
+
+  /// File path: assets/app_icons/svg/calendar.svg
+  String get calendar => 'assets/app_icons/svg/calendar.svg';
+
+  /// File path: assets/app_icons/svg/calendar_outline.svg
+  String get calendarOutline => 'assets/app_icons/svg/calendar_outline.svg';
+
   /// File path: assets/app_icons/svg/chart.svg
   String get chart => 'assets/app_icons/svg/chart.svg';
 
@@ -103,6 +123,12 @@ class $AssetsAppIconsSvgGen {
 
   /// File path: assets/app_icons/svg/hand_wave.svg
   String get handWave => 'assets/app_icons/svg/hand_wave.svg';
+
+  /// File path: assets/app_icons/svg/line-arrow-left.svg
+  String get lineArrowLeft => 'assets/app_icons/svg/line-arrow-left.svg';
+
+  /// File path: assets/app_icons/svg/line-arrow-right.svg
+  String get lineArrowRight => 'assets/app_icons/svg/line-arrow-right.svg';
 
   /// File path: assets/app_icons/svg/messages-2.svg
   String get messages2 => 'assets/app_icons/svg/messages-2.svg';
@@ -119,25 +145,42 @@ class $AssetsAppIconsSvgGen {
   /// File path: assets/app_icons/svg/personalcard.svg
   String get personalcard => 'assets/app_icons/svg/personalcard.svg';
 
+  /// File path: assets/app_icons/svg/receipt-text_white.svg
+  String get receiptTextWhite => 'assets/app_icons/svg/receipt-text_white.svg';
+
   /// File path: assets/app_icons/svg/svgTest.svg
   String get svgTest => 'assets/app_icons/svg/svgTest.svg';
+
+  /// File path: assets/app_icons/svg/task-square_white.svg
+  String get taskSquareWhite => 'assets/app_icons/svg/task-square_white.svg';
+
+  /// File path: assets/app_icons/svg/trend-up_white.svg
+  String get trendUpWhite => 'assets/app_icons/svg/trend-up_white.svg';
 
   /// List of all assets
   List<String> get values => [
         appLogoDark,
         appLogoLight,
         calendarTick,
+        calendarTickWhite,
+        calendar,
+        calendarOutline,
         chart,
         dashboard,
         eyeSlash,
         eye,
         handWave,
+        lineArrowLeft,
+        lineArrowRight,
         messages2,
         note,
         notification,
         people,
         personalcard,
-        svgTest
+        receiptTextWhite,
+        svgTest,
+        taskSquareWhite,
+        trendUpWhite
       ];
 }
 

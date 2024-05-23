@@ -14,4 +14,8 @@ class AppColors {
   static const warning = Color(0xFFF96868);
   static const textColor = Color(0xFF404040);
 
+  static const orange = Color(0xFFF9AE68);
+  static const green = Color(0xFF57C17B);
+  static const blue = Color(0xFF0163D2);
+
 }

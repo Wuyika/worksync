@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
@@ -8,6 +9,7 @@ import 'package:worklin/pages/auth/forgotpassword/view/forgot_password_page.dart
 import 'package:worklin/pages/main_page/view/main_page.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
+import 'package:worklin/utils/helpers.dart';
 import 'package:worklin/utils/typography.dart';
 import 'package:worklin/utils/widgets/button.dart';
 import 'package:worklin/utils/widgets/custom_text_field.dart';
@@ -43,6 +45,19 @@ class _SignInPageState extends State<SignInPage> {
               Row(
                 children: [
                   Image.asset(Assets.appImages.handWave.path),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: GradientText(
+                      text: LocaleKeys.login_access.tr(),
+                      style: AppTypography.bodyLargeRegular,
+                      gradient: const LinearGradient(
+                        colors: [
+                          AppColors.secondary, // Your provided color code
+                          Colors.purple, // Generic purple color
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 10),
@@ -66,7 +81,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
               const SizedBox(height: 4),
               CustomTextField(
-                hintText:  LocaleKeys.password_hint.tr(),
+                hintText: LocaleKeys.password_hint.tr(),
                 controller: passwordController,
                 isPassword: true,
               ),
@@ -74,7 +89,7 @@ class _SignInPageState extends State<SignInPage> {
               Align(
                 alignment: Alignment.topRight,
                 child: InkWell(
-                  onTap: (){
+                  onTap: () {
                     AppNavigator.push(context, const ForgotPasswordPage());
                   },
                   child: Padding(
@@ -93,11 +108,7 @@ class _SignInPageState extends State<SignInPage> {
                 onPress: () {
                   AppNavigator.push(context, const MainPage());
                 },
-                buttonText:  LocaleKeys.log_me_in.tr(),
-                icon: const Icon(
-                  Icons.arrow_right_alt,
-                  color: Colors.white,
-                ),
+                buttonText: LocaleKeys.log_me_in.tr(),
               ),
             ],
           ),

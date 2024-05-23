@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/typography.dart';
 class PrimaryButton extends StatelessWidget {
@@ -7,7 +9,7 @@ class PrimaryButton extends StatelessWidget {
     this.isLoading = false,
     required this.onPress,
     required this.buttonText,
-    this.icon,
+    this.showIcon = true,
     this.backgroundButtonColor,
     this.buttonTextColor,
     this.mainAxisAlignment = MainAxisAlignment.center,
@@ -17,7 +19,7 @@ class PrimaryButton extends StatelessWidget {
   final String buttonText;
   final bool isLoading;
   final void Function()? onPress;
-  final Widget? icon;
+  final bool showIcon;
   final MainAxisAlignment mainAxisAlignment;
   final Color? backgroundButtonColor;
   final Color? buttonTextColor;
@@ -45,7 +47,7 @@ class PrimaryButton extends StatelessWidget {
           Center(child: CircularProgressIndicator.adaptive()),
         ),
       )
-          : icon == null
+          : showIcon == false
           ? Center(
         heightFactor: 1,
         child: Padding(
@@ -72,7 +74,13 @@ class PrimaryButton extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            icon!,
+            SvgPicture.asset(
+              Assets.appIcons.svg.lineArrowRight,
+              colorFilter: const ColorFilter.mode(
+                AppColors.white,
+                BlendMode.srcIn,
+              ),
+            ),
           ],
         ),
       ),
