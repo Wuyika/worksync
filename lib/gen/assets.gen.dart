@@ -86,6 +86,9 @@ class $AssetsAppIconsSvgGen {
   /// File path: assets/app_icons/svg/app_logo_light.svg
   String get appLogoLight => 'assets/app_icons/svg/app_logo_light.svg';
 
+  /// File path: assets/app_icons/svg/calendar-tick.svg
+  String get calendarTick => 'assets/app_icons/svg/calendar-tick.svg';
+
   /// File path: assets/app_icons/svg/chart.svg
   String get chart => 'assets/app_icons/svg/chart.svg';
 
@@ -101,11 +104,20 @@ class $AssetsAppIconsSvgGen {
   /// File path: assets/app_icons/svg/hand_wave.svg
   String get handWave => 'assets/app_icons/svg/hand_wave.svg';
 
+  /// File path: assets/app_icons/svg/messages-2.svg
+  String get messages2 => 'assets/app_icons/svg/messages-2.svg';
+
   /// File path: assets/app_icons/svg/note.svg
   String get note => 'assets/app_icons/svg/note.svg';
 
+  /// File path: assets/app_icons/svg/notification.svg
+  String get notification => 'assets/app_icons/svg/notification.svg';
+
   /// File path: assets/app_icons/svg/people.svg
   String get people => 'assets/app_icons/svg/people.svg';
+
+  /// File path: assets/app_icons/svg/personalcard.svg
+  String get personalcard => 'assets/app_icons/svg/personalcard.svg';
 
   /// File path: assets/app_icons/svg/svgTest.svg
   String get svgTest => 'assets/app_icons/svg/svgTest.svg';
@@ -114,13 +126,17 @@ class $AssetsAppIconsSvgGen {
   List<String> get values => [
         appLogoDark,
         appLogoLight,
+        calendarTick,
         chart,
         dashboard,
         eyeSlash,
         eye,
         handWave,
+        messages2,
         note,
+        notification,
         people,
+        personalcard,
         svgTest
       ];
 }

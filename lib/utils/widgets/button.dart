@@ -50,7 +50,7 @@ class PrimaryButton extends StatelessWidget {
         heightFactor: 1,
         child: Padding(
           padding: EdgeInsets.symmetric(
-            vertical: buttonTextPadding ?? 12,
+            vertical: buttonTextPadding ?? 16,
           ),
           child: Text(
             buttonText,
@@ -61,7 +61,7 @@ class PrimaryButton extends StatelessWidget {
         ),
       )
           : Padding(
-        padding: EdgeInsets.symmetric(vertical: 12),
+        padding: EdgeInsets.symmetric(vertical: 16),
         child: Row(
           mainAxisAlignment: mainAxisAlignment,
           children: [

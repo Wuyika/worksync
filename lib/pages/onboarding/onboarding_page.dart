@@ -35,7 +35,7 @@ class OnboardingPage extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 LocaleKeys.onboard_description.tr(),
-                style: AppTypography.bodyMediumRegular,
+                style: AppTypography.bodyLargeRegular,
               ),
               const Spacer(),
               PrimaryButton(
@@ -47,7 +47,7 @@ class OnboardingPage extends StatelessWidget {
                   Icons.arrow_right_alt,
                   color: Colors.white,
                 ),
-              )
+              ),
             ],
           ),
         ),
