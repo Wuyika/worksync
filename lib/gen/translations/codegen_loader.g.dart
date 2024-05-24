@@ -27,5 +27,11 @@ abstract class  LocaleKeys {
   static const reports = 'reports';
   static const messages = 'messages';
   static const leaves = 'leaves';
+  static const pending = 'pending';
+  static const approved = 'approved';
+  static const rejected = 'rejected';
+  static const casual_leave = 'casual_leave';
+  static const sick_leave = 'sick_leave';
+  static const earned_leave = 'earned_leave';
 
 }

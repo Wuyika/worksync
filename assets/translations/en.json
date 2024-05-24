@@ -24,5 +24,11 @@
   "attendance": "Attendance",
   "reports": "Reports",
   "messages": "Messages",
-  "leaves": "Leaves"
+  "leaves": "Leaves",
+  "pending": "Pending",
+  "approved": "Approved",
+  "rejected": "Rejected",
+  "casual_leave": "Casual Leave",
+  "sick_leave": "Sick Leave",
+  "earned_leave": "Earned Leave"
 }

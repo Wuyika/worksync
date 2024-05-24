@@ -17,6 +17,7 @@ class CustomTextField extends StatefulWidget {
 
   final TextInputAction textInputAction;
   final TextInputType keyboardType;
+  final bool filled;
   const CustomTextField({
     super.key,
     required this.hintText,
@@ -29,6 +30,7 @@ class CustomTextField extends StatefulWidget {
     this.onFieldSubmitted,
     this.validator,
     this.suffixIcon,
+    this.filled = false,
   });
 
   @override
@@ -100,6 +102,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           ),
         ),
         fillColor: AppColors.white,
+        filled: widget.filled,
         // filled: true,
       ),
     );

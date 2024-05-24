@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/pages/dashboard/widgets/action_widget.dart';
+import 'package:worklin/pages/main_page/cubit/main_page_cubit.dart';
+import 'package:worklin/pages/reports/views/create_report_page.dart';
+import 'package:worklin/pages/task/views/task_page.dart';
+import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -15,6 +20,7 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<MainPageCubit>();
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -30,6 +36,9 @@ class _DashboardPageState extends State<DashboardPage> {
               children: [
                 Expanded(
                   child: ActionWidget(
+                    onTap: (){
+                      cubit.updateIndex(MainPageState.attendance);
+                    },
                     backGroundColor: AppColors.secondary,
                     iconPath: Assets.appIcons.svg.calendarTickWhite,
                     text: 'Take Attendance',
@@ -37,8 +46,11 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
                 Expanded(
                   child: ActionWidget(
+                    onTap: (){
+                      AppNavigator.push(context, const TaskPage());
+                    },
                     backGroundColor: AppColors.orange,
-                    iconPath: Assets.appIcons.svg.taskSquareWhite,
+                    iconPath: Assets.appIcons.svg.taskSquareWhiteOutlined,
                     text: 'View Tasks',
                   ),
                 ),
@@ -51,6 +63,9 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
                 Expanded(
                   child: ActionWidget(
+                    onTap: (){
+                      AppNavigator.push(context, const CreateReportPage());
+                    },
                     backGroundColor: AppColors.blue,
                     iconPath: Assets.appIcons.svg.trendUpWhite,
                     text: 'Add Report',

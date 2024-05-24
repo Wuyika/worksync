@@ -5,15 +5,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/dashboard/view/dashboard_page.dart';
+import 'package:worklin/pages/leave/views/leave_page.dart';
 import 'package:worklin/pages/main_page/cubit/main_page_cubit.dart';
 import 'package:worklin/pages/messages/view/message_page.dart';
 import 'package:worklin/pages/profile/view/profile_page.dart';
-import 'package:worklin/pages/reports/view/report_page.dart';
+import 'package:worklin/pages/reports/views/report_page.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/typography.dart';
 import 'package:worklin/utils/widgets/appbar.dart';
 import 'package:worklin/utils/widgets/bottom_appbar.dart';
+import 'package:worklin/utils/widgets/drawer.dart';
+import 'package:worklin/utils/widgets/globals.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -31,9 +34,7 @@ class _MainPageState extends State<MainPage>
     ),
     ReportPage(),
     MessagePage(),
-    Center(
-      child: Text("Leaves"),
-    ),
+    LeavePage(),
   ];
 
   @override
@@ -50,12 +51,13 @@ class _MainPageState extends State<MainPage>
         builder: (context, state) {
           final cubit = context.read<MainPageCubit>();
           return Scaffold(
+            key: scaffoldKey,
             appBar: CustomAppBar(
               leading: Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: InkWell(
                   onTap: () {
-                    AppNavigator.push(context, const ProfilePage());
+                    scaffoldKey.currentState?.openDrawer();
                   },
                   child: const CircleAvatar(
                     radius: 20,
@@ -64,43 +66,55 @@ class _MainPageState extends State<MainPage>
                 ),
               ),
               title: state == MainPageState.dashboard
-                  ? 'Good Morning, Lilian'
+                  ? ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(
+                        'Good Morning, Lilian',
+                        style: AppTypography.headingH2,
+                      ),
+                      subtitle: Text(
+                        "Lets be productive today",
+                        style: AppTypography.bodySmallRegular.copyWith(
+                          color: AppColors.textColor.withOpacity(0.5),
+                        ),
+                      ),
+                    )
                   : state == MainPageState.attendance
-                      ? LocaleKeys.attendance.tr()
+                      ? Text(
+                          LocaleKeys.attendance.tr(),
+                          style: AppTypography.headingH2,
+                        )
                       : state == MainPageState.reports
-                          ? LocaleKeys.reports.tr()
+                          ? Text(
+                              LocaleKeys.reports.tr(),
+                              style: AppTypography.headingH2,
+                            )
                           : state == MainPageState.messages
-                              ? LocaleKeys.messages.tr()
-                              : LocaleKeys.leaves.tr(),
-              subtitle: state == MainPageState.dashboard
-                  ? "Lets be productive today"
-                  : null,
-              trailing: SvgPicture.asset(
-                Assets.appIcons.svg.notification,
-                colorFilter: const ColorFilter.mode(
-                  AppColors.textColor,
-                  BlendMode.srcIn,
+                              ? Text(
+                                  LocaleKeys.messages.tr(),
+                                  style: AppTypography.headingH2,
+                                )
+                              : Text(
+                                  LocaleKeys.leaves.tr(),
+                                  style: AppTypography.headingH2,
+                                ),
+              actions: [
+                SvgPicture.asset(
+                  Assets.appIcons.svg.notification,
+                  colorFilter: const ColorFilter.mode(
+                    AppColors.textColor,
+                    BlendMode.srcIn,
+                  ),
                 ),
-              ),
+                const SizedBox(width: 16),
+              ],
             ),
-            // appBar: AppBar(
-
-            //   title: ListTile(
-            //     contentPadding: EdgeInsets.zero,
-            //     title: Text(
-            //       'Good Morning, Lilian',
-            //       style: AppTypography.headingH2,
-            //     ),
-            //     subtitle: Text('Lets be productive today'),
-            //     trailing: ,
-            //     ),
-            //   ),
-            // ),
-            drawer: Drawer(),
+            drawer: const SideDrawerWidget(),
             body: screens.elementAt(MainPageState.values.indexOf(state)),
             bottomNavigationBar: ClipRRect(
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(20)),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(20),
+              ),
               child: CustomBottomAppBar(
                 currentIndex: MainPageState.values.indexOf(state),
                 state: state,

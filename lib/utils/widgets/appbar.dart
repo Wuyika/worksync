@@ -4,51 +4,27 @@ import 'package:worklin/utils/typography.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSize {
   final Widget? leading;
-  final Widget? trailing;
-  final String? title;
+  final Widget? title;
   final String? subtitle;
   final List<Widget>? actions;
+  final bool centerTitle;
 
   const CustomAppBar({
     super.key,
     this.leading,
-    this.trailing,
     this.title,
     this.subtitle,
     this.actions,
+    this.centerTitle = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: centerTitle,
+      surfaceTintColor: AppColors.white,
       leading: leading,
-      title: (subtitle != null)
-          ? ListTile(
-              contentPadding: EdgeInsets.zero,
-              title: Row(
-                children: [
-                  Text(
-                    title ?? "",
-                    style: AppTypography.headingH2,
-                  ),
-                ],
-              ),
-              subtitle: Text(
-                subtitle ?? "",
-                style: AppTypography.bodySmallRegular.copyWith(
-                  color: AppColors.textColor.withOpacity(0.5),
-                ),
-              ),
-              trailing: trailing,
-            )
-          : ListTile(
-              contentPadding: EdgeInsets.zero,
-              title: Text(
-                title ?? "",
-                style: AppTypography.headingH2,
-              ),
-              trailing: trailing,
-            ),
+      title: title,
       actions: actions,
     );
   }

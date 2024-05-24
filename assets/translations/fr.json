@@ -24,5 +24,11 @@
   "attendance": "Participation",
   "reports": "Rapports",
   "messages": "Messages",
-  "leaves": "Feuilles"
+  "leaves": "Feuilles",
+  "pending": "En attente",
+  "approved": "Approuvé",
+  "rejected": "Rejetée",
+  "casual_leave": "Congé occasionnel",
+  "sick_leave": "Congé de maladie",
+  "earned_leave": "Congés acquis"
 }

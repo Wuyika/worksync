@@ -115,6 +115,13 @@ class $AssetsAppIconsSvgGen {
   /// File path: assets/app_icons/svg/dashboard.svg
   String get dashboard => 'assets/app_icons/svg/dashboard.svg';
 
+  /// File path: assets/app_icons/svg/document-text-outline.svg
+  String get documentTextOutline =>
+      'assets/app_icons/svg/document-text-outline.svg';
+
+  /// File path: assets/app_icons/svg/double_checks-fill.svg
+  String get doubleChecksFill => 'assets/app_icons/svg/double_checks-fill.svg';
+
   /// File path: assets/app_icons/svg/eye-slash.svg
   String get eyeSlash => 'assets/app_icons/svg/eye-slash.svg';
 
@@ -130,6 +137,12 @@ class $AssetsAppIconsSvgGen {
   /// File path: assets/app_icons/svg/line-arrow-right.svg
   String get lineArrowRight => 'assets/app_icons/svg/line-arrow-right.svg';
 
+  /// File path: assets/app_icons/svg/location-outline.svg
+  String get locationOutline => 'assets/app_icons/svg/location-outline.svg';
+
+  /// File path: assets/app_icons/svg/logout.svg
+  String get logout => 'assets/app_icons/svg/logout.svg';
+
   /// File path: assets/app_icons/svg/messages-2.svg
   String get messages2 => 'assets/app_icons/svg/messages-2.svg';
 
@@ -138,6 +151,10 @@ class $AssetsAppIconsSvgGen {
 
   /// File path: assets/app_icons/svg/notification.svg
   String get notification => 'assets/app_icons/svg/notification.svg';
+
+  /// File path: assets/app_icons/svg/notification_outline.svg
+  String get notificationOutline =>
+      'assets/app_icons/svg/notification_outline.svg';
 
   /// File path: assets/app_icons/svg/people.svg
   String get people => 'assets/app_icons/svg/people.svg';
@@ -148,11 +165,24 @@ class $AssetsAppIconsSvgGen {
   /// File path: assets/app_icons/svg/receipt-text_white.svg
   String get receiptTextWhite => 'assets/app_icons/svg/receipt-text_white.svg';
 
+  /// File path: assets/app_icons/svg/setting-outline.svg
+  String get settingOutline => 'assets/app_icons/svg/setting-outline.svg';
+
+  /// File path: assets/app_icons/svg/setting.svg
+  String get setting => 'assets/app_icons/svg/setting.svg';
+
   /// File path: assets/app_icons/svg/svgTest.svg
   String get svgTest => 'assets/app_icons/svg/svgTest.svg';
 
   /// File path: assets/app_icons/svg/task-square_white.svg
   String get taskSquareWhite => 'assets/app_icons/svg/task-square_white.svg';
+
+  /// File path: assets/app_icons/svg/task-square_white_outlined.svg
+  String get taskSquareWhiteOutlined =>
+      'assets/app_icons/svg/task-square_white_outlined.svg';
+
+  /// File path: assets/app_icons/svg/tick-circle.svg
+  String get tickCircle => 'assets/app_icons/svg/tick-circle.svg';
 
   /// File path: assets/app_icons/svg/trend-up_white.svg
   String get trendUpWhite => 'assets/app_icons/svg/trend-up_white.svg';
@@ -167,19 +197,28 @@ class $AssetsAppIconsSvgGen {
         calendarOutline,
         chart,
         dashboard,
+        documentTextOutline,
+        doubleChecksFill,
         eyeSlash,
         eye,
         handWave,
         lineArrowLeft,
         lineArrowRight,
+        locationOutline,
+        logout,
         messages2,
         note,
         notification,
+        notificationOutline,
         people,
         personalcard,
         receiptTextWhite,
+        settingOutline,
+        setting,
         svgTest,
         taskSquareWhite,
+        taskSquareWhiteOutlined,
+        tickCircle,
         trendUpWhite
       ];
 }

@@ -54,6 +54,12 @@ class AppTypography {
 
   //bodyMedium
 
+  static TextStyle bodyMediumLight = const TextStyle(
+    fontFamily: familyUrbanist,
+    fontWeight: weightLight,
+    fontSize: 16,
+  );
+
   static TextStyle bodyMediumRegular = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightRegular, // 400
@@ -100,6 +106,12 @@ class AppTypography {
   );
 
   //Body extra Small
+
+  static TextStyle bodyExtraSmallSemiBold = const TextStyle(
+    fontFamily: familyUrbanist,
+    fontWeight: weightSemiBold, // 600
+    fontSize: 12,
+  );
 
   static TextStyle bodyExtraSmallRegular = const TextStyle(
     fontFamily: familyUrbanist,

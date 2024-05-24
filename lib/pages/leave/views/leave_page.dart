@@ -1,19 +1,24 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:worklin/pages/messages/widget/message_tile.dart';
+import 'package:flutter/widgets.dart';
+import 'package:worklin/pages/leave/views/apply_for_leave_page.dart';
+import 'package:worklin/pages/leave/widgets/leave_tile.dart';
+import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
+import 'package:worklin/utils/enums.dart';
 import 'package:worklin/utils/typography.dart';
 import 'package:worklin/utils/widgets/custom_text_field.dart';
 import 'package:worklin/utils/widgets/gradient_container.dart';
 
-class MessagePage extends StatefulWidget {
-  const MessagePage({super.key});
+class LeavePage extends StatefulWidget {
+  const LeavePage({super.key});
 
   @override
-  State<MessagePage> createState() => _MessagePageState();
+  State<LeavePage> createState() => _LeavePageState();
 }
 
-class _MessagePageState extends State<MessagePage> {
+class _LeavePageState extends State<LeavePage> {
   TextEditingController searchController = TextEditingController();
 
   @override
@@ -50,7 +55,7 @@ class _MessagePageState extends State<MessagePage> {
                         child: Row(
                           children: [
                             Text(
-                              "All Chats",
+                              "This Month",
                               style: AppTypography.bodySmallMedium.copyWith(
                                 color: AppColors.selector,
                               ),
@@ -68,7 +73,7 @@ class _MessagePageState extends State<MessagePage> {
                           PopupMenuItem(
                             onTap: () {},
                             child: Text(
-                              tr('Unread'),
+                              tr('This Year'),
                               style: AppTypography.bodySmallMedium.copyWith(
                                 color: AppColors.selector,
                               ),
@@ -77,7 +82,16 @@ class _MessagePageState extends State<MessagePage> {
                           PopupMenuItem(
                             onTap: () {},
                             child: Text(
-                              tr('Archived'),
+                              tr('Next Week'),
+                              style: AppTypography.bodySmallMedium.copyWith(
+                                color: AppColors.selector,
+                              ),
+                            ),
+                          ),
+                          PopupMenuItem(
+                            onTap: () {},
+                            child: Text(
+                              tr('Last Month'),
                               style: AppTypography.bodySmallMedium.copyWith(
                                 color: AppColors.selector,
                               ),
@@ -93,9 +107,23 @@ class _MessagePageState extends State<MessagePage> {
               child: ListView(
                 // shrinkWrap: true,
                 children: const [
-                  MessageTile(hasUnread: true),
-                  MessageTile(hasSent: true),
-                  MessageTile(),
+                  LeaveTile(
+                    status: LeaveCardStatus.pending,
+                  ),
+                  LeaveTile(
+                    status: LeaveCardStatus.approved,
+                    type: LeaveCardType.casual,
+                  ),
+                  LeaveTile(
+                    type: LeaveCardType.earned,
+                  ),
+                  LeaveTile(
+                    status: LeaveCardStatus.pending,
+                  ),
+                  LeaveTile(
+                    status: LeaveCardStatus.approved,
+                    type: LeaveCardType.casual,
+                  ),
                 ],
               ),
             ),
@@ -104,7 +132,7 @@ class _MessagePageState extends State<MessagePage> {
       ),
       floatingActionButton: InkWell(
         onTap: () {
-          // AppNavigator.push(context, const ApplyForLeavePage());
+          AppNavigator.push(context, const ApplyForLeavePage());
         },
         child: GradientContainer(
           width: 48,
