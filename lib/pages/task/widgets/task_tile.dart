@@ -6,8 +6,13 @@ import 'package:worklin/utils/typography.dart';
 
 class TaskTile extends StatefulWidget {
   final double progress;
+  final bool isRecent;
 
-  const TaskTile({super.key, required this.progress});
+  const TaskTile({
+    super.key,
+    required this.progress,
+    this.isRecent = false,
+  });
 
   @override
   State<TaskTile> createState() => _TaskTileState();
@@ -20,7 +25,7 @@ class _TaskTileState extends State<TaskTile> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: widget.isRecent != true ? AppColors.white : AppColors.inactive.withOpacity(0.2),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(

@@ -52,6 +52,13 @@ class AppTypography {
     fontSize: 20,
   );
 
+  //body large
+  static TextStyle bodyLargeMedium = const TextStyle(
+    fontFamily: familyUrbanist,
+    fontWeight: weightMedium, // 400
+    fontSize: 20,
+  );
+
   //bodyMedium
 
   static TextStyle bodyMediumLight = const TextStyle(

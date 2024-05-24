@@ -134,16 +134,15 @@ class _ChartPageState extends State<ChartPage> {
                         ),
                         title: Row(
                           children: [
-                            Expanded(
-                              child: TextField(
-                              ),
+                            const Expanded(
+                              child: TextField(),
                             ),
                             SizedBox(
                               height: 28,
                               child: VerticalDivider(
                                 color: AppColors.textColor.withOpacity(0.5),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
