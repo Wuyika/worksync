@@ -29,6 +29,10 @@ class $AssetsAppIconsGen {
 class $AssetsAppImagesGen {
   const $AssetsAppImagesGen();
 
+  /// File path: assets/app_images/attenance_checkout.png
+  AssetGenImage get attenanceCheckout =>
+      const AssetGenImage('assets/app_images/attenance_checkout.png');
+
   /// File path: assets/app_images/avatar1.png
   AssetGenImage get avatar1 =>
       const AssetGenImage('assets/app_images/avatar1.png');
@@ -36,6 +40,10 @@ class $AssetsAppImagesGen {
   /// File path: assets/app_images/hand_wave.png
   AssetGenImage get handWave =>
       const AssetGenImage('assets/app_images/hand_wave.png');
+
+  /// File path: assets/app_images/no-message.png
+  AssetGenImage get noMessage =>
+      const AssetGenImage('assets/app_images/no-message.png');
 
   /// File path: assets/app_images/no_report.png
   AssetGenImage get noReport =>
@@ -63,8 +71,10 @@ class $AssetsAppImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        attenanceCheckout,
         avatar1,
         handWave,
+        noMessage,
         noReport,
         onboardingImage1,
         onboardingImage2,
@@ -96,6 +106,9 @@ class $AssetsAppIconsSvgGen {
   /// File path: assets/app_icons/svg/app_logo_light.svg
   String get appLogoLight => 'assets/app_icons/svg/app_logo_light.svg';
 
+  /// File path: assets/app_icons/svg/arrow-down.svg
+  String get arrowDown => 'assets/app_icons/svg/arrow-down.svg';
+
   /// File path: assets/app_icons/svg/calendar-tick.svg
   String get calendarTick => 'assets/app_icons/svg/calendar-tick.svg';
 
@@ -112,6 +125,18 @@ class $AssetsAppIconsSvgGen {
   /// File path: assets/app_icons/svg/chart.svg
   String get chart => 'assets/app_icons/svg/chart.svg';
 
+  /// File path: assets/app_icons/svg/checkin.svg
+  String get checkin => 'assets/app_icons/svg/checkin.svg';
+
+  /// File path: assets/app_icons/svg/checkout.svg
+  String get checkout => 'assets/app_icons/svg/checkout.svg';
+
+  /// File path: assets/app_icons/svg/clock_time.svg
+  String get clockTime => 'assets/app_icons/svg/clock_time.svg';
+
+  /// File path: assets/app_icons/svg/danger-animation.svg
+  String get dangerAnimation => 'assets/app_icons/svg/danger-animation.svg';
+
   /// File path: assets/app_icons/svg/dashboard.svg
   String get dashboard => 'assets/app_icons/svg/dashboard.svg';
 
@@ -121,6 +146,12 @@ class $AssetsAppIconsSvgGen {
 
   /// File path: assets/app_icons/svg/double_checks-fill.svg
   String get doubleChecksFill => 'assets/app_icons/svg/double_checks-fill.svg';
+
+  /// File path: assets/app_icons/svg/edit-form-outline.svg
+  String get editFormOutline => 'assets/app_icons/svg/edit-form-outline.svg';
+
+  /// File path: assets/app_icons/svg/edit-form.svg
+  String get editForm => 'assets/app_icons/svg/edit-form.svg';
 
   /// File path: assets/app_icons/svg/eye-slash.svg
   String get eyeSlash => 'assets/app_icons/svg/eye-slash.svg';
@@ -165,11 +196,17 @@ class $AssetsAppIconsSvgGen {
   /// File path: assets/app_icons/svg/receipt-text_white.svg
   String get receiptTextWhite => 'assets/app_icons/svg/receipt-text_white.svg';
 
+  /// File path: assets/app_icons/svg/send-square.svg
+  String get sendSquare => 'assets/app_icons/svg/send-square.svg';
+
   /// File path: assets/app_icons/svg/setting-outline.svg
   String get settingOutline => 'assets/app_icons/svg/setting-outline.svg';
 
   /// File path: assets/app_icons/svg/setting.svg
   String get setting => 'assets/app_icons/svg/setting.svg';
+
+  /// File path: assets/app_icons/svg/succeess-animation.svg
+  String get succeessAnimation => 'assets/app_icons/svg/succeess-animation.svg';
 
   /// File path: assets/app_icons/svg/svgTest.svg
   String get svgTest => 'assets/app_icons/svg/svgTest.svg';
@@ -184,6 +221,12 @@ class $AssetsAppIconsSvgGen {
   /// File path: assets/app_icons/svg/tick-circle.svg
   String get tickCircle => 'assets/app_icons/svg/tick-circle.svg';
 
+  /// File path: assets/app_icons/svg/timer-round.svg
+  String get timerRound => 'assets/app_icons/svg/timer-round.svg';
+
+  /// File path: assets/app_icons/svg/timer.svg
+  String get timer => 'assets/app_icons/svg/timer.svg';
+
   /// File path: assets/app_icons/svg/trend-up_white.svg
   String get trendUpWhite => 'assets/app_icons/svg/trend-up_white.svg';
 
@@ -191,14 +234,21 @@ class $AssetsAppIconsSvgGen {
   List<String> get values => [
         appLogoDark,
         appLogoLight,
+        arrowDown,
         calendarTick,
         calendarTickWhite,
         calendar,
         calendarOutline,
         chart,
+        checkin,
+        checkout,
+        clockTime,
+        dangerAnimation,
         dashboard,
         documentTextOutline,
         doubleChecksFill,
+        editFormOutline,
+        editForm,
         eyeSlash,
         eye,
         handWave,
@@ -213,12 +263,16 @@ class $AssetsAppIconsSvgGen {
         people,
         personalcard,
         receiptTextWhite,
+        sendSquare,
         settingOutline,
         setting,
+        succeessAnimation,
         svgTest,
         taskSquareWhite,
         taskSquareWhiteOutlined,
         tickCircle,
+        timerRound,
+        timer,
         trendUpWhite
       ];
 }

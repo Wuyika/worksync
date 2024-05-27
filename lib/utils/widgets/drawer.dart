@@ -4,6 +4,8 @@ import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/pages/profile/view/profile_page.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
+import 'package:worklin/utils/enums.dart';
+import 'package:worklin/utils/helpers.dart';
 import 'package:worklin/utils/typography.dart';
 
 class SideDrawerWidget extends StatelessWidget {
@@ -117,7 +119,17 @@ class SideDrawerWidget extends StatelessWidget {
           ),
           ListTile(
             onTap: (){
-              AppNavigator.popUntilFirst(context);
+              showDialogCard(
+                context,
+                titleText: "Log Out",
+                actionText: "Log Out",
+                descriptionText: "Are you sure you want to logout?",
+                dialogType: DialogType.failure,
+              ).then((value) {
+                if(value == true){
+                  AppNavigator.popUntilFirst(context);
+                }
+              });
             },
             leading: SvgPicture.asset(
               Assets.appIcons.svg.logout,

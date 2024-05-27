@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:worklin/pages/onboarding/onboarding_page.dart';
+import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/theme.dart';
 
 void main() async {
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Sizes.init(context);
     return MaterialApp(
       title: 'Worklink',
       theme: AppTheme.lightTheme,

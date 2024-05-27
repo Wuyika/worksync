@@ -17,7 +17,7 @@ class OnboardingPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
           child: Column(
             children: [
@@ -25,7 +25,7 @@ class OnboardingPage extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.55,
                 child: const FacesWidget(),
               ),
-              const Spacer(),
+              const SizedBox(height: 8),
               Text(
                 LocaleKeys.onboard_title.tr(),
                 style: AppTypography.headingH1.copyWith(
@@ -37,7 +37,7 @@ class OnboardingPage extends StatelessWidget {
                 LocaleKeys.onboard_description.tr(),
                 style: AppTypography.bodyLargeRegular,
               ),
-              const Spacer(),
+              const SizedBox(height: 20),
               PrimaryButton(
                 onPress: () {
                   AppNavigator.pushReplacement(context, const SignInPage());

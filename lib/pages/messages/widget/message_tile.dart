@@ -4,6 +4,7 @@ import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/pages/messages/view/chart_page.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
+import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
 
 class MessageTile extends StatelessWidget {
@@ -34,16 +35,16 @@ class MessageTile extends StatelessWidget {
               },
               contentPadding: EdgeInsets.zero,
               leading: Container(
-                width: 45,
-                height: 45,
+                width: Sizes.size_46,
+                height:  Sizes.size_46,
                 decoration: BoxDecoration(
                   color: AppColors.secondary.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Center(
+                child: Center(
                   child: Icon(
                     Icons.person,
-                    size: 32,
+                    size: Sizes.size_32,
                     color: AppColors.secondary,
                   ),
                 ),
@@ -69,7 +70,7 @@ class MessageTile extends StatelessWidget {
                   ),
                   if (hasUnread)
                     Container(
-                      padding: const EdgeInsets.all(8),
+                      padding: EdgeInsets.all(Sizes.size_6),
                       decoration: const BoxDecoration(
                         color: AppColors.secondary,
                         shape: BoxShape.circle,

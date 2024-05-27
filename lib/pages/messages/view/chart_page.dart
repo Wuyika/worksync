@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:worklin/pages/messages/models/message_models.dart';
+import 'package:worklin/pages/messages/widget/chat/message.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/typography.dart';
+import 'package:worklin/utils/widgets/custom_text_field.dart';
 
 class ChartPage extends StatefulWidget {
   const ChartPage({super.key});
@@ -13,6 +16,74 @@ class ChartPage extends StatefulWidget {
 }
 
 class _ChartPageState extends State<ChartPage> {
+  TextEditingController textEditingController = TextEditingController();
+
+  List<ChatMessage> demoChatMessages = [
+    ChatMessage(
+      text: "How far are you  with the designs?",
+      messageType: ChatMessageType.text,
+      messageStatus: MessageStatus.viewed,
+      isSender: false,
+    ),
+    ChatMessage(
+      text:
+          "For now, I’m done with the previous pages I started with, this morning.",
+      messageType: ChatMessageType.text,
+      messageStatus: MessageStatus.viewed,
+      isSender: true,
+    ),
+    ChatMessage(
+      text: "Hi, are you still working?",
+      messageType: ChatMessageType.text,
+      messageStatus: MessageStatus.viewed,
+      isSender: false,
+    ),
+    ChatMessage(
+      text: "",
+      messageType: ChatMessageType.audio,
+      messageStatus: MessageStatus.viewed,
+      isSender: true,
+    ),
+    ChatMessage(
+      text: "",
+      messageType: ChatMessageType.audio,
+      messageStatus: MessageStatus.viewed,
+      isSender: false,
+    ),
+    ChatMessage(
+      text:
+          "For now, I’m done with the previous pages I started with, this morning.",
+      messageType: ChatMessageType.text,
+      messageStatus: MessageStatus.viewed,
+      isSender: true,
+    ),
+    ChatMessage(
+      text: "How far are you  with the designs?",
+      messageType: ChatMessageType.text,
+      messageStatus: MessageStatus.viewed,
+      isSender: false,
+    ),
+    ChatMessage(
+      text:
+          "For now, I’m done with the previous pages I started with, this morning.",
+      messageType: ChatMessageType.text,
+      messageStatus: MessageStatus.viewed,
+      isSender: true,
+    ),
+    ChatMessage(
+      text: "How far are you  with the designs?",
+      messageType: ChatMessageType.text,
+      messageStatus: MessageStatus.viewed,
+      isSender: false,
+    ),
+    ChatMessage(
+      text: "",
+      messageType: ChatMessageType.audio,
+      messageStatus: MessageStatus.viewed,
+      isSender: true,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,13 +162,27 @@ class _ChartPageState extends State<ChartPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SingleChildScrollView(
-                    child: Column(
-                      children: [Text("data")],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Today",
+                      style: AppTypography.bodyLargeRegular.copyWith(
+                        color: AppColors.textColor.withOpacity(0.5),
+                        fontSize: 18,
+                      ),
                     ),
                   ),
-                  Spacer(),
+                  Expanded(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: demoChatMessages.length,
+                      itemBuilder: (context, index) =>
+                          Message(message: demoChatMessages[index]),
+                    ),
+                  ),
+                  // Spacer(),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
@@ -127,15 +212,25 @@ class _ChartPageState extends State<ChartPage> {
                             shape: BoxShape.circle,
                           ),
                           child: Icon(
-                            Icons.mic,
+                            textEditingController.text.isEmpty
+                                ? Icons.mic
+                                : Icons.send,
                             color: AppColors.white,
                             size: 20,
                           ),
                         ),
                         title: Row(
                           children: [
-                            const Expanded(
-                              child: TextField(),
+                            Expanded(
+                              child: CustomTextField(
+                                hintText: "Type Message",
+                                controller: textEditingController,
+                                showBottomBorder: true,
+                                showNoBorders: true,
+                                onChanged: (value) {
+                                  setState(() {});
+                                },
+                              ),
                             ),
                             SizedBox(
                               height: 28,

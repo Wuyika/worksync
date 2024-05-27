@@ -79,7 +79,7 @@ class _ReportPageState extends State<ReportPage> {
                                     size: 28,
                                     Icons.arrow_drop_down,
                                     color: AppColors.selector,
-                                  )
+                                  ),
                                 ],
                               ),
                             ),

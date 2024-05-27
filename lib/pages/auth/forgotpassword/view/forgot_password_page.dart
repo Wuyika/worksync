@@ -5,6 +5,7 @@ import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/main_page/view/main_page.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
+import 'package:worklin/utils/helpers.dart';
 import 'package:worklin/utils/typography.dart';
 import 'package:worklin/utils/widgets/button.dart';
 import 'package:worklin/utils/widgets/custom_text_field.dart';
@@ -61,6 +62,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           const SizedBox(height: 30),
           Expanded(
             child: PageView(
+              physics: const NeverScrollableScrollPhysics(),
               onPageChanged: (index) {
                 setState(() {
                   currentStep = index;
@@ -94,7 +96,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           const SizedBox(height: 30),
           Text(
             LocaleKeys.work_email.tr(),
-            style: AppTypography.bodyMediumRegular.copyWith(
+            style: AppTypography.bodySmallRegular.copyWith(
               color: AppColors.textColor,
             ),
           ),
@@ -122,7 +124,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-          LocaleKeys.verify_description.tr(),
+            LocaleKeys.verify_description.tr(),
             style: AppTypography.bodyLargeRegular.copyWith(
               fontFamily: AppTypography.familySpaceGrotesk,
             ),
@@ -159,7 +161,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-          LocaleKeys.reset_description.tr(),
+            LocaleKeys.reset_description.tr(),
             style: AppTypography.bodyLargeRegular.copyWith(
               fontFamily: AppTypography.familySpaceGrotesk,
             ),
@@ -167,7 +169,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           const SizedBox(height: 30),
           Text(
             LocaleKeys.new_password.tr(),
-            style: AppTypography.bodyMediumRegular.copyWith(
+            style: AppTypography.bodySmallRegular.copyWith(
               color: AppColors.textColor,
             ),
           ),
@@ -180,7 +182,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           const SizedBox(height: 30),
           Text(
             LocaleKeys.confirm_password.tr(),
-            style: AppTypography.bodyMediumRegular.copyWith(
+            style: AppTypography.bodySmallRegular.copyWith(
               color: AppColors.textColor,
             ),
           ),
@@ -192,8 +194,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           ),
           const SizedBox(height: 60),
           PrimaryButton(
-            onPress: () {
-              AppNavigator.pushReplacement(context, const MainPage());
+            onPress: () async {
+              await showDialogCard(
+                context,
+                titleText: "New Password Created",
+                actionText: "Log In",
+                descriptionText: "Your new password has been created successfully",
+              ).then((value) => AppNavigator.pop(context));
             },
             buttonText: LocaleKeys.confirm.tr(),
           ),
