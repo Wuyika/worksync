@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:worklin/gen/assets.gen.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/dashboard/widgets/action_widget.dart';
 import 'package:worklin/pages/dashboard/widgets/graph_widget.dart';
 import 'package:worklin/pages/dashboard/widgets/overview.dart';
@@ -34,56 +35,58 @@ class _DashboardPageState extends State<DashboardPage> {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                color: AppColors.inactive.withOpacity(0.8),
-                width: 0.5,
+          IntrinsicHeight(
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: AppColors.inactive.withOpacity(0.8),
+                  width: 0.5,
+                ),
               ),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: ActionWidget(
-                    onTap: () {
-                      cubit.updateIndex(MainPageState.attendance);
-                    },
-                    backGroundColor: AppColors.secondary,
-                    iconPath: Assets.appIcons.svg.calendarTickWhite,
-                    text: 'Take Attendance',
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ActionWidget(
+                      onTap: () {
+                        cubit.updateIndex(MainPageState.attendance);
+                      },
+                      backGroundColor: AppColors.secondary,
+                      iconPath: Assets.appIcons.svg.calendarTickWhite,
+                      text: LocaleKeys.take_attendance.tr(),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: ActionWidget(
-                    onTap: () {
-                      AppNavigator.push(context, const TaskPage());
-                    },
-                    backGroundColor: AppColors.orange,
-                    iconPath: Assets.appIcons.svg.taskSquareWhiteOutlined,
-                    text: 'View Tasks',
+                  Expanded(
+                    child: ActionWidget(
+                      onTap: () {
+                        AppNavigator.push(context, const TaskPage());
+                      },
+                      backGroundColor: AppColors.orange,
+                      iconPath: Assets.appIcons.svg.taskSquareWhiteOutlined,
+                      text: LocaleKeys.view_task.tr(),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: ActionWidget(
-                    backGroundColor: AppColors.green,
-                    iconPath: Assets.appIcons.svg.receiptTextWhite,
-                    text: 'View Payslip',
+                  Expanded(
+                    child: ActionWidget(
+                      backGroundColor: AppColors.green,
+                      iconPath: Assets.appIcons.svg.receiptTextWhite,
+                      text: LocaleKeys.view_payslip.tr(),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: ActionWidget(
-                    onTap: () {
-                      AppNavigator.push(context, const CreateReportPage());
-                    },
-                    backGroundColor: AppColors.blue,
-                    iconPath: Assets.appIcons.svg.trendUpWhite,
-                    text: 'Add Report',
+                  Expanded(
+                    child: ActionWidget(
+                      onTap: () {
+                        AppNavigator.push(context, const CreateReportPage());
+                      },
+                      backGroundColor: AppColors.blue,
+                      iconPath: Assets.appIcons.svg.trendUpWhite,
+                      text: LocaleKeys.add_report.tr(),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 20),

@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/reports/views/view_report_detail.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
@@ -85,7 +87,7 @@ class ReportTile extends StatelessWidget {
                                 style: AppTypography.bodySmallMedium.copyWith(
                                   color: AppColors.textColor,
                                 ),
-                                text: "What's new? ",
+                                text: "${LocaleKeys.whats_new.tr()} ",
                                 children: [
                                   TextSpan(
                                     text: " I’ve redesigned the screen for the demartologist",
@@ -115,7 +117,7 @@ class ReportTile extends StatelessWidget {
                                 style: AppTypography.bodySmallMedium.copyWith(
                                   color: AppColors.textColor,
                                 ),
-                                text: "What do you plan todo? ",
+                                text: "${LocaleKeys.whats_plan.tr()} ",
                                 children: [
                                   TextSpan(
                                     text: " I’ve redesigned the screen for the demartologist",
@@ -145,7 +147,7 @@ class ReportTile extends StatelessWidget {
                                 style: AppTypography.bodySmallMedium.copyWith(
                                   color: AppColors.textColor,
                                 ),
-                                text: "Comments: ",
+                                text: "${LocaleKeys.comments.tr()}: ",
                                 children: [
                                   TextSpan(
                                     text: " Try to complete",

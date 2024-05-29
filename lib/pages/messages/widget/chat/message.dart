@@ -31,9 +31,8 @@ class Message extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Row(
-        mainAxisAlignment:
-            message.isSender ? MainAxisAlignment.end : MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: message.isSender ? MainAxisAlignment.end : MainAxisAlignment.start,
+        crossAxisAlignment: message.isSender? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
           if (!message.isSender) ...[
             Container(

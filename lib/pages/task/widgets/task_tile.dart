@@ -108,11 +108,11 @@ class _TaskTileState extends State<TaskTile> {
                     style: AppTypography.bodySmallRegular.copyWith(
                       color: AppColors.textColor.withOpacity(0.7),
                     ),
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

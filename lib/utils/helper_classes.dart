@@ -10,14 +10,13 @@ class CustomDateTimeController {
     this.dateTimeValue,
     this.validator,
   }) : textController = TextEditingController(
-    text: dateTimeValue != null
-        ? dateFormat.format(dateTimeValue)
-        : null,
-  );
+          text: dateTimeValue != null ? dateFormat.format(dateTimeValue) : null,
+        );
 
   void setDateTime(DateTime? newDateTime) {
     dateTimeValue = newDateTime;
-    textController.text = newDateTime != null ? dateFormat.format(newDateTime) : '';
+    textController.text =
+        newDateTime != null ? dateFormat.format(newDateTime) : '';
   }
 
   DateTime? getDateTime() {
@@ -33,7 +32,6 @@ class CustomDateTimeController {
     textController.dispose();
   }
 }
-
 
 // Custom Gradient Text Widget
 class GradientText extends StatelessWidget {
@@ -56,7 +54,8 @@ class GradientText extends StatelessWidget {
       child: Text(
         text,
         style: style.copyWith(
-            color: Colors.white), // Temporary color for the shader
+          color: Colors.white,
+        ), // Temporary color for the shader
       ),
     );
   }

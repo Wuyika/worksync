@@ -61,6 +61,7 @@ class _ViewReportPageState extends State<ViewReportPage> {
             Stack(
               children: [
                 CustomTextField(
+                  readOnly: !editingNew,
                   hintText: "Enter Your Response",
                   controller: whatsNewController,
                   filled: editingNew,
@@ -109,6 +110,7 @@ class _ViewReportPageState extends State<ViewReportPage> {
             Stack(
               children: [
                 CustomTextField(
+                  readOnly: !editingPlan,
                   hintText: "Enter Your Response",
                   controller: planController,
                   filled: editingPlan,
@@ -147,6 +149,7 @@ class _ViewReportPageState extends State<ViewReportPage> {
             Stack(
               children: [
                 CustomTextField(
+                  readOnly: !editingComment,
                   hintText: "Enter Your Response",
                   controller: commentController,
                   filled: editingComment,

@@ -19,14 +19,14 @@ class TextMessage extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: (message!.isSender)
             ? const BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
+                bottomLeft: Radius.circular(16),
               )
             : const BorderRadius.only(
-                topRight: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10),
+                topRight: Radius.circular(16),
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16),
               ),
         color: (message!.isSender)
             ? AppColors.secondary

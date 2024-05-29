@@ -1,7 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/profile/view/profile_page.dart';
+import 'package:worklin/pages/setting/settings_page.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/enums.dart';
@@ -39,7 +42,7 @@ class SideDrawerWidget extends StatelessWidget {
                 color: AppColors.textColor.withOpacity(0.5),
               ),
             ),
-            trailing: Icon(
+            trailing: const Icon(
               Icons.arrow_forward_ios,
               color: AppColors.textColor,
             ),
@@ -53,8 +56,8 @@ class SideDrawerWidget extends StatelessWidget {
               ),
             ),
             title: Text(
-              "Active",
-              style: AppTypography.headingH2,
+              LocaleKeys.active.tr(),
+              style: AppTypography.bodyMediumRegular,
             ),
           ),
           ListTile(
@@ -66,12 +69,12 @@ class SideDrawerWidget extends StatelessWidget {
               ),
             ),
             title: Text(
-              "Your Work Location",
-              style: AppTypography.bodyLargeRegular,
+             LocaleKeys.your_work_location.tr(),
+              style: AppTypography.bodyMediumRegular,
             ),
             subtitle: Text(
               "Remote",
-              style: AppTypography.bodyMediumLight,
+              style: AppTypography.bodySmallLight,
             ),
           ),
           ListTile(
@@ -83,8 +86,8 @@ class SideDrawerWidget extends StatelessWidget {
               ),
             ),
             title: Text(
-              "Documents",
-              style: AppTypography.bodyLargeRegular,
+              LocaleKeys.documents.tr(),
+              style: AppTypography.bodyMediumRegular,
             ),
           ),
           ListTile(
@@ -96,15 +99,19 @@ class SideDrawerWidget extends StatelessWidget {
               ),
             ),
             title: Text(
-              "Notifications",
-              style: AppTypography.bodyLargeRegular,
+              LocaleKeys.notification.tr(),
+              style: AppTypography.bodyMediumRegular,
             ),
             subtitle: Text(
               "On",
-              style: AppTypography.bodyMediumLight,
+              style: AppTypography.bodySmallLight,
             ),
           ),
           ListTile(
+            splashColor: AppColors.secondary.withOpacity(0.5),
+            onTap: (){
+              AppNavigator.push(context, const SettingsPage());
+            },
             leading: SvgPicture.asset(
               Assets.appIcons.svg.settingOutline,
               colorFilter: const ColorFilter.mode(
@@ -113,16 +120,16 @@ class SideDrawerWidget extends StatelessWidget {
               ),
             ),
             title: Text(
-              "Settings",
-              style: AppTypography.bodyLargeRegular,
+              LocaleKeys.settings.tr(),
+              style: AppTypography.bodyMediumRegular,
             ),
           ),
           ListTile(
             onTap: (){
               showDialogCard(
                 context,
-                titleText: "Log Out",
-                actionText: "Log Out",
+                titleText: LocaleKeys.log_out.tr(),
+                actionText: LocaleKeys.log_out.tr(),
                 descriptionText: "Are you sure you want to logout?",
                 dialogType: DialogType.failure,
               ).then((value) {
@@ -139,8 +146,8 @@ class SideDrawerWidget extends StatelessWidget {
               ),
             ),
             title: Text(
-              "Log Out",
-              style: AppTypography.bodyLargeRegular.copyWith(
+              LocaleKeys.log_out.tr(),
+              style: AppTypography.bodyMediumRegular.copyWith(
                 color: AppColors.warning,
               ),
             ),

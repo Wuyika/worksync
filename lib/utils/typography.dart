@@ -113,6 +113,13 @@ class AppTypography {
     // height: 1.6,
   );
 
+  static TextStyle bodySmallLight = TextStyle(
+    fontFamily: familyUrbanist,
+    fontWeight: weightLight,
+    fontSize: Sizes.size_14,
+    // height: 1.6,
+  );
+
   //Body extra Small
 
   static TextStyle bodyExtraSmallSemiBold = TextStyle(

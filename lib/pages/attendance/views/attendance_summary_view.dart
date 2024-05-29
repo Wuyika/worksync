@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/attendance/cubits/attendance_summary_cubit.dart';
 import 'package:worklin/pages/attendance/views/scan_qr_code.dart';
 import 'package:worklin/pages/attendance/widgets/attendance_card.dart';
@@ -44,7 +46,7 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
                       showDialogCard(
                         context,
                         titleText: "Check In Succesfull",
-                        actionText: "Okay",
+                        actionText:  LocaleKeys.okay.tr(),
                         descriptionText: "The QR Code has been scanned and check in was successful.",
                       );
                     }
@@ -56,8 +58,7 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
                     dialogType: DialogType.failure,
                     titleText: "Your About To Check Out",
                     actionText: "Check Out",
-                    descriptionText:
-                    "You’re about to stop working now. Would you like to check out?",
+                    descriptionText: "You’re about to stop working now. Would you like to check out?",
                   ).then((value) {
                     if (value == true) {
                       cubit.updateIndex(AttendanceSummaryState.endOfDay);

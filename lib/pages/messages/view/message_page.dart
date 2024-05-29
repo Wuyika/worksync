@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/messages/widget/message_tile.dart';
 import 'package:worklin/pages/messages/widget/no_message_widget.dart';
 import 'package:worklin/utils/colors.dart';
@@ -41,7 +42,7 @@ class _MessagePageState extends State<MessagePage> {
                           child: CustomTextField(
                             filled: true,
                             prefix: const Icon(Icons.search),
-                            hintText: "Search...",
+                            hintText: "${LocaleKeys.search.tr()}...",
                             controller: searchController,
                           ),
                         ),
@@ -60,7 +61,7 @@ class _MessagePageState extends State<MessagePage> {
                             child: Row(
                               children: [
                                 Text(
-                                  "All Chats",
+                                  LocaleKeys.all_chats.tr(),
                                   style: AppTypography.bodySmallMedium.copyWith(
                                     color: AppColors.selector,
                                   ),

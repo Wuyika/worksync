@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
@@ -30,12 +31,15 @@ class DashboardOverview extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Overview",
-                style: AppTypography.bodyLargeMedium.copyWith(
-                  color: AppColors.white,
+              Expanded(
+                child: Text(
+                  LocaleKeys.overview.tr(),
+                  style: AppTypography.bodyLargeMedium.copyWith(
+                    color: AppColors.white,
+                  ),
                 ),
               ),
+              SizedBox(width: Sizes.size_2),
               SizedBox(
                 height: 32,
                 child: PopupMenuButton(
@@ -108,7 +112,7 @@ class DashboardOverview extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      "Presence",
+                      LocaleKeys.presence.tr(),
                       style: AppTypography.bodySmallRegular.copyWith(
                         color: AppColors.white,
                       ),
@@ -132,7 +136,7 @@ class DashboardOverview extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      "Absence",
+                      LocaleKeys.absence.tr(),
                       style: AppTypography.bodySmallRegular.copyWith(
                         color: AppColors.white,
                       ),
@@ -156,7 +160,7 @@ class DashboardOverview extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      "Lateness",
+                      LocaleKeys.lateness.tr(),
                       style: AppTypography.bodySmallRegular.copyWith(
                         color: AppColors.white,
                       ),
@@ -209,7 +213,7 @@ class DashboardOverview extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Checked In : ",
+                                "${LocaleKeys.checked_in.tr()}:",
                                 style:
                                     AppTypography.bodyExtraSmallMedium.copyWith(
                                   color: AppColors.textColor.withOpacity(0.5),
@@ -265,7 +269,7 @@ class DashboardOverview extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Checked out : ",
+                                "${LocaleKeys.check_out.tr()}:",
                                 style:
                                     AppTypography.bodyExtraSmallMedium.copyWith(
                                   color: AppColors.textColor.withOpacity(0.5),
@@ -296,7 +300,7 @@ class DashboardOverview extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                                 child: Text(
-                                  "Check out",
+                                  LocaleKeys.check_out.tr(),
                                   style: AppTypography.bodyExtraSmallRegular
                                       .copyWith(
                                     color: AppColors.white,
@@ -320,14 +324,15 @@ class DashboardOverview extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Total hours",
+                                  textAlign: TextAlign.center,
+                                  LocaleKeys.total_hours.tr(),
                                   style: AppTypography.bodyExtraSmallMedium
                                       .copyWith(
                                     color: AppColors.white,
                                     fontSize: Sizes.size_12,
                                   ),
                                 ),
-                                const SizedBox(height: 8),
+                                const SizedBox(height: 6),
                                 Text(
                                   "2hr 45m",
                                   style: AppTypography.bodyLargeMedium.copyWith(

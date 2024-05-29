@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/attendance/cubits/attendance_summary_cubit.dart';
 import 'package:worklin/pages/attendance/views/attendance_history_view.dart';
 import 'package:worklin/pages/attendance/views/attendance_summary_view.dart';
@@ -70,20 +72,20 @@ class _AttendancePageState extends State<AttendancePage>
                   labelStyle: AppTypography.bodyExtraSmallMedium,
                   unselectedLabelColor: AppColors.textColor,
                   unselectedLabelStyle: AppTypography.bodyExtraSmallRegular,
-                  tabs: const [
+                  tabs: [
                     Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: 12,
                         horizontal: 8,
                       ),
-                      child: Text("Attendance Summary"),
+                      child: Text(LocaleKeys.attendance_summary.tr()),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: 12,
                         horizontal: 8,
                       ),
-                      child: Text("Attendance History"),
+                      child: Text(LocaleKeys.attendance_history.tr()),
                     ),
                   ],
                 ),

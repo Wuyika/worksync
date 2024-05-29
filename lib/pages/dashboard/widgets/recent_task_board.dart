@@ -1,4 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/task/views/task_page.dart';
 import 'package:worklin/pages/task/widgets/task_tile.dart';
 import 'package:worklin/utils/app_navigator.dart';
@@ -25,10 +28,12 @@ class RecentTaskBoard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Recent Task",
-                style: AppTypography.bodyLargeMedium.copyWith(
-                  color: AppColors.textColor,
+              Expanded(
+                child: Text(
+                  LocaleKeys.recent_task.tr(),
+                  style: AppTypography.bodyLargeMedium.copyWith(
+                    color: AppColors.textColor,
+                  ),
                 ),
               ),
               InkWell(
@@ -38,7 +43,7 @@ class RecentTaskBoard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
-                    "See all",
+                    LocaleKeys.see_all.tr(),
                     style: AppTypography.bodySmallSemiBold.copyWith(
                       color: AppColors.secondary,
                     ),

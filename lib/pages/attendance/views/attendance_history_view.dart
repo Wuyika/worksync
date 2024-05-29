@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/attendance/widgets/attendance_tile.dart';
 import 'package:worklin/pages/attendance/widgets/type.dart';
 import 'package:worklin/utils/colors.dart';
@@ -35,9 +36,9 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const TypeWidget(
+                TypeWidget(
                   color: AppColors.green_1,
-                  text: "On time",
+                  text: LocaleKeys.on_time.tr(),
                   value: 70,
                 ),
                 VerticalDivider(
@@ -45,9 +46,9 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                   color: AppColors.textColor.withOpacity(0.2),
                   thickness: 2,
                 ),
-                const TypeWidget(
+                TypeWidget(
                   color: AppColors.orange,
-                  text: "Late",
+                  text:  LocaleKeys.late.tr(),
                   value: 20,
                 ),
                 VerticalDivider(
@@ -55,9 +56,9 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                   color: AppColors.textColor.withOpacity(0.2),
                   thickness: 2,
                 ),
-                const TypeWidget(
+                TypeWidget(
                   color: AppColors.warning,
-                  text: "Absent",
+                  text:  LocaleKeys.absent.tr(),
                   value: 5,
                 ),
                 VerticalDivider(
@@ -65,9 +66,9 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                   color: AppColors.textColor.withOpacity(0.2),
                   thickness: 2,
                 ),
-                const TypeWidget(
+                TypeWidget(
                   color: AppColors.secondary,
-                  text: "Early Leaves",
+                  text:  LocaleKeys.early_leave.tr(),
                   value: 21,
                 ),
               ],
@@ -82,7 +83,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                   child: CustomTextField(
                     filled: true,
                     prefix: const Icon(Icons.search),
-                    hintText: "Search...",
+                    hintText: "${LocaleKeys.search.tr()}...",
                     controller: searchController,
                   ),
                 ),

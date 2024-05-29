@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/messages/models/message_models.dart';
 import 'package:worklin/pages/messages/widget/chat/message.dart';
 import 'package:worklin/utils/app_navigator.dart';
@@ -124,7 +126,7 @@ class _ChartPageState extends State<ChartPage> {
                 ),
               ),
               subtitle: Text(
-                "Active",
+                LocaleKeys.active.tr(),
                 style: AppTypography.bodySmallRegular.copyWith(
                   color: AppColors.activeGreen,
                 ),
@@ -167,7 +169,7 @@ class _ChartPageState extends State<ChartPage> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Today",
+                      LocaleKeys.today.tr(),
                       style: AppTypography.bodyLargeRegular.copyWith(
                         color: AppColors.textColor.withOpacity(0.5),
                         fontSize: 18,
@@ -199,7 +201,7 @@ class _ChartPageState extends State<ChartPage> {
                             color: AppColors.secondary,
                             shape: BoxShape.circle,
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.add,
                             color: AppColors.white,
                             size: 20,
@@ -223,7 +225,7 @@ class _ChartPageState extends State<ChartPage> {
                           children: [
                             Expanded(
                               child: CustomTextField(
-                                hintText: "Type Message",
+                                hintText: LocaleKeys.type_message.tr(),
                                 controller: textEditingController,
                                 showBottomBorder: true,
                                 showNoBorders: true,

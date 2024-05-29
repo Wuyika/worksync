@@ -6,7 +6,9 @@ import 'package:worklin/pages/main_page/view/main_page.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/helpers.dart';
+import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
+import 'package:worklin/utils/widgets/appbar.dart';
 import 'package:worklin/utils/widgets/button.dart';
 import 'package:worklin/utils/widgets/custom_text_field.dart';
 
@@ -37,7 +39,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   void slideToNextPage() {
     pageController.nextPage(
       duration: const Duration(seconds: 1),
-      curve: Curves.ease,
+      curve: Curves.decelerate,
     );
   }
 
@@ -45,8 +47,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: AppBar(
-        backgroundColor: AppColors.white,
+      appBar: CustomAppBar(
         centerTitle: true,
         title: Text(
           currentStep == 0
@@ -54,6 +55,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               : currentStep == 1
                   ? LocaleKeys.verify_email.tr()
                   : LocaleKeys.reset_password.tr(),
+          style: AppTypography.headingH2,
         ),
       ),
       body: Column(
@@ -91,6 +93,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             LocaleKeys.forgot_description.tr(),
             style: AppTypography.bodyLargeRegular.copyWith(
               fontFamily: AppTypography.familySpaceGrotesk,
+              fontSize: Sizes.size_18,
             ),
           ),
           const SizedBox(height: 30),
@@ -127,6 +130,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             LocaleKeys.verify_description.tr(),
             style: AppTypography.bodyLargeRegular.copyWith(
               fontFamily: AppTypography.familySpaceGrotesk,
+              fontSize: Sizes.size_18,
             ),
           ),
           const SizedBox(height: 30),
@@ -164,6 +168,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             LocaleKeys.reset_description.tr(),
             style: AppTypography.bodyLargeRegular.copyWith(
               fontFamily: AppTypography.familySpaceGrotesk,
+              fontSize: Sizes.size_18,
             ),
           ),
           const SizedBox(height: 30),

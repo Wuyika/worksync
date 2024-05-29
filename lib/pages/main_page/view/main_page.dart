@@ -13,11 +13,12 @@ import 'package:worklin/pages/profile/view/profile_page.dart';
 import 'package:worklin/pages/reports/views/report_page.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
+import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
 import 'package:worklin/utils/widgets/appbar.dart';
 import 'package:worklin/utils/widgets/bottom_appbar.dart';
 import 'package:worklin/utils/widgets/drawer.dart';
-import 'package:worklin/utils/widgets/globals.dart';
+import 'package:worklin/utils/globals.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -53,7 +54,7 @@ class _MainPageState extends State<MainPage>
             key: scaffoldKey,
             appBar: CustomAppBar(
               leading: Padding(
-                padding: const EdgeInsets.only(left: 16),
+                padding: EdgeInsets.only(left: Sizes.size_16),
                 child: InkWell(
                   onTap: () {
                     scaffoldKey.currentState?.openDrawer();
@@ -105,7 +106,7 @@ class _MainPageState extends State<MainPage>
                     BlendMode.srcIn,
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: Sizes.size_16),
               ],
             ),
             drawer: const SideDrawerWidget(),

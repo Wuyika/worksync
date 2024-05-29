@@ -52,9 +52,9 @@ class ActionWidget extends StatelessWidget {
               color: AppColors.textColor,
             ),
             children: [
-              TextSpan(text: firstWord),
-              const TextSpan(text: '\n'), // Newline character to split the text
-              TextSpan(text: secondWord),
+              TextSpan(text: text),
+              // const TextSpan(text: '\n'), // Newline character to split the text
+              // TextSpan(text: secondWord),
             ],
           ),
         ),

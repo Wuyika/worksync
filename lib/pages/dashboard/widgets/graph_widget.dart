@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/utils/colors.dart';
 
 class GraphWidget extends StatelessWidget {
@@ -27,8 +29,8 @@ class GraphWidget extends StatelessWidget {
         ),
       ),
       child: SfCartesianChart(
-        title: const ChartTitle(
-          text: "Working Stats",
+        title: ChartTitle(
+          text:  LocaleKeys.working_stat.tr(),
           alignment: ChartAlignment.near,
         ),
         primaryXAxis: const CategoryAxis(

@@ -6,6 +6,7 @@ import 'package:worklin/pages/auth/signin/view/signin_page.dart';
 import 'package:worklin/pages/onboarding/faces_widget.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
+import 'package:worklin/utils/my_pref.dart';
 import 'package:worklin/utils/typography.dart';
 import 'package:worklin/utils/widgets/button.dart';
 
@@ -40,6 +41,7 @@ class OnboardingPage extends StatelessWidget {
               const SizedBox(height: 20),
               PrimaryButton(
                 onPress: () {
+                  MyPref.markOnboardingAsShown();
                   AppNavigator.pushReplacement(context, const SignInPage());
                 },
                 buttonText: LocaleKeys.get_started.tr(),

@@ -12,6 +12,7 @@ abstract class  LocaleKeys {
   static const password_hint = 'password_hint';
   static const forgot_password = 'forgot_password';
   static const log_me_in = 'log_me_in';
+  static const log_out = 'log_out';
   static const continue_t = 'continue_t';
   static const confirm = 'confirm';
   static const verify = 'verify';
@@ -34,6 +35,8 @@ abstract class  LocaleKeys {
   static const to = 'to';
   static const date = 'date';
   static const note = 'note';
+  static const settings = 'settings';
+  static const profile = 'profile';
   static const _dashboard = '_dashboard';
   static const take_attendance = 'take_attendance';
   static const view_task = 'view_task';
@@ -102,5 +105,11 @@ abstract class  LocaleKeys {
   static const all_task = 'all_task';
   static const complete_tasks = 'complete_tasks';
   static const pending_tasks = 'pending_tasks';
+  static const select_language = 'select_language';
+  static const your_work_location = 'your_work_location';
+  static const documents = 'documents';
+  static const notification = 'notification';
+  static const english = 'english';
+  static const french = 'french';
 
 }
