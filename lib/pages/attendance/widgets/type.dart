@@ -16,27 +16,32 @@ class TypeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(
-          Icons.circle,
-          color: color,
-          size: 12,
-        ),
-        const SizedBox(width: 3),
-        Text(
-          text,
-          style: AppTypography.bodyExtraSmallRegular,
-        ),
-        const SizedBox(width: 3),
-        Text(
-          "$value%",
-          style: AppTypography.bodyExtraSmallSemiBold.copyWith(
-            color: AppColors.textColor.withOpacity(0.5),
+    return Expanded(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.circle,
+            color: color,
+            size: 12,
           ),
-        ),
-      ],
+          const SizedBox(width: 4),
+          Expanded(
+            child: Text(
+              text,
+              style: AppTypography.bodyExtraSmallRegular,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const SizedBox(width: 4),
+          Text(
+            "$value%",
+            style: AppTypography.bodyExtraSmallSemiBold.copyWith(
+              color: AppColors.textColor.withOpacity(0.5),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

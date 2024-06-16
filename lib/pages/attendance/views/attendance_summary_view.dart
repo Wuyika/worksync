@@ -36,19 +36,22 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
               final cubit = context.read<AttendanceSummaryCubit>();
               return AttendanceCard(
                 checkIn: () async {
+                  String? code;
                   await AppNavigator.push(context, const ScanQrPage())
                       .then((value) {
-                    if (value == true) {
+                    if (value != null) {
+                      code = value as String?;
                       cubit.updateIndex(AttendanceSummaryState.checkOut);
-                      // setState(() {
-                      //   cardType = AttendanceCardType.checkOut;
-                      // });
                       showDialogCard(
                         context,
-                        titleText: "Check In Succesfull",
+                        titleText: LocaleKeys.check_in_successful.tr(),
                         actionText:  LocaleKeys.okay.tr(),
-                        descriptionText: "The QR Code has been scanned and check in was successful.",
-                      );
+                        descriptionText: LocaleKeys.check_in_successful_desc.tr(),
+                      ).then((value){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(code ?? "")),
+                        );
+                      });
                     }
                   });
                 },
@@ -56,9 +59,9 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
                   await showDialogCard(
                     context,
                     dialogType: DialogType.failure,
-                    titleText: "Your About To Check Out",
-                    actionText: "Check Out",
-                    descriptionText: "You’re about to stop working now. Would you like to check out?",
+                    titleText: LocaleKeys.check_out_warning.tr(),
+                    actionText: LocaleKeys.check_out.tr(),
+                    descriptionText: LocaleKeys.check_out_warning_desc.tr(),
                   ).then((value) {
                     if (value == true) {
                       cubit.updateIndex(AttendanceSummaryState.endOfDay);

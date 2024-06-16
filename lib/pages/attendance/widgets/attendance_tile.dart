@@ -92,20 +92,23 @@ class AttendanceTile extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  children: [
-                    Text(
-                      LocaleKeys.check_in.tr(),
-                      style: AppTypography.bodySmallSemiBold.copyWith(
-                        color: AppColors.textColor.withOpacity(0.5),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                        LocaleKeys.check_in.tr(),
+                        style: AppTypography.bodySmallSemiBold.copyWith(
+                          color: AppColors.textColor.withOpacity(0.5),
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      "08:01 AM",
-                      style: AppTypography.bodyMediumMedium,
-                    ),
-                  ],
+                      const SizedBox(height: 2),
+                      Text(
+                        "08:01 AM",
+                        style: AppTypography.bodyMediumMedium,
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 44,
@@ -115,20 +118,23 @@ class AttendanceTile extends StatelessWidget {
                     thickness: 1.5,
                   ),
                 ),
-                Column(
-                  children: [
-                    Text(
-                      LocaleKeys.check_out.tr(),
-                      style: AppTypography.bodySmallSemiBold.copyWith(
-                        color: AppColors.textColor.withOpacity(0.5),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                        LocaleKeys.check_out.tr(),
+                        style: AppTypography.bodySmallSemiBold.copyWith(
+                          color: AppColors.textColor.withOpacity(0.5),
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      "__:__ PM",
-                      style: AppTypography.bodyMediumMedium,
-                    ),
-                  ],
+                      const SizedBox(height: 2),
+                      Text(
+                        "__:__ PM",
+                        style: AppTypography.bodyMediumMedium,
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 44,
@@ -138,20 +144,23 @@ class AttendanceTile extends StatelessWidget {
                     width: 0,
                   ),
                 ),
-                Column(
-                  children: [
-                    Text(
-                      LocaleKeys.total_hours.tr(),
-                      style: AppTypography.bodySmallSemiBold.copyWith(
-                        color: AppColors.textColor.withOpacity(0.5),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                        LocaleKeys.total_hours.tr(),
+                        style: AppTypography.bodySmallSemiBold.copyWith(
+                          color: AppColors.textColor.withOpacity(0.5),
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      "03h 48m",
-                      style: AppTypography.bodyMediumMedium,
-                    ),
-                  ],
+                      const SizedBox(height: 2),
+                      Text(
+                        "03h 48m",
+                        style: AppTypography.bodyMediumMedium,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

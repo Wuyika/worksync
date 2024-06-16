@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:worklin/gen/assets.gen.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/helpers.dart';
@@ -34,7 +36,7 @@ class _ViewReportPageState extends State<ViewReportPage> {
       appBar: CustomAppBar(
         centerTitle: true,
         title: Text(
-          "Report Detail",
+          LocaleKeys.report_detail.tr(),
           style: AppTypography.headingH2,
         ),
       ),
@@ -46,11 +48,11 @@ class _ViewReportPageState extends State<ViewReportPage> {
             Row(
               children: [
                 Text(
-                  "Whats New? ",
+                  LocaleKeys.whats_new.tr(),
                   style: AppTypography.bodySmallMedium,
                 ),
                 Text(
-                  "*",
+                  " *",
                   style: AppTypography.bodySmallMedium.copyWith(
                     color: AppColors.warning,
                   ),
@@ -62,7 +64,7 @@ class _ViewReportPageState extends State<ViewReportPage> {
               children: [
                 CustomTextField(
                   readOnly: !editingNew,
-                  hintText: "Enter Your Response",
+                  hintText: LocaleKeys.enter_response.tr(),
                   controller: whatsNewController,
                   filled: editingNew,
                   maxLines: 3,
@@ -95,11 +97,11 @@ class _ViewReportPageState extends State<ViewReportPage> {
             Row(
               children: [
                 Text(
-                  "What do you plan to do today? ",
+                  LocaleKeys.whats_plan.tr(),
                   style: AppTypography.bodySmallMedium,
                 ),
                 Text(
-                  "*",
+                  " *",
                   style: AppTypography.bodySmallMedium.copyWith(
                     color: AppColors.warning,
                   ),
@@ -111,7 +113,7 @@ class _ViewReportPageState extends State<ViewReportPage> {
               children: [
                 CustomTextField(
                   readOnly: !editingPlan,
-                  hintText: "Enter Your Response",
+                  hintText: LocaleKeys.enter_response.tr(),
                   controller: planController,
                   filled: editingPlan,
                   maxLines: 3,
@@ -142,7 +144,7 @@ class _ViewReportPageState extends State<ViewReportPage> {
             ),
             const SizedBox(height: 16),
             Text(
-              "Comments",
+              LocaleKeys.comments.tr(),
               style: AppTypography.bodySmallMedium,
             ),
             const SizedBox(height: 8),
@@ -150,7 +152,7 @@ class _ViewReportPageState extends State<ViewReportPage> {
               children: [
                 CustomTextField(
                   readOnly: !editingComment,
-                  hintText: "Enter Your Response",
+                  hintText: LocaleKeys.enter_response.tr(),
                   controller: commentController,
                   filled: editingComment,
                   maxLines: 3,
@@ -181,7 +183,7 @@ class _ViewReportPageState extends State<ViewReportPage> {
             ),
             const SizedBox(height: 16),
             Text(
-              "Attachments",
+              LocaleKeys.attachments.tr(),
               style: AppTypography.bodySmallMedium,
             ),
             const SizedBox(height: 4),
@@ -208,7 +210,7 @@ class _ViewReportPageState extends State<ViewReportPage> {
                       Assets.appIcons.svg.sendSquare,
                     ),
                     Text(
-                      "Add Attachment",
+                      LocaleKeys.add_attachment.tr(),
                       style: AppTypography.bodySmallMedium.copyWith(
                         color: AppColors.textColor.withOpacity(0.5),
                       ),
@@ -222,12 +224,12 @@ class _ViewReportPageState extends State<ViewReportPage> {
               onPress: () {
                 showDialogCard(
                   context,
-                  titleText: "Report Edited Successfully.",
-                  actionText: "Okay",
-                  descriptionText: "Your report has been edited successfully.",
+                  titleText: LocaleKeys.report_edit_success.tr(),
+                  actionText: LocaleKeys.okay.tr(),
+                  descriptionText: LocaleKeys.report_edit_success_desc.tr(),
                 ).then((value) => AppNavigator.pop(context, true));
               },
-              buttonText: "Save Report",
+              buttonText: LocaleKeys.save_report.tr(),
             ),
           ],
         ),

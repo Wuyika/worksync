@@ -1,6 +1,13 @@
+import 'dart:developer';
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
+import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
 import 'package:worklin/utils/widgets/appbar.dart';
 import 'package:worklin/utils/widgets/button.dart';
@@ -13,6 +20,26 @@ class ScanQrPage extends StatefulWidget {
 }
 
 class _ScanQrPageState extends State<ScanQrPage> {
+  Barcode? result;
+  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+  QRViewController? controller;
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    if (Platform.isAndroid) {
+      controller!.pauseCamera();
+    } else if (Platform.isIOS) {
+      controller!.resumeCamera();
+    }
+  }
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +55,11 @@ class _ScanQrPageState extends State<ScanQrPage> {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         child: Column(
           children: [
+            const Spacer(),
+            SizedBox(
+              height: MediaQuery.sizeOf(context).height * 0.55,
+              child: _buildQrView(context),
+            ),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,7 +89,7 @@ class _ScanQrPageState extends State<ScanQrPage> {
                     ),
                   ),
                   child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       AppNavigator.pop(context, true);
                     },
                     child: BouncingButton(),
@@ -80,5 +112,68 @@ class _ScanQrPageState extends State<ScanQrPage> {
         ),
       ),
     );
+  }
+
+  Widget _buildQrView(BuildContext context) {
+    final scanArea = Sizes.size_248;
+
+    return QRView(
+      key: qrKey,
+      onQRViewCreated: _onQRViewCreated,
+      overlay: QrScannerOverlayShape(
+        borderColor: AppColors.secondary,
+        borderRadius: Sizes.size_2,
+        borderLength: Sizes.size_30,
+        borderWidth: Sizes.size_10,
+        cutOutSize: scanArea,
+      ),
+      onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),
+    );
+  }
+
+  void _onQRViewCreated(QRViewController controller) {
+    setState(() {
+      this.controller = controller;
+    });
+    controller.scannedDataStream.listen((scanData) {
+      setState(() {
+        result = scanData;
+      });
+
+      if (result?.code != null) {
+        final scanResult = result?.code;
+
+        if (scanResult != null) {
+          final String? extractedCode = extractCode(scanResult);
+
+          if (extractedCode != null) {
+            HapticFeedback.vibrate();
+            controller.pauseCamera();
+            AppNavigator.pop(
+              context,
+              extractedCode,
+            );
+
+            if (kDebugMode) {
+              print('Url: $scanResult');
+              print('Extracted Code: $extractedCode');
+            }
+          }
+        }
+      }
+    });
+  }
+
+  void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
+    log('${DateTime.now().toLocal()}_onPermissionSet $p');
+    if (!p) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('no Permission')),
+      );
+    }
+  }
+
+  String? extractCode(String url) {
+    return url;
   }
 }

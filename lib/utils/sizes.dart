@@ -55,6 +55,7 @@ class Sizes {
   static double get size_220 => getSize(220);
   static double get size_230 => getSize(230);
   static double get size_240 => getSize(240);
+  static double get size_248 => getSize(248);
   static double get size_260 => getSize(260);
   static double get size_280 => getSize(280);
   static double get size_300 => getSize(300);

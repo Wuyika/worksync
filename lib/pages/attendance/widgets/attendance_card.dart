@@ -70,21 +70,19 @@ class AttendanceCard extends StatelessWidget {
             InkWell(
               onTap: checkIn,
               child: Container(
+                padding: const EdgeInsets.all(28),
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
                   color: AppColors.secondary,
+                  shape: BoxShape.circle,
                   border: Border.all(
                     width: 6,
                     color: AppColors.white.withOpacity(0.85),
                   ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(28),
-                  child: Text(
-                    LocaleKeys.check_in.tr(),
-                    style: AppTypography.bodySmallMedium.copyWith(
-                      color: AppColors.white,
-                    ),
+                child: Text(
+                  LocaleKeys.check_in.tr(),
+                  style: AppTypography.bodySmallMedium.copyWith(
+                    color: AppColors.white,
                   ),
                 ),
               ),
@@ -124,22 +122,25 @@ class AttendanceCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        children: [
-                          SvgPicture.asset(Assets.appIcons.svg.clockTime),
-                          const SizedBox(height: 4),
-                          Text(
-                            "08:01 AM",
-                            style: AppTypography.bodyMediumMedium,
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            LocaleKeys.check_in.tr(),
-                            style: AppTypography.bodySmallSemiBold.copyWith(
-                              color: AppColors.textColor.withOpacity(0.5),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(Assets.appIcons.svg.clockTime),
+                            const SizedBox(height: 4),
+                            Text(
+                              "08:01 AM",
+                              style: AppTypography.bodyMediumMedium,
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 2),
+                            Text(
+                              LocaleKeys.check_in.tr(),
+                              style: AppTypography.bodySmallSemiBold.copyWith(
+                                color: AppColors.textColor.withOpacity(0.5),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 28,
@@ -149,22 +150,25 @@ class AttendanceCard extends StatelessWidget {
                           width: Sizes.size_2,
                         ),
                       ),
-                      Column(
-                        children: [
-                          SvgPicture.asset(Assets.appIcons.svg.timerRound),
-                          const SizedBox(height: 4),
-                          Text(
-                            "__:__ PM",
-                            style: AppTypography.bodyMediumMedium,
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            LocaleKeys.check_out.tr(),
-                            style: AppTypography.bodySmallSemiBold.copyWith(
-                              color: AppColors.textColor.withOpacity(0.5),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(Assets.appIcons.svg.timerRound),
+                            const SizedBox(height: 4),
+                            Text(
+                              "__:__ PM",
+                              style: AppTypography.bodyMediumMedium,
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 2),
+                            Text(
+                              LocaleKeys.check_out.tr(),
+                              style: AppTypography.bodySmallSemiBold.copyWith(
+                                color: AppColors.textColor.withOpacity(0.5),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 28,
@@ -174,22 +178,25 @@ class AttendanceCard extends StatelessWidget {
                           width: Sizes.size_2,
                         ),
                       ),
-                      Column(
-                        children: [
-                          SvgPicture.asset(Assets.appIcons.svg.timer),
-                          const SizedBox(height: 4),
-                          Text(
-                            "03h 48m",
-                            style: AppTypography.bodyMediumMedium,
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            LocaleKeys.total_hours.tr(),
-                            style: AppTypography.bodySmallSemiBold.copyWith(
-                              color: AppColors.textColor.withOpacity(0.5),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(Assets.appIcons.svg.timer),
+                            const SizedBox(height: 4),
+                            Text(
+                              "03h 48m",
+                              style: AppTypography.bodyMediumMedium,
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 2),
+                            Text(
+                              LocaleKeys.total_hours.tr(),
+                              style: AppTypography.bodySmallSemiBold.copyWith(
+                                color: AppColors.textColor.withOpacity(0.5),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

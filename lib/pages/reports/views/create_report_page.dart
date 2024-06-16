@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/helpers.dart';
@@ -27,7 +29,7 @@ class _CreateReportPageState extends State<CreateReportPage> {
       appBar: CustomAppBar(
         centerTitle: true,
         title: Text(
-          "Create Report",
+          LocaleKeys.create_report.tr(),
           style: AppTypography.headingH2,
         ),
       ),
@@ -49,11 +51,11 @@ class _CreateReportPageState extends State<CreateReportPage> {
                 ),
               ),
               title: Text(
-                "Quick Update",
+                LocaleKeys.quick_update.tr(),
                 style: AppTypography.bodyLargeMedium,
               ),
               subtitle: Text(
-                "Create a report on your update plans",
+                LocaleKeys.quick_update_desc.tr(),
                 style: AppTypography.bodySmallRegular,
               ),
             ),
@@ -61,11 +63,11 @@ class _CreateReportPageState extends State<CreateReportPage> {
             Row(
               children: [
                 Text(
-                  "Whats New? ",
+                  LocaleKeys.whats_new.tr(),
                   style: AppTypography.bodySmallMedium,
                 ),
                 Text(
-                  "*",
+                  " *",
                   style: AppTypography.bodySmallMedium.copyWith(
                     color: AppColors.warning,
                   ),
@@ -74,7 +76,7 @@ class _CreateReportPageState extends State<CreateReportPage> {
             ),
             const SizedBox(height: 8),
             CustomTextField(
-              hintText: "Enter Your Response",
+              hintText: LocaleKeys.enter_response.tr(),
               controller: whatsNewController,
               filled: true,
               maxLines: 3,
@@ -84,11 +86,11 @@ class _CreateReportPageState extends State<CreateReportPage> {
             Row(
               children: [
                 Text(
-                  "What do you plan to do today? ",
+                  LocaleKeys.whats_plan.tr(),
                   style: AppTypography.bodySmallMedium,
                 ),
                 Text(
-                  "*",
+                  " *",
                   style: AppTypography.bodySmallMedium.copyWith(
                     color: AppColors.warning,
                   ),
@@ -97,7 +99,7 @@ class _CreateReportPageState extends State<CreateReportPage> {
             ),
             const SizedBox(height: 8),
             CustomTextField(
-              hintText: "Enter Your Response",
+              hintText: LocaleKeys.enter_response.tr(),
               controller: planController,
               filled: true,
               maxLines: 3,
@@ -105,12 +107,12 @@ class _CreateReportPageState extends State<CreateReportPage> {
             ),
             const SizedBox(height: 16),
             Text(
-              "Comments",
+              LocaleKeys.comments.tr(),
               style: AppTypography.bodySmallMedium,
             ),
             const SizedBox(height: 8),
             CustomTextField(
-              hintText: "Enter Your Response",
+              hintText: LocaleKeys.enter_response.tr(),
               controller: commentController,
               filled: true,
               maxLines: 3,
@@ -118,7 +120,7 @@ class _CreateReportPageState extends State<CreateReportPage> {
             ),
             const SizedBox(height: 16),
             Text(
-              "Attachments",
+              LocaleKeys.attachments.tr(),
               style: AppTypography.bodySmallMedium,
             ),
             const SizedBox(height: 4),
@@ -144,7 +146,7 @@ class _CreateReportPageState extends State<CreateReportPage> {
                       Assets.appIcons.svg.sendSquare,
                     ),
                     Text(
-                      "Add Attachment",
+                      LocaleKeys.add_attachment.tr(),
                       style: AppTypography.bodySmallMedium.copyWith(
                         color: AppColors.textColor.withOpacity(0.5),
                       ),
@@ -158,12 +160,12 @@ class _CreateReportPageState extends State<CreateReportPage> {
               onPress: () {
                 showDialogCard(
                   context,
-                  titleText: "Report Sent Successfully.",
-                  actionText: "Okay",
-                  descriptionText: "Your report has been sent successfully.",
+                  titleText: LocaleKeys.report_submit_success.tr(),
+                  actionText: LocaleKeys.okay.tr(),
+                  descriptionText: LocaleKeys.report_submit_success_desc.tr(),
                 ).then((value) => AppNavigator.pop(context, true));
               },
-              buttonText: "Submit Report",
+              buttonText: LocaleKeys.submit_report.tr(),
             ),
           ],
         ),

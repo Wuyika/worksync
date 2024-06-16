@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/typography.dart';
 
@@ -73,7 +75,7 @@ class _TaskTileState extends State<TaskTile> {
                 )
               else
                 Text(
-                  "completed",
+                  LocaleKeys.completed.tr(),
                   style: AppTypography.bodySmallRegular.copyWith(
                     color: AppColors.green_1,
                   ),

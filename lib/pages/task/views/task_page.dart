@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/task/widgets/task_tile.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/typography.dart';
@@ -22,7 +23,7 @@ class _TaskPageState extends State<TaskPage> {
       appBar: CustomAppBar(
         centerTitle: true,
         title: Text(
-          "Tasks",
+          LocaleKeys.tasks.tr(),
           style: AppTypography.headingH2,
         ),
       ),
@@ -38,7 +39,7 @@ class _TaskPageState extends State<TaskPage> {
                     child: CustomTextField(
                       filled: true,
                       prefix: const Icon(Icons.search),
-                      hintText: "Search...",
+                      hintText: "${LocaleKeys.search.tr()}...",
                       controller: searchController,
                     ),
                   ),
@@ -46,6 +47,7 @@ class _TaskPageState extends State<TaskPage> {
                   PopupMenuButton(
                     surfaceTintColor: AppColors.white,
                     position: PopupMenuPosition.under,
+                    color: AppColors.white,
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       height: double.infinity,
@@ -56,7 +58,7 @@ class _TaskPageState extends State<TaskPage> {
                       child: Row(
                         children: [
                           Text(
-                            "All Tasks",
+                            LocaleKeys.all_task.tr(),
                             style: AppTypography.bodySmallMedium.copyWith(
                               color: AppColors.selector,
                             ),
@@ -74,7 +76,7 @@ class _TaskPageState extends State<TaskPage> {
                         PopupMenuItem(
                           onTap: () {},
                           child: Text(
-                            tr('Uncompleted'),
+                            LocaleKeys.completed.tr(),
                             style: AppTypography.bodySmallMedium.copyWith(
                               color: AppColors.selector,
                             ),
@@ -83,7 +85,7 @@ class _TaskPageState extends State<TaskPage> {
                         PopupMenuItem(
                           onTap: () {},
                           child: Text(
-                            tr('Pending'),
+                            LocaleKeys.uncompleted.tr(),
                             style: AppTypography.bodySmallMedium.copyWith(
                               color: AppColors.selector,
                             ),

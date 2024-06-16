@@ -1,21 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/attendance/cubits/attendance_summary_cubit.dart';
 import 'package:worklin/pages/attendance/views/attendance_history_view.dart';
 import 'package:worklin/pages/attendance/views/attendance_summary_view.dart';
-import 'package:worklin/pages/attendance/views/scan_qr_code.dart';
-import 'package:worklin/pages/attendance/widgets/attendance_card.dart';
-import 'package:worklin/pages/attendance/widgets/attendance_summary_card.dart';
-import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
-import 'package:worklin/utils/enums.dart';
-import 'package:worklin/utils/helpers.dart';
 import 'package:worklin/utils/typography.dart';
 
 class AttendancePage extends StatefulWidget {

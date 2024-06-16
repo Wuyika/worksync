@@ -45,6 +45,7 @@ class DashboardOverview extends StatelessWidget {
                 child: PopupMenuButton(
                   surfaceTintColor: AppColors.white,
                   position: PopupMenuPosition.under,
+                  color: AppColors.white,
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     height: double.infinity,
@@ -55,7 +56,7 @@ class DashboardOverview extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "This Month",
+                          LocaleKeys.this_month.tr(),
                           style: AppTypography.bodySmallMedium.copyWith(
                             color: AppColors.selector,
                           ),
@@ -73,7 +74,7 @@ class DashboardOverview extends StatelessWidget {
                       PopupMenuItem(
                         onTap: () {},
                         child: Text(
-                          tr('This Year'),
+                          LocaleKeys.this_year.tr(),
                           style: AppTypography.bodySmallMedium.copyWith(
                             color: AppColors.selector,
                           ),
@@ -82,16 +83,7 @@ class DashboardOverview extends StatelessWidget {
                       PopupMenuItem(
                         onTap: () {},
                         child: Text(
-                          tr('Next Week'),
-                          style: AppTypography.bodySmallMedium.copyWith(
-                            color: AppColors.selector,
-                          ),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap: () {},
-                        child: Text(
-                          tr('Last Month'),
+                          LocaleKeys.last_month.tr(),
                           style: AppTypography.bodySmallMedium.copyWith(
                             color: AppColors.selector,
                           ),

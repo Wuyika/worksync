@@ -37,7 +37,6 @@ abstract class  LocaleKeys {
   static const note = 'note';
   static const settings = 'settings';
   static const profile = 'profile';
-  static const _dashboard = '_dashboard';
   static const take_attendance = 'take_attendance';
   static const view_task = 'view_task';
   static const view_payslip = 'view_payslip';
@@ -54,7 +53,6 @@ abstract class  LocaleKeys {
   static const recent_task = 'recent_task';
   static const see_all = 'see_all';
   static const working_stat = 'working_stat';
-  static const _attendance = '_attendance';
   static const attendance_summary = 'attendance_summary';
   static const attendance_history = 'attendance_history';
   static const make_attendance = 'make_attendance';
@@ -66,8 +64,8 @@ abstract class  LocaleKeys {
   static const late = 'late';
   static const absent = 'absent';
   static const early_leave = 'early_leave';
-  static const _report = '_report';
   static const create_report_description = 'create_report_description';
+  static const report_detail = 'report_detail';
   static const create_report = 'create_report';
   static const quick_update = 'quick_update';
   static const quick_update_desc = 'quick_update_desc';
@@ -80,8 +78,9 @@ abstract class  LocaleKeys {
   static const submit_report = 'submit_report';
   static const report_submit_success = 'report_submit_success';
   static const report_submit_success_desc = 'report_submit_success_desc';
+  static const report_edit_success = 'report_edit_success';
+  static const report_edit_success_desc = 'report_edit_success_desc';
   static const save_report = 'save_report';
-  static const _leaves = '_leaves';
   static const all_leaves = 'all_leaves';
   static const casual_leave = 'casual_leave';
   static const sick_leave = 'sick_leave';
@@ -94,14 +93,12 @@ abstract class  LocaleKeys {
   static const submit_leave = 'submit_leave';
   static const leave_submit_success = 'leave_submit_success';
   static const leave_submit_success_desc = 'leave_submit_success_desc';
-  static const _messages = '_messages';
   static const create_message_description = 'create_message_description';
   static const create_chat = 'create_chat';
   static const all_chats = 'all_chats';
   static const active = 'active';
   static const today = 'today';
   static const type_message = 'type_message';
-  static const _task = '_task';
   static const all_task = 'all_task';
   static const complete_tasks = 'complete_tasks';
   static const pending_tasks = 'pending_tasks';
@@ -109,6 +106,18 @@ abstract class  LocaleKeys {
   static const your_work_location = 'your_work_location';
   static const documents = 'documents';
   static const notification = 'notification';
+  static const check_in_successful = 'check_in_successful';
+  static const check_in_successful_desc = 'check_in_successful_desc';
+  static const check_out_warning = 'check_out_warning';
+  static const check_out_warning_desc = 'check_out_warning_desc';
+  static const tasks = 'tasks';
+  static const uncompleted = 'uncompleted';
+  static const completed = 'completed';
+  static const good_morning = 'good_morning';
+  static const welcome_text = 'welcome_text';
+  static const this_month = 'this_month';
+  static const this_year = 'this_year';
+  static const last_month = 'last_month';
   static const english = 'english';
   static const french = 'french';
 

@@ -69,11 +69,11 @@ class _MainPageState extends State<MainPage>
                   ? ListTile(
                       contentPadding: EdgeInsets.zero,
                       title: Text(
-                        'Good Morning, Lilian',
+                        '${LocaleKeys.good_morning.tr()}, Lilian',
                         style: AppTypography.headingH2,
                       ),
                       subtitle: Text(
-                        "Lets be productive today",
+                        LocaleKeys.welcome_text.tr(),
                         style: AppTypography.bodySmallRegular.copyWith(
                           color: AppColors.textColor.withOpacity(0.5),
                         ),

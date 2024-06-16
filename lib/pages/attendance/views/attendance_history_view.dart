@@ -25,7 +25,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
       child: Column(
         children: [
           Container(
-            height: 32,
+            height: 48,
             padding: const EdgeInsets.symmetric(horizontal: 4),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),

@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:worklin/gen/assets.gen.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/reports/views/create_report_page.dart';
 import 'package:worklin/pages/reports/widgets/no_report_widget.dart';
 import 'package:worklin/pages/reports/widgets/report_tile.dart';
@@ -55,68 +54,56 @@ class _ReportPageState extends State<ReportPage> {
                         ),
                         const SizedBox(width: 40),
                         PopupMenuButton(
-                            iconSize: 27,
-                            surfaceTintColor: AppColors.white,
-                            position: PopupMenuPosition.under,
-                            child: Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16),
-                              height: double.infinity,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: AppColors.white,
-                              ),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "This Month",
-                                    style:
-                                        AppTypography.bodySmallMedium.copyWith(
-                                      color: AppColors.selector,
-                                    ),
-                                  ),
-                                  const Icon(
-                                    size: 28,
-                                    Icons.arrow_drop_down,
+                          iconSize: 27,
+                          surfaceTintColor: AppColors.white,
+                          position: PopupMenuPosition.under,
+                          color: AppColors.white,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            height: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: AppColors.white,
+                            ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  LocaleKeys.this_month.tr(),
+                                  style: AppTypography.bodySmallMedium.copyWith(
                                     color: AppColors.selector,
                                   ),
-                                ],
-                              ),
+                                ),
+                                const Icon(
+                                  size: 28,
+                                  Icons.arrow_drop_down,
+                                  color: AppColors.selector,
+                                ),
+                              ],
                             ),
-                            itemBuilder: (context) {
-                              return [
-                                PopupMenuItem(
-                                  onTap: () {},
-                                  child: Text(
-                                    tr('This Year'),
-                                    style:
-                                        AppTypography.bodySmallMedium.copyWith(
-                                      color: AppColors.selector,
-                                    ),
+                          ),
+                          itemBuilder: (context) {
+                            return [
+                              PopupMenuItem(
+                                onTap: () {},
+                                child: Text(
+                                  LocaleKeys.this_year.tr(),
+                                  style: AppTypography.bodySmallMedium.copyWith(
+                                    color: AppColors.selector,
                                   ),
                                 ),
-                                PopupMenuItem(
-                                  onTap: () {},
-                                  child: Text(
-                                    tr('Next Week'),
-                                    style:
-                                        AppTypography.bodySmallMedium.copyWith(
-                                      color: AppColors.selector,
-                                    ),
+                              ),
+                              PopupMenuItem(
+                                onTap: () {},
+                                child: Text(
+                                  LocaleKeys.last_month.tr(),
+                                  style: AppTypography.bodySmallMedium.copyWith(
+                                    color: AppColors.selector,
                                   ),
                                 ),
-                                PopupMenuItem(
-                                  onTap: () {},
-                                  child: Text(
-                                    tr('Last Month'),
-                                    style:
-                                        AppTypography.bodySmallMedium.copyWith(
-                                      color: AppColors.selector,
-                                    ),
-                                  ),
-                                ),
-                              ];
-                            }),
+                              ),
+                            ];
+                          },
+                        ),
                       ],
                     ),
                   ),
