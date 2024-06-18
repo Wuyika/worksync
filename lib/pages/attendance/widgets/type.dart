@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:worklin/utils/colors.dart';
+import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
 
 class TypeWidget extends StatelessWidget {
@@ -16,24 +17,27 @@ class TypeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: Sizes.size_2),
+      child: Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        alignment: WrapAlignment.center,
+        // mainAxisSize: MainAxisSize.min,
+        spacing: Sizes.size_2,
         children: [
           Icon(
             Icons.circle,
             color: color,
             size: 12,
           ),
-          const SizedBox(width: 4),
-          Expanded(
-            child: Text(
-              text,
-              style: AppTypography.bodyExtraSmallRegular,
-              textAlign: TextAlign.center,
+          // SizedBox(width: Sizes.size_2),
+          Text(
+            text,
+            style: AppTypography.bodyExtraSmallRegular.copyWith(
+              fontSize: Sizes.size_10,
             ),
           ),
-          const SizedBox(width: 4),
+          // SizedBox(width: Sizes.size_2),
           Text(
             "$value%",
             style: AppTypography.bodyExtraSmallSemiBold.copyWith(

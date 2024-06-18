@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
+import 'package:worklin/providers/app_data.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
@@ -13,6 +14,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = AppData.currentUser;
     return Scaffold(
       appBar: CustomAppBar(
         centerTitle: true,
@@ -40,8 +42,8 @@ class ProfilePage extends StatelessWidget {
                         children: [
                           const SizedBox(height: 52),
                           Text(
-                            "Tabe Lilian",
-                            style: AppTypography.headingH2,
+                            user?.fullName ?? "",
+                            style: AppTypography.bodyLargeMedium,
                           ),
                           const SizedBox(height: 4),
                           Wrap(
@@ -49,7 +51,7 @@ class ProfilePage extends StatelessWidget {
                             crossAxisAlignment: WrapCrossAlignment.end,
                             children: [
                               Text(
-                                'UI/UX + Brand Designer',
+                                user?.position ?? "",
                                 style:
                                     AppTypography.bodySmallRegular.copyWith(
                                   color: AppColors.textColor.withOpacity(0.5),
@@ -61,7 +63,7 @@ class ProfilePage extends StatelessWidget {
                                 color: AppColors.textColor.withOpacity(0.5),
                               ),
                               Text(
-                                'lilian.tabe@vtc.cm',
+                                user?.email ?? "",
                                 style:
                                 AppTypography.bodySmallRegular.copyWith(
                                   color: AppColors.secondary,

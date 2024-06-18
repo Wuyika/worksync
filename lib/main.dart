@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:worklin/pages/auth/signin/view/signin_page.dart';
+import 'package:worklin/pages/main_page/view/main_page.dart';
 import 'package:worklin/pages/onboarding/onboarding_page.dart';
 import 'package:worklin/utils/globals.dart';
 import 'package:worklin/utils/my_pref.dart';
@@ -14,6 +16,7 @@ void main() async {
       WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await EasyLocalization.ensureInitialized();
+  await dotenv.load();
   await GetStorage.init().then((value) => FlutterNativeSplash.remove());
   final String savedLocale = MyPref.getLocaleCode();
   runApp(
@@ -56,7 +59,9 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
       home: MyPref.hasOnboardingBeenShown()
-          ? const SignInPage()
+          ? MyPref.getCurrentUser() != null
+              ? const MainPage()
+              : const SignInPage()
           : const OnboardingPage(),
     );
   }

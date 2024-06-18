@@ -5,6 +5,7 @@ import 'package:worklin/pages/attendance/widgets/attendance_tile.dart';
 import 'package:worklin/pages/attendance/widgets/type.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/enums.dart';
+import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
 import 'package:worklin/utils/widgets/custom_text_field.dart';
 
@@ -25,8 +26,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
       child: Column(
         children: [
           Container(
-            height: 48,
-            padding: const EdgeInsets.symmetric(horizontal: 4),
+            height: 32,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               border: Border.all(
@@ -44,7 +44,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                 VerticalDivider(
                   width: 0,
                   color: AppColors.textColor.withOpacity(0.2),
-                  thickness: 2,
+                  thickness: Sizes.size_2,
                 ),
                 TypeWidget(
                   color: AppColors.orange,
@@ -54,7 +54,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                 VerticalDivider(
                   width: 0,
                   color: AppColors.textColor.withOpacity(0.2),
-                  thickness: 2,
+                  thickness: Sizes.size_2,
                 ),
                 TypeWidget(
                   color: AppColors.warning,
@@ -64,7 +64,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                 VerticalDivider(
                   width: 0,
                   color: AppColors.textColor.withOpacity(0.2),
-                  thickness: 2,
+                  thickness: Sizes.size_2,
                 ),
                 TypeWidget(
                   color: AppColors.secondary,
@@ -89,8 +89,10 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                 ),
                 const SizedBox(width: 32),
                 PopupMenuButton(
+                  iconSize: 27,
                   surfaceTintColor: AppColors.white,
                   position: PopupMenuPosition.under,
+                  color: AppColors.white,
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     height: double.infinity,
@@ -101,7 +103,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                     child: Row(
                       children: [
                         Text(
-                          "This Month",
+                          LocaleKeys.this_month.tr(),
                           style: AppTypography.bodySmallMedium.copyWith(
                             color: AppColors.selector,
                           ),
@@ -119,7 +121,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                       PopupMenuItem(
                         onTap: () {},
                         child: Text(
-                          tr('Today'),
+                          LocaleKeys.this_year.tr(),
                           style: AppTypography.bodySmallMedium.copyWith(
                             color: AppColors.selector,
                           ),
@@ -128,7 +130,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                       PopupMenuItem(
                         onTap: () {},
                         child: Text(
-                          tr('Next Week'),
+                          LocaleKeys.last_month.tr(),
                           style: AppTypography.bodySmallMedium.copyWith(
                             color: AppColors.selector,
                           ),

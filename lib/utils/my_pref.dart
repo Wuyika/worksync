@@ -1,5 +1,5 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:worklin/pages/auth/models/user_model.dart';
+import 'package:worklin/models/user_model.dart';
 import 'package:worklin/providers/app_data.dart';
 import 'package:worklin/utils/app_constants.dart';
 class MyPref {

@@ -36,6 +36,7 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
               final cubit = context.read<AttendanceSummaryCubit>();
               return AttendanceCard(
                 checkIn: () async {
+
                   String? code;
                   await AppNavigator.push(context, const ScanQrPage())
                       .then((value) {

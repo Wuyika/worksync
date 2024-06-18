@@ -50,14 +50,14 @@ class AppTypography {
   static TextStyle bodyLargeRegular = TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightRegular, // 400
-    fontSize: Sizes.size_20,
+    fontSize: Sizes.size_18,
   );
 
   //body large
   static TextStyle bodyLargeMedium = TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightMedium, // 400
-    fontSize: Sizes.size_20,
+    fontSize: Sizes.size_18,
   );
 
   //bodyMedium

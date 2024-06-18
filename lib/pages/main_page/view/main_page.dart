@@ -11,6 +11,7 @@ import 'package:worklin/pages/main_page/cubit/main_page_cubit.dart';
 import 'package:worklin/pages/messages/view/message_page.dart';
 import 'package:worklin/pages/profile/view/profile_page.dart';
 import 'package:worklin/pages/reports/views/report_page.dart';
+import 'package:worklin/providers/app_data.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/sizes.dart';
@@ -50,6 +51,7 @@ class _MainPageState extends State<MainPage>
       child: BlocBuilder<MainPageCubit, MainPageState>(
         builder: (context, state) {
           final cubit = context.read<MainPageCubit>();
+          final user = AppData.currentUser;
           return Scaffold(
             key: scaffoldKey,
             appBar: CustomAppBar(
@@ -69,8 +71,10 @@ class _MainPageState extends State<MainPage>
                   ? ListTile(
                       contentPadding: EdgeInsets.zero,
                       title: Text(
-                        '${LocaleKeys.good_morning.tr()}, Lilian',
-                        style: AppTypography.headingH2,
+                        '${LocaleKeys.good_morning.tr()}, ${user?.firstName ?? ""}',
+                        style: AppTypography.headingH2.copyWith(
+                          fontSize: Sizes.size_16,
+                        ),
                       ),
                       subtitle: Text(
                         LocaleKeys.welcome_text.tr(),

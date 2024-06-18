@@ -1,4 +1,4 @@
-import 'package:worklin/pages/auth/models/user_model.dart';
+import 'package:worklin/models/user_model.dart';
 import 'package:worklin/utils/my_pref.dart';
 
 class AppData {

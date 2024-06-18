@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
+import 'package:worklin/pages/auth/signin/view/signin_page.dart';
 import 'package:worklin/pages/profile/view/profile_page.dart';
 import 'package:worklin/pages/setting/settings_page.dart';
+import 'package:worklin/providers/app_data.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/enums.dart';
 import 'package:worklin/utils/helpers.dart';
+import 'package:worklin/utils/my_pref.dart';
+import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
 
 class SideDrawerWidget extends StatelessWidget {
@@ -16,10 +20,11 @@ class SideDrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = AppData.currentUser;
     return Container(
       padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       width: MediaQuery.of(context).size.width * 0.8,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColors.white,
       ),
       child: Column(
@@ -33,11 +38,11 @@ class SideDrawerWidget extends StatelessWidget {
               child: Icon(Icons.person),
             ),
             title: Text(
-              "TABE LILLIAN",
-              style: AppTypography.headingH2,
+              user?.fullName ?? "",
+              style: AppTypography.bodyMediumMedium,
             ),
             subtitle: Text(
-              "UI/UX + Brand Designer",
+              user?.position ?? "",
               style: AppTypography.bodySmallRegular.copyWith(
                 color: AppColors.textColor.withOpacity(0.5),
               ),
@@ -69,7 +74,7 @@ class SideDrawerWidget extends StatelessWidget {
               ),
             ),
             title: Text(
-             LocaleKeys.your_work_location.tr(),
+              LocaleKeys.your_work_location.tr(),
               style: AppTypography.bodyMediumRegular,
             ),
             subtitle: Text(
@@ -109,7 +114,7 @@ class SideDrawerWidget extends StatelessWidget {
           ),
           ListTile(
             splashColor: AppColors.secondary.withOpacity(0.5),
-            onTap: (){
+            onTap: () {
               AppNavigator.push(context, const SettingsPage());
             },
             leading: SvgPicture.asset(
@@ -125,7 +130,7 @@ class SideDrawerWidget extends StatelessWidget {
             ),
           ),
           ListTile(
-            onTap: (){
+            onTap: () async {
               showDialogCard(
                 context,
                 titleText: LocaleKeys.log_out.tr(),
@@ -133,8 +138,10 @@ class SideDrawerWidget extends StatelessWidget {
                 descriptionText: "Are you sure you want to logout?",
                 dialogType: DialogType.failure,
               ).then((value) {
-                if(value == true){
-                  AppNavigator.popUntilFirst(context);
+                if (value == true) {
+                  MyPref.logOutUser();
+                  AppNavigator.removeAllPreviousAndPush(
+                      context, const SignInPage());
                 }
               });
             },
