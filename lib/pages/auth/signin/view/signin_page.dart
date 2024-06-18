@@ -7,6 +7,7 @@ import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/auth/forgotpassword/view/forgot_password_page.dart';
 import 'package:worklin/pages/auth/signin/cubit/sign_in_cubit.dart';
 import 'package:worklin/pages/main_page/view/main_page.dart';
+import 'package:worklin/utils/app_alert.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/helper_classes.dart';
@@ -35,6 +36,9 @@ class _SignInPageState extends State<SignInPage> {
         listener: (context, state) {
           if (state is SignInSuccessState) {
             AppNavigator.removeAllPreviousAndPush(context, const MainPage());
+          }
+          else if (state is SignInFailedState) {
+            AppAlerts.showErrorSnackBar(state.message);
           }
         },
         builder: (context, state) {
@@ -144,12 +148,12 @@ class _SignInPageState extends State<SignInPage> {
                             const SizedBox(height: 28),
                             PrimaryButton(
                               onPress: () {
-                                // if(Form.of(context).validate()){
+                                if(Form.of(context).validate()){
                                 cubit.signInUser(
                                   email: emailController.text.trim(),
                                   password: passwordController.text.trim(),
                                 );
-                                // }
+                                }
                               },
                               buttonText: LocaleKeys.log_me_in.tr(),
                             ),

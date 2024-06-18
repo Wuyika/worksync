@@ -1,0 +1,34 @@
+import 'package:delightful_toast/delight_toast.dart';
+import 'package:delightful_toast/toast/components/toast_card.dart';
+import 'package:delightful_toast/toast/utils/enums.dart';
+import 'package:flutter/material.dart';
+import 'package:worklin/utils/colors.dart';
+import 'package:worklin/utils/globals.dart';
+
+class AppAlerts {
+  AppAlerts._();
+
+  static void showErrorSnackBar([String? message]) {
+    if (navigatorKey.currentState?.overlay != null) {
+      DelightToastBar(
+        autoDismiss: true,
+        position: DelightSnackbarPosition.top,
+        builder: (context) => ToastCard(
+          color: AppColors.warning,
+          leading: const Icon(
+            Icons.error,
+            size: 28,
+            color: Colors.red,
+          ),
+          title: Text(
+            message ?? '',
+            style: const TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ).show(navigatorKey.currentState!.context);
+    }
+  }
+}

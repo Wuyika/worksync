@@ -32,9 +32,10 @@ class ApiService {
       debugPrint(response.statusCode.toString());
       debugPrint(response.body);
       return null;
-    } else {
-      return null;
+    } else if( response.body.isEmpty) {
+      throw "Invalid Credentials";
     }
+    return null;
   }
 
   // Future<void> registerUser({

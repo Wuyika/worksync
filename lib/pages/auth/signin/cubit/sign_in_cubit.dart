@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:worklin/providers/app_data.dart';
 import 'package:worklin/services/api_service.dart';
@@ -12,17 +13,18 @@ class SignInCubit extends Cubit<SignInState> {
     required String email,
     required String password,
   }) async {
-    try{
+    try {
       emit(SignInLoadingState());
-      final user = await apiService.signInUser(email: email, password: password);
-      if(user != null){
+      final user =
+          await apiService.signInUser(email: email, password: password);
+      if (user != null) {
         AppData.updateCurrentUser(user: user);
       }
       emit(SignInSuccessState());
+    } catch (error) {
+      emit(
+        SignInFailedState(error.toString()),
+      );
     }
-    catch (e){
-      emit(SignInFailedState());
-    }
-
   }
 }
