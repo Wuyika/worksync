@@ -15,8 +15,10 @@ class SignInCubit extends Cubit<SignInState> {
   }) async {
     try {
       emit(SignInLoadingState());
-      final user =
-          await apiService.signInUser(email: email, password: password);
+      final user = await apiService.signInUser(
+        email: email,
+        password: password,
+      );
       if (user != null) {
         AppData.updateCurrentUser(user: user);
       }
