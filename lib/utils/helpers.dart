@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:worklin/utils/app_alert.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/enums.dart';
 import 'package:worklin/utils/widgets/dialog_card.dart';
@@ -85,15 +86,15 @@ String? validateEmail(String? value) {
   return null;
 }
 
-// int extractId(String htmlString) {
-//
-//   final RegExp regExp = RegExp(r'qr-code/(\d+)(?=["\'])');
-//
-//   final Match? match = regExp.firstMatch(htmlString);
-//
-//   if (match != null) {
-//     return int.parse(match.group(1)!); // Converts the matched string to an integer.
-//   } else {
-//     throw Exception('No ID found in the string.');
-//   }
-// }
+int? extractNumber(String inputString) {
+  RegExp regExp = RegExp(r'/(\d+)$');
+
+  final match = regExp.firstMatch(inputString);
+
+  if (match != null) {
+    return int.parse(match.group(1)!); // The '!' asserts that the value is not null
+  } else {
+    AppAlerts.showErrorSnackBar('In Valid QR');
+    return null;
+  }
+}

@@ -18,13 +18,14 @@ class AppAlerts {
           leading: const Icon(
             Icons.error,
             size: 28,
-            color: Colors.red,
+            color: Colors.white,
           ),
           title: Text(
             message ?? '',
             style: const TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: 14,
+              color: Colors.white,
             ),
           ),
         ),

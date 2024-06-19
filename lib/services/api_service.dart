@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:worklin/models/company_branch_model.dart';
 import 'package:worklin/models/user_model.dart';
 import 'package:worklin/providers/app_data.dart';
+import 'package:worklin/utils/app_alert.dart';
 
 
 class ApiService {
@@ -28,8 +29,10 @@ class ApiService {
     } else if (response.statusCode == 400) {
       debugPrint(response.statusCode.toString());
       debugPrint(response.body);
+      AppAlerts.showInfoSnackBar(jsonDecode(response.body)['message'] as String);
       return null;
     } else if( response.body.isEmpty) {
+      AppAlerts.showInfoSnackBar("Unknown Error");
       throw "Invalid Credentials";
     }
     return null;
@@ -51,6 +54,7 @@ class ApiService {
     } else if (response.statusCode == 400) {
       debugPrint(response.statusCode.toString());
       debugPrint(response.body);
+      AppAlerts.showInfoSnackBar(jsonDecode(response.body)['message'] as String);
       return null;
     } else if( response.body.isEmpty) {
       throw "Not found";
@@ -63,6 +67,10 @@ class ApiService {
     required String distance,
     required String unitDistance,
   }) async {
+    final headers = {
+      // 'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer ${AppData.token}',
+    };
     // throw "Error";
     final requestBody = {
       "site_id": siteId,
@@ -70,19 +78,20 @@ class ApiService {
       "unite_distance": unitDistance,
     };
     final uri = Uri.http(baseUrl, '/api/presence/create');
-    final response = await http.post(uri, body: requestBody);
+    final response = await http.post(uri, body: requestBody, headers: headers);
     if (response.statusCode == 200) {
-      print("xxxxxxxxxxxxxxxxxx");
-      print(response.body);
       final String status = jsonDecode(response.body)['status'] as String;
-      if(status == "fail"){
-        return false;
+      if(status == "success"){
+        // AppAlerts.showInfoSnackBar(jsonDecode(response.body)['message'] as String);
+        return true;
+      } else if (status == "fail"){
+        AppAlerts.showErrorSnackBar(jsonDecode(response.body)['message'] as String);
       }
       return false;
     } else if (response.statusCode == 400) {
       debugPrint(response.statusCode.toString());
-      debugPrint(response.body);
-      return null;
+      AppAlerts.showInfoSnackBar(jsonDecode(response.body)['message'] as String);
+      throw (jsonDecode(response.body)['message'] as String);
     } else if( response.body.isEmpty) {
       throw "Invalid Credentials";
     }

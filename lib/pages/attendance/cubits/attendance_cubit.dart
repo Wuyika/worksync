@@ -17,6 +17,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   CompanyBranchModel? companyBranch;
   final LocationService locationService = LocationService();
   final ApiService apiService = ApiService();
+  double? distanceC;
 
   AttendanceCubit() : super(AttendanceCheckInState());
 
@@ -25,63 +26,82 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   }
 
   Future<void> checkOut() async {
+    checkOutTime = TimeOfDay.now();
     emit(AttendanceEndDayState());
     // locationService.requestPermission();
   }
 
   Future<bool?> requestLocationPermission() async {
-    final bool? permission = await locationService.requestPermission();
-    if (permission == true) {
-      if (await locationService.isServiceEnabled()) {
-        return true;
-      } else {
-        AppAlerts.showInfoSnackBar("Enable location permission to check in");
-        return null;
+    try {
+      final bool? permission = await locationService.requestPermission();
+      if (permission == true) {
+        if (await locationService.isServiceEnabled()) {
+          return true;
+        } else {
+          AppAlerts.showInfoSnackBar("Enable location permission to check in");
+          return null;
+        }
       }
+    } catch (error) {
+      emit(AttendanceErrorState(error.toString()));
     }
     return null;
   }
 
   Future<bool> getLocation() async {
-    final position = await locationService.determineCurrentPosition();
-    if (position != null) {
-      myCurrentPosition = position;
-      return true;
+    try {
+      final position = await locationService.determineCurrentPosition();
+      if (position != null) {
+        myCurrentPosition = position;
+        print(myCurrentPosition);
+        return true;
+      }
+    } catch (error) {
+      emit(AttendanceErrorState(error.toString()));
     }
     return false;
   }
 
-  Future<bool> fetchCompanyBranch() async {
-    final companyBranch = await apiService.getCompanyInfo(branchId: 1);
-    if (companyBranch?.latitude != null && companyBranch?.longitude != null) {
-      companyPosition = LatLng(
-        double.parse(companyBranch!.latitude!),
-        double.parse(companyBranch.longitude!),
-      );
-      return true;
+  Future<bool> fetchCompanyBranch({required int companyId}) async {
+    try {
+      final branch = await apiService.getCompanyInfo(branchId: 2);
+      if (branch?.latitude != null && branch?.longitude != null) {
+        companyBranch = branch;
+        companyPosition = LatLng(
+          double.parse(branch!.latitude!),
+          double.parse(branch.longitude!),
+        );
+        return true;
+      }
+      return false;
+    } catch (e) {
+      rethrow;
     }
-    return false;
   }
 
-  Future<bool> calculateDistance() async {
+  Future<bool> calculateDistance({bool forCheckIn = true}) async {
     if (myCurrentPosition != null && companyPosition != null) {
-      final distance = locationService.calculateCoordinateDistance(
+      final distance = await locationService.calculateCoordinateDistance(
         startCoordinate: myCurrentPosition!,
         endCoordinate: companyPosition!,
       );
-      final checkedIn = await apiService.checkInEmployee(siteId: "1", distance: "3.42", unitDistance: "M");
-      if(checkedIn == true){
-        checkInTime = TimeOfDay.now();
-        emit(AttendanceCheckOutState());
-        return true;
-      }
-      else{
-        checkInTime = TimeOfDay.now();
-        emit(AttendanceCheckOutState());
-        return false;
+      final checkedIn = await apiService.checkInEmployee(
+        siteId: "${companyBranch?.id ?? 0}",
+        distance: "$distance",
+        unitDistance: "M",
+      );
+      if (checkedIn == true) {
+        if(forCheckIn == true){
+          checkInTime = TimeOfDay.now();
+          emit(AttendanceCheckOutState());
+          return true;
+        } else {
+          checkOutTime = TimeOfDay.now();
+          emit(AttendanceEndDayState());
+          return true;
+        }
       }
     }
-
     return false;
   }
 }
