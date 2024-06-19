@@ -96,6 +96,9 @@ class SideDrawerWidget extends StatelessWidget {
             ),
           ),
           ListTile(
+            onTap: (){
+              print(AppData.token);
+            },
             leading: SvgPicture.asset(
               Assets.appIcons.svg.notificationOutline,
               colorFilter: const ColorFilter.mode(

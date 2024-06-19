@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/utils/colors.dart';
+import 'package:worklin/utils/helpers.dart';
 import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
 import 'package:worklin/utils/widgets/gradient_container.dart';
@@ -182,7 +183,7 @@ class DashboardOverview extends StatelessWidget {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    "Today, Mon 08 Apr, 2024",
+                    "Today, ${dateFormat.format(DateTime.now())}",
                     style: AppTypography.bodySmallRegular.copyWith(
                       color: AppColors.white,
                     ),

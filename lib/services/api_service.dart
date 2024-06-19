@@ -2,16 +2,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+import 'package:worklin/models/company_branch_model.dart';
 import 'package:worklin/models/user_model.dart';
 import 'package:worklin/providers/app_data.dart';
 
-late String userApiToken;
 
 class ApiService {
   String baseUrl = dotenv.env['BASE_URL'] ?? "";
-
-  // fruboris24@gmail.com
-  // 654467742
 
   Future<UserModel?> signInUser({
     required String email,
@@ -38,32 +35,58 @@ class ApiService {
     return null;
   }
 
-  // Future<void> registerUser({
-  //   String? userName,
-  //   required String email,
-  //   required String password,
-  // }) async {
-  //   // throw "Error";
-  //   final requestBody = {
-  //     "email": email,
-  //     "password": password,
-  //   };
-  //   final uri = Uri.http(baseUrl, '/auth/sign-up');
-  //   final response = await http.post(uri, body: requestBody);
-  //   if (response.statusCode == 201) {
-  //     debugPrint("user locked in");
-  //     debugPrint(response.body);
-  //     final user = UserModel.fromJson(jsonDecode(response.body));
-  //     if(userName != null){
-  //       user.userName = userName;
-  //     }
-  //     AppData.updateCurrentUser(user: user, isNeedToStoreIntoStorage: true);
-  //   } else if (response.statusCode == 400) {
-  //     debugPrint(response.body);
-  //     throw LocaleKeys.auth_invalid_credentials.tr();
-  //   } else {
-  //     throw LocaleKeys.errors_unknown.tr();
-  //   }
-  // }
+  Future<CompanyBranchModel?> getCompanyInfo({
+    required int branchId,
+  }) async {
+    final headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer ${AppData.token}',
+    };
+    // throw "Error";
+    final uri = Uri.http(baseUrl, '/api/sites/show/$branchId');
+    final response = await http.get(uri, headers: headers);
+    if (response.statusCode == 200) {
+      final companyBranch = CompanyBranchModel.fromJson(jsonDecode(response.body)['data']);
+      return companyBranch;
+    } else if (response.statusCode == 400) {
+      debugPrint(response.statusCode.toString());
+      debugPrint(response.body);
+      return null;
+    } else if( response.body.isEmpty) {
+      throw "Not found";
+    }
+    return null;
+  }
+
+  Future<bool?> checkInEmployee({
+    required String siteId,
+    required String distance,
+    required String unitDistance,
+  }) async {
+    // throw "Error";
+    final requestBody = {
+      "site_id": siteId,
+      "distance": distance,
+      "unite_distance": unitDistance,
+    };
+    final uri = Uri.http(baseUrl, '/api/presence/create');
+    final response = await http.post(uri, body: requestBody);
+    if (response.statusCode == 200) {
+      print("xxxxxxxxxxxxxxxxxx");
+      print(response.body);
+      final String status = jsonDecode(response.body)['status'] as String;
+      if(status == "fail"){
+        return false;
+      }
+      return false;
+    } else if (response.statusCode == 400) {
+      debugPrint(response.statusCode.toString());
+      debugPrint(response.body);
+      return null;
+    } else if( response.body.isEmpty) {
+      throw "Invalid Credentials";
+    }
+    return null;
+  }
 
 }

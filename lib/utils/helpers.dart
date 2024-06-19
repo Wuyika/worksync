@@ -31,6 +31,7 @@ Future<dynamic> showDialogCard(
   return value;
 }
 
+
 Future<DateTime?> showDatePickerCustom(
   BuildContext context, {
   required DateTime firstDate,
@@ -68,7 +69,7 @@ Future<DateTime?> showDatePickerCustom(
 }
 
 final timeFormat = DateFormat("H:mm");
-final dateFormat = DateFormat("EEE, MMM d, yyyy");
+final dateFormat = DateFormat("EEE, d MMM yyyy");
 
 
 String? validateEmail(String? value) {
@@ -76,11 +77,23 @@ String? validateEmail(String? value) {
     return 'Email cannot be empty';
   }
 // Regular expression for email validation
-  const pattern =
-      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  const pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   final regex = RegExp(pattern);
   if (!regex.hasMatch(value)) {
     return 'Enter a valid email address';
   }
   return null;
 }
+
+// int extractId(String htmlString) {
+//
+//   final RegExp regExp = RegExp(r'qr-code/(\d+)(?=["\'])');
+//
+//   final Match? match = regExp.firstMatch(htmlString);
+//
+//   if (match != null) {
+//     return int.parse(match.group(1)!); // Converts the matched string to an integer.
+//   } else {
+//     throw Exception('No ID found in the string.');
+//   }
+// }

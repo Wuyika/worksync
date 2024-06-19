@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
+import 'package:worklin/pages/attendance/cubits/attendance_cubit.dart';
 import 'package:worklin/pages/attendance/views/attendance_page.dart';
 import 'package:worklin/pages/dashboard/view/dashboard_page.dart';
 import 'package:worklin/pages/leave/views/leave_page.dart';
@@ -46,8 +47,11 @@ class _MainPageState extends State<MainPage>
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MainPageCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => MainPageCubit()),
+        BlocProvider(create: (context) => AttendanceCubit()),
+      ],
       child: BlocBuilder<MainPageCubit, MainPageState>(
         builder: (context, state) {
           final cubit = context.read<MainPageCubit>();

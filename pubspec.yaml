@@ -12,6 +12,7 @@ dependencies:
   easy_localization: ^3.0.5
   flutter_bloc: ^8.1.4
   flutter_svg: ^2.0.9
+  geolocator: ^12.0.0
   get_storage: ^2.1.1
   pinput: ^3.0.1
   syncfusion_flutter_charts: ^25.2.5
@@ -22,6 +23,8 @@ dependencies:
   http: ^1.2.1
   equatable: ^2.0.5
   delightful_toast: ^1.1.0
+  latlong2: ^0.9.1
+  sn_progress_dialog: ^1.1.4
 
 dev_dependencies:
   build_runner: ^2.4.9

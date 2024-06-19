@@ -31,4 +31,28 @@ class AppAlerts {
       ).show(navigatorKey.currentState!.context);
     }
   }
+  static void showInfoSnackBar([String? message]) {
+    if (navigatorKey.currentState?.overlay != null) {
+      DelightToastBar(
+        autoDismiss: true,
+        position: DelightSnackbarPosition.top,
+        builder: (context) => ToastCard(
+          color: AppColors.orange,
+          leading: const Icon(
+            Icons.info,
+            size: 28,
+            color: Colors.white,
+          ),
+          title: Text(
+            message ?? '',
+            style: const TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 14,
+              color: AppColors.white,
+            ),
+          ),
+        ),
+      ).show(navigatorKey.currentState!.context);
+    }
+  }
 }

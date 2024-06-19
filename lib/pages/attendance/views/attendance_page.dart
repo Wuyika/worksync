@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
-import 'package:worklin/pages/attendance/cubits/attendance_summary_cubit.dart';
+import 'package:worklin/pages/attendance/cubits/attendance_cubit.dart';
 import 'package:worklin/pages/attendance/views/attendance_history_view.dart';
 import 'package:worklin/pages/attendance/views/attendance_summary_view.dart';
 import 'package:worklin/utils/colors.dart';
@@ -83,17 +83,14 @@ class _AttendancePageState extends State<AttendancePage>
             ],
           ),
           const SizedBox(height: 20),
-          BlocProvider(
-            create: (context) => AttendanceSummaryCubit(),
-            child: Expanded(
-              child: TabBarView(
-                physics: const NeverScrollableScrollPhysics(),
-                controller: tabController,
-                children: const [
-                  AttendanceSummaryView(),
-                  AttendanceHistoryView(),
-                ],
-              ),
+          Expanded(
+            child: TabBarView(
+              physics: const NeverScrollableScrollPhysics(),
+              controller: tabController,
+              children: const [
+                AttendanceSummaryView(),
+                AttendanceHistoryView(),
+              ],
             ),
           ),
         ],

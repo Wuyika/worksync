@@ -44,11 +44,11 @@ class ActionWidget extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 6),
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
-            style: AppTypography.bodySmallMedium.copyWith(
+            style: AppTypography.bodyExtraSmallMedium.copyWith(
               color: AppColors.textColor,
             ),
             children: [
