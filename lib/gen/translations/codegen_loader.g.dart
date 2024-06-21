@@ -107,7 +107,9 @@ abstract class  LocaleKeys {
   static const documents = 'documents';
   static const notification = 'notification';
   static const check_in_successful = 'check_in_successful';
+  static const check_out_successful = 'check_out_successful';
   static const check_in_successful_desc = 'check_in_successful_desc';
+  static const check_out_successful_desc = 'check_out_successful_desc';
   static const check_out_warning = 'check_out_warning';
   static const check_out_warning_desc = 'check_out_warning_desc';
   static const tasks = 'tasks';

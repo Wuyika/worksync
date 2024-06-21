@@ -6,4 +6,10 @@ class MyPreferencesConstants {
   static const String currentUserToken = 'currentUserToken';
   static const String onboardingShown = 'onboardingShown';
   static const String languageCode = 'languageCode';
+  static const String timesCheckedOut = 'timesCheckedOut';
+  static const String lastCheckDay = 'lastCheckDay';
+  static const String lastCheckType = 'lastCheckType';
+  static const String lastCheckInTime = 'lastCheckInTime';
+  static const String lastCheckOutTime = 'lastCheckOutTime';
+
 }

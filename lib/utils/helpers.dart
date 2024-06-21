@@ -98,3 +98,23 @@ int? extractNumber(String inputString) {
     return null;
   }
 }
+
+String formatDuration(TimeOfDay t1, TimeOfDay t2) {
+  final now = DateTime.now();
+  final dt1 = DateTime(now.year, now.month, now.day, t1.hour, t1.minute);
+  final dt2 = DateTime(now.year, now.month, now.day, t2.hour, t2.minute);
+  final duration = dt2.difference(dt1);
+
+  String formattedDuration = "";
+  if (duration.inHours > 0) {
+    formattedDuration += "${duration.inHours}hr";
+    if (duration.inMinutes.remainder(60) > 0) {
+      formattedDuration += "${duration.inMinutes.remainder(60)}";
+    }
+  } else if (duration.inMinutes > 0) {
+    formattedDuration += "${duration.inMinutes}min";
+  } else if (duration.inSeconds > 0) {
+    formattedDuration += "${duration.inSeconds}s";
+  }
+  return formattedDuration;
+}

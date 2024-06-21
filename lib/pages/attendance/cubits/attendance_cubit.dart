@@ -6,6 +6,9 @@ import 'package:worklin/models/company_branch_model.dart';
 import 'package:worklin/services/api_service.dart';
 import 'package:worklin/services/location_service.dart';
 import 'package:worklin/utils/app_alert.dart';
+import 'package:worklin/utils/globals.dart';
+import 'package:worklin/utils/helpers.dart';
+import 'package:worklin/utils/my_pref.dart';
 
 part 'attendance_state.dart';
 
@@ -18,18 +21,9 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   final LocationService locationService = LocationService();
   final ApiService apiService = ApiService();
   double? distanceC;
+  int timeCheckedOut = 0;
 
   AttendanceCubit() : super(AttendanceCheckInState());
-
-  Future<void> checkIn() async {
-    // emit(AttendanceCheckOutState());
-  }
-
-  Future<void> checkOut() async {
-    checkOutTime = TimeOfDay.now();
-    emit(AttendanceEndDayState());
-    // locationService.requestPermission();
-  }
 
   Future<bool?> requestLocationPermission() async {
     try {
@@ -53,7 +47,6 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       final position = await locationService.determineCurrentPosition();
       if (position != null) {
         myCurrentPosition = position;
-        print(myCurrentPosition);
         return true;
       }
     } catch (error) {
@@ -64,7 +57,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
 
   Future<bool> fetchCompanyBranch({required int companyId}) async {
     try {
-      final branch = await apiService.getCompanyInfo(branchId: 2);
+      final branch = await apiService.getCompanyInfo(branchId: companyId);
       if (branch?.latitude != null && branch?.longitude != null) {
         companyBranch = branch;
         companyPosition = LatLng(
@@ -85,23 +78,60 @@ class AttendanceCubit extends Cubit<AttendanceState> {
         startCoordinate: myCurrentPosition!,
         endCoordinate: companyPosition!,
       );
-      final checkedIn = await apiService.checkInEmployee(
-        siteId: "${companyBranch?.id ?? 0}",
-        distance: "$distance",
-        unitDistance: "M",
-      );
-      if (checkedIn == true) {
-        if(forCheckIn == true){
-          checkInTime = TimeOfDay.now();
-          emit(AttendanceCheckOutState());
-          return true;
-        } else {
-          checkOutTime = TimeOfDay.now();
-          emit(AttendanceEndDayState());
-          return true;
+      if (distance != null) {
+        final checkedIn = await apiService.checkInEmployee(
+          siteId: "${companyBranch?.id ?? 0}",
+          distance: "${distance / 1000}",
+          unitDistance: "KM",
+        );
+        if (checkedIn == true) {
+          MyPref.saveLastDay(date: DateTime.now());
+          if (forCheckIn == true) {
+            checkInTime = TimeOfDay.now();
+            MyPref.saveLastCheckInTime(time: checkInTime!);
+            MyPref.saveLastType(type: clockIn);
+            checkOutTime = null;
+            emit(AttendanceCheckOutState());
+            return true;
+          } else {
+            checkOutTime = TimeOfDay.now();
+            MyPref.saveLastCheckOutTime(time: checkOutTime!);
+            MyPref.saveLastType(type: clockOut);
+            timeCheckedOut = timeCheckedOut + 1;
+            if (timeCheckedOut < 2) {
+              emit(AttendanceCheckInState());
+            }
+            emit(AttendanceEndDayState());
+            return true;
+          }
         }
       }
     }
     return false;
+  }
+
+  void initCheck() {
+    print(formatDuration(TimeOfDay(hour:12, minute:4 ), TimeOfDay(hour:12, minute:6)));
+
+    final now = DateTime.now();
+    final lastSaveDay = MyPref.getLastSaveDay();
+    if (now != lastSaveDay) {
+      final type = MyPref.getLastType();
+      if (type == clockIn) {
+        final time = MyPref.getLastCheckInTime();
+        checkInTime = time;
+        emit(AttendanceCheckOutState());
+      } else if (type == clockOut) {
+        final timeIn = MyPref.getLastCheckInTime();
+        checkInTime = timeIn;
+        final timeOut = MyPref.getLastCheckOutTime();
+        checkOutTime = timeOut;
+      }
+      final times = MyPref.getTimesCheckOut();
+      timeCheckedOut = times;
+      if (times >= 2) {
+        emit(AttendanceEndDayState());
+      }
+    }
   }
 }

@@ -14,24 +14,33 @@ class RealTimeClock extends StatefulWidget {
 
 class _RealTimeClockState extends State<RealTimeClock> {
   String _timeString = '';
+  late Timer timer;
 
   @override
   void initState() {
     _timeString = _formatDateTime(DateTime.now());
-    Timer.periodic(const Duration(seconds: 1), (Timer t) => _getTime());
+    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => _getTime());
     super.initState();
   }
 
   void _getTime() {
     final DateTime now = DateTime.now();
     final String formattedDateTime = _formatDateTime(now);
-    setState(() {
-      _timeString = formattedDateTime;
-    });
+    if(context.mounted){
+      setState(() {
+        _timeString = formattedDateTime;
+      });
+    }
   }
 
   String _formatDateTime(DateTime dateTime) {
     return DateFormat('h:mm:ss a').format(dateTime);
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {

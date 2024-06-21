@@ -9,6 +9,7 @@ import 'package:worklin/pages/attendance/widgets/attendance_card.dart';
 import 'package:worklin/pages/attendance/widgets/attendance_summary_card.dart';
 import 'package:worklin/utils/app_alert.dart';
 import 'package:worklin/utils/app_navigator.dart';
+import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/enums.dart';
 import 'package:worklin/utils/helpers.dart';
 import 'package:worklin/utils/sizes.dart';
@@ -30,7 +31,6 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
 
   @override
   void initState() {
-
     super.initState();
   }
 
@@ -41,8 +41,8 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
       child: Column(
         children: [
           BlocConsumer<AttendanceCubit, AttendanceState>(
-            listener: (context, state){
-              if (state is AttendanceErrorState){
+            listener: (context, state) {
+              if (state is AttendanceErrorState) {
                 AppAlerts.showInfoSnackBar(state.error);
               }
             },
@@ -51,48 +51,58 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
               final cubit = context.read<AttendanceCubit>();
               return AttendanceCard(
                 checkIn: () async {
-                  try{
+                  try {
                     cubit.requestLocationPermission().then((value) async {
-                      if(value == true){
-                        pd.show(msg: "Getting current location");
+                      if (value == true) {
+                        pd.show(
+                          msg: "Checking In...",
+                          barrierColor: Colors.black45,
+                          progressBgColor: Colors.transparent,
+                        );
                         cubit.getLocation().then((value) async {
-                          if(value == true){
-                            pd.close();
+                          if (value == true) {
                             await AppNavigator.push(context, const ScanQrPage())
                                 .then((value) async {
                               if (value != null) {
-                                pd.show(msg: "Getting company branch");
                                 final code = value as String;
                                 final id = extractNumber(code);
-                                if(id == null){
+                                if (id == null) {
                                   pd.close();
                                   return null;
                                 }
-                                await cubit.fetchCompanyBranch(companyId: id).then((value)async{
-                                  if(value == true){
-                                    pd.close();
-                                    pd.show(msg: "Calculating distance");
-                                    try{
-                                      await cubit.calculateDistance().then((value) async {
-                                        if(value == true){
+                                await cubit
+                                    .fetchCompanyBranch(companyId: id)
+                                    .then((value) async {
+                                  if (value == true) {
+                                    try {
+                                      await cubit
+                                          .calculateDistance()
+                                          .then((value) async {
+                                        if (value == true) {
                                           pd.close();
                                           await showDialogCard(
                                             context,
-                                            titleText: LocaleKeys.check_in_successful.tr(),
-                                            actionText:  LocaleKeys.okay.tr(),
-                                            descriptionText: LocaleKeys.check_in_successful_desc.tr(),
+                                            titleText: LocaleKeys
+                                                .check_in_successful
+                                                .tr(),
+                                            actionText: LocaleKeys.okay.tr(),
+                                            descriptionText: LocaleKeys
+                                                .check_in_successful_desc
+                                                .tr(),
                                           );
                                         } else {
                                           pd.close();
                                         }
                                       });
-                                    } catch (e){
+                                    } catch (e) {
                                       pd.close();
                                     }
                                   } else {
                                     pd.close();
                                   }
                                 });
+                              } else {
+                                pd.close();
                               }
                             });
                           } else {
@@ -101,7 +111,7 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
                         });
                       }
                     });
-                  } catch(e){
+                  } catch (e) {
                     pd.close();
                   }
                   pd.close();
@@ -115,42 +125,58 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
                     descriptionText: LocaleKeys.check_out_warning_desc.tr(),
                   ).then((value) {
                     if (value == true) {
-                      try{
+                      try {
                         cubit.requestLocationPermission().then((value) async {
-                          if(value == true){
-                            pd.show(msg: "Getting current location");
+                          if (value == true) {
+                            pd.show(
+                              msg: "Checking out...",
+                              barrierColor: Colors.black45,
+                              progressBgColor: Colors.transparent,
+                            );
                             cubit.getLocation().then((value) async {
-                              if(value == true){
-                                pd.close();
-                                await AppNavigator.push(context, const ScanQrPage())
-                                    .then((value) async {
+                              if (value == true) {
+                                await AppNavigator.push(
+                                  context,
+                                  const ScanQrPage(),
+                                ).then((value) async {
                                   if (value != null) {
-                                    pd.show(msg: "Getting company branch");
                                     final code = value as String;
                                     final id = extractNumber(code);
-                                    if(id == null){
+                                    if (id == null) {
                                       pd.close();
                                       return null;
                                     }
-                                    await cubit.fetchCompanyBranch(companyId: id).then((value)async{
-                                      if(value == true){
-                                        pd.close();
-                                        pd.show(msg: "Calculating distance");
-                                        try{
+                                    await cubit
+                                        .fetchCompanyBranch(companyId: id)
+                                        .then((value) async {
+                                      if (value == true) {
+                                        try {
                                           await cubit.calculateDistance(forCheckIn: false).then((value) async {
-                                            if(value == true){
+                                            if (value == true) {
                                               pd.close();
+                                              await showDialogCard(
+                                                context,
+                                                titleText: LocaleKeys
+                                                    .check_out_successful
+                                                    .tr(),
+                                                actionText: LocaleKeys.okay.tr(),
+                                                descriptionText: LocaleKeys
+                                                    .check_out_successful_desc
+                                                    .tr(),
+                                              );
                                             } else {
                                               pd.close();
                                             }
                                           });
-                                        } catch (e){
+                                        } catch (e) {
                                           pd.close();
                                         }
                                       } else {
                                         pd.close();
                                       }
                                     });
+                                  } else {
+                                    pd.close();
                                   }
                                 });
                               } else {
@@ -159,7 +185,7 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
                             });
                           }
                         });
-                      } catch(e){
+                      } catch (e) {
                         pd.close();
                       }
                       pd.close();

@@ -11,3 +11,6 @@ final List<Locale> languages = [
   const Locale('en'),
   const Locale('fr'),
 ];
+
+const String clockIn = "CLOCK-IN";
+const String clockOut = "CLOCK-OUT";

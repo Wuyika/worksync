@@ -50,7 +50,7 @@ class _MainPageState extends State<MainPage>
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => MainPageCubit()),
-        BlocProvider(create: (context) => AttendanceCubit()),
+        BlocProvider(create: (context) => AttendanceCubit()..initCheck()),
       ],
       child: BlocBuilder<MainPageCubit, MainPageState>(
         builder: (context, state) {

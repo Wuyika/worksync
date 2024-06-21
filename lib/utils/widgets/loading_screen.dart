@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:worklin/utils/colors.dart';
 
@@ -41,13 +39,10 @@ class LoadingScreen extends StatelessWidget {
                   ],
                 ),
                 alignment: Alignment.center,
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                  child: const Center(
-                    child: CircularProgressIndicator.adaptive(
-                      valueColor:
-                          AlwaysStoppedAnimation<Color>(AppColors.secondary),
-                    ),
+                child: const Center(
+                  child: CircularProgressIndicator.adaptive(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(AppColors.secondary),
                   ),
                 ),
               ),
