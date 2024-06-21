@@ -56,11 +56,12 @@ class MyPref {
   }
 
   static void saveLastDay({required DateTime date}) {
-    _storage.write(MyPreferencesConstants.lastCheckType, date);
+    _storage.write(MyPreferencesConstants.lastCheckDay, date.toIso8601String());
   }
 
-  static DateTime getLastSaveDay() {
-    final DateTime date = _storage.read(MyPreferencesConstants.lastCheckType) ?? DateTime.now();
+  static DateTime? getLastSaveDay() {
+    final String? stringDate = _storage.read(MyPreferencesConstants.lastCheckDay);
+    final DateTime? date = DateTime.tryParse(stringDate ?? "");
     return date;
   }
 
@@ -73,22 +74,36 @@ class MyPref {
   }
 
   static void saveLastCheckInTime({required TimeOfDay time}) {
-    _storage.write(MyPreferencesConstants.lastCheckInTime, time);
+    final String timeString = '${time.hour}:${time.minute}';
+    _storage.write(MyPreferencesConstants.lastCheckInTime, timeString);
   }
 
   static TimeOfDay? getLastCheckInTime() {
-    final TimeOfDay? time = _storage.read(MyPreferencesConstants.lastCheckInTime);
-    return time;
+    final String? timeString = _storage.read(MyPreferencesConstants.lastCheckInTime);
+    if(timeString != null){
+      final parts = timeString.split(':');
+      if (parts.length == 2) {
+        return TimeOfDay(hour: int.parse(parts[0]), minute: int.parse(parts[1]));
+      }
+    }
+    return null;
   }
 
 
   static void saveLastCheckOutTime({required TimeOfDay time}) {
-    _storage.write(MyPreferencesConstants.lastCheckOutTime, time);
+    final String timeString = '${time.hour}:${time.minute}';
+    _storage.write(MyPreferencesConstants.lastCheckOutTime, timeString);
   }
 
   static TimeOfDay? getLastCheckOutTime() {
-    final TimeOfDay? time = _storage.read(MyPreferencesConstants.lastCheckOutTime);
-    return time;
+    final String? timeString = _storage.read(MyPreferencesConstants.lastCheckOutTime);
+    if(timeString != null){
+      final parts = timeString.split(':');
+      if (parts.length == 2) {
+        return TimeOfDay(hour: int.parse(parts[0]), minute: int.parse(parts[1]));
+      }
+    }
+    return null;
   }
 
   static void saveTimesCheckOut({required int number}) {

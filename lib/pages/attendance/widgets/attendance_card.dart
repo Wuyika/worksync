@@ -176,7 +176,9 @@ class AttendanceCard extends StatelessWidget {
                                 SvgPicture.asset(Assets.appIcons.svg.timer),
                                 const SizedBox(height: 4),
                                 Text(
-                                  "03h 48m",
+                                  cubit.duration != null
+                                      ? cubit.duration!
+                                      : "00",
                                   style: AppTypography.bodyMediumMedium,
                                 ),
                                 const SizedBox(height: 2),

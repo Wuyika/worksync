@@ -11,5 +11,4 @@ class MyPreferencesConstants {
   static const String lastCheckType = 'lastCheckType';
   static const String lastCheckInTime = 'lastCheckInTime';
   static const String lastCheckOutTime = 'lastCheckOutTime';
-
 }

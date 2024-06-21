@@ -13,6 +13,7 @@ import 'package:worklin/utils/my_pref.dart';
 part 'attendance_state.dart';
 
 class AttendanceCubit extends Cubit<AttendanceState> {
+  String? duration;
   TimeOfDay? checkInTime;
   TimeOfDay? checkOutTime;
   LatLng? myCurrentPosition;
@@ -79,9 +80,11 @@ class AttendanceCubit extends Cubit<AttendanceState> {
         endCoordinate: companyPosition!,
       );
       if (distance != null) {
+        print((distance/1000).toStringAsFixed(2));
+        print("ssssssssssss");
         final checkedIn = await apiService.checkInEmployee(
           siteId: "${companyBranch?.id ?? 0}",
-          distance: "${distance / 1000}",
+          distance: (distance/1000).toStringAsFixed(2),
           unitDistance: "KM",
         );
         if (checkedIn == true) {
@@ -98,10 +101,14 @@ class AttendanceCubit extends Cubit<AttendanceState> {
             MyPref.saveLastCheckOutTime(time: checkOutTime!);
             MyPref.saveLastType(type: clockOut);
             timeCheckedOut = timeCheckedOut + 1;
-            if (timeCheckedOut < 2) {
+            MyPref.saveTimesCheckOut(number: timeCheckedOut);
+            duration = formatDuration(checkInTime!, checkOutTime!);
+            if (timeCheckedOut < 1) {
               emit(AttendanceCheckInState());
+            } else {
+              emit(AttendanceEndDayState());
             }
-            emit(AttendanceEndDayState());
+
             return true;
           }
         }
@@ -111,26 +118,26 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   }
 
   void initCheck() {
-    print(formatDuration(TimeOfDay(hour:12, minute:4 ), TimeOfDay(hour:12, minute:6)));
-
     final now = DateTime.now();
     final lastSaveDay = MyPref.getLastSaveDay();
-    if (now != lastSaveDay) {
-      final type = MyPref.getLastType();
-      if (type == clockIn) {
-        final time = MyPref.getLastCheckInTime();
-        checkInTime = time;
-        emit(AttendanceCheckOutState());
-      } else if (type == clockOut) {
-        final timeIn = MyPref.getLastCheckInTime();
-        checkInTime = timeIn;
-        final timeOut = MyPref.getLastCheckOutTime();
-        checkOutTime = timeOut;
-      }
-      final times = MyPref.getTimesCheckOut();
-      timeCheckedOut = times;
-      if (times >= 2) {
-        emit(AttendanceEndDayState());
+    if (lastSaveDay != null){
+      if (now != lastSaveDay) {
+        final type = MyPref.getLastType();
+        if (type == clockIn) {
+          final time = MyPref.getLastCheckInTime();
+          checkInTime = time;
+          emit(AttendanceCheckOutState());
+        } else if (type == clockOut) {
+          final timeIn = MyPref.getLastCheckInTime();
+          checkInTime = timeIn;
+          final timeOut = MyPref.getLastCheckOutTime();
+          checkOutTime = timeOut;
+        }
+        final times = MyPref.getTimesCheckOut();
+        timeCheckedOut = times;
+        if (times >= 1) {
+          emit(AttendanceEndDayState());
+        }
       }
     }
   }

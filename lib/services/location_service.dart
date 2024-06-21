@@ -52,8 +52,6 @@ class LocationService {
       endCoordinate.latitude,
       endCoordinate.longitude,
     );
-    print(distance);
-    print("xvxajjgasjgajsga");
     return distance;
   }
 }

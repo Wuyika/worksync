@@ -347,7 +347,9 @@ class DashboardOverview extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 6),
                                     Text(
-                                      "2hr 45m",
+                                      cubit.duration != null
+                                          ? cubit.duration!
+                                          : "00",
                                       style: AppTypography.bodyLargeMedium
                                           .copyWith(
                                         color: AppColors.white,
