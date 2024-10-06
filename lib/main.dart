@@ -18,7 +18,6 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   await dotenv.load();
   await GetStorage.init().then((value) => FlutterNativeSplash.remove());
-  final String savedLocale = MyPref.getLocaleCode();
   runApp(
     EasyLocalization(
       supportedLocales: const [
@@ -26,7 +25,8 @@ void main() async {
         Locale('fr'),
       ],
       path: 'assets/translations',
-      fallbackLocale: Locale(savedLocale),
+      fallbackLocale: const Locale('en'),
+      useOnlyLangCode: true,
       child: const MyApp(),
     ),
   );
@@ -52,12 +52,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: navigatorKey,
       scaffoldMessengerKey: snackbarKey,
-      title: 'Worklink',
+      title: 'WorkSync',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
+
       home: MyPref.hasOnboardingBeenShown()
           ? MyPref.getCurrentUser() != null
               ? const MainPage()

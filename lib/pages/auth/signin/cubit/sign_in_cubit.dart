@@ -15,15 +15,16 @@ class SignInCubit extends Cubit<SignInState> {
   }) async {
     try {
       emit(SignInLoadingState());
-
       final user = await apiService.signInUser(
         email: email,
         password: password,
       );
       if (user != null) {
         AppData.updateCurrentUser(user: user);
+        emit(SignInSuccessState());
+      } else {
+        SignInInitialState();
       }
-      emit(SignInSuccessState());
     } catch (error) {
       emit(
         SignInFailedState(error.toString()),

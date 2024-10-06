@@ -30,7 +30,7 @@ class ApiService {
       debugPrint(response.statusCode.toString());
       debugPrint(response.body);
       AppAlerts.showInfoSnackBar(jsonDecode(response.body)['message'] as String);
-      return null;
+      throw(jsonDecode(response.body)['message'] as String);
     } else if( response.body.isEmpty) {
       AppAlerts.showInfoSnackBar("Unknown Error");
       throw "Invalid Credentials";

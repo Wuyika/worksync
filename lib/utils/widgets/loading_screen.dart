@@ -41,8 +41,7 @@ class LoadingScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 child: const Center(
                   child: CircularProgressIndicator.adaptive(
-                    valueColor:
-                        AlwaysStoppedAnimation<Color>(AppColors.secondary),
+                    valueColor: AlwaysStoppedAnimation<Color>(AppColors.secondary),
                   ),
                 ),
               ),

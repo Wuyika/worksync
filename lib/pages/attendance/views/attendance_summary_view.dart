@@ -109,6 +109,8 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
                             pd.close();
                           }
                         });
+                      } else {
+                        pd.close();
                       }
                     });
                   } catch (e) {
@@ -183,6 +185,8 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
                                 pd.close();
                               }
                             });
+                          } else {
+                            pd.close();
                           }
                         });
                       } catch (e) {

@@ -10,13 +10,14 @@ class LocationService {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        return Future.error(tr('rides.location_denied'));
+        return Future.error(tr('Access denied for location'));
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
+      // await Geolocator.openAppSettings();
       return Future.error(
-        tr('rides.location_denied_permanently'),
+        tr('Access denied permanently location'),
       );
     }
 

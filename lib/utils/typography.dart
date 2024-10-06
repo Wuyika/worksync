@@ -33,110 +33,110 @@ class AppTypography {
   //text styles
 
   //headings
-  static TextStyle headingH1 = TextStyle(
+  static TextStyle headingH1 = const TextStyle(
     fontFamily: familySpaceGrotesk,
     fontWeight: weightMedium,
-    fontSize: Sizes.size_30,
+    fontSize: 30,
   );
 
-  static TextStyle headingH2 = TextStyle(
+  static TextStyle headingH2 = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightMedium,
-    fontSize: Sizes.size_20,
+    fontSize: 20,
   );
 
 
   //body large
-  static TextStyle bodyLargeRegular = TextStyle(
+  static TextStyle bodyLargeRegular = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightRegular, // 400
-    fontSize: Sizes.size_18,
+    fontSize: 18,
   );
 
   //body large
-  static TextStyle bodyLargeMedium = TextStyle(
+  static TextStyle bodyLargeMedium = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightMedium, // 400
-    fontSize: Sizes.size_18,
+    fontSize: 18,
   );
 
   //bodyMedium
 
-  static TextStyle bodyMediumLight = TextStyle(
+  static TextStyle bodyMediumLight = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightLight,
-    fontSize: Sizes.size_16,
+    fontSize: 16,
   );
 
-  static TextStyle bodyMediumRegular = TextStyle(
+  static TextStyle bodyMediumRegular = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightRegular, // 400
-    fontSize: Sizes.size_16,
+    fontSize: 16,
   );
 
-  static TextStyle bodyMediumMedium = TextStyle(
+  static TextStyle bodyMediumMedium = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightMedium, // 500
-    fontSize: Sizes.size_16,
+    fontSize: 16,
   );
 
-  static TextStyle bodyMediumSemiBold =  TextStyle(
+  static TextStyle bodyMediumSemiBold =  const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightSemiBold, // 600
-    fontSize: Sizes.size_16,
+    fontSize: 16,
   );
 
-  static TextStyle bodyMediumBold =  TextStyle(
+  static TextStyle bodyMediumBold =  const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightBold,
-    fontSize: Sizes.size_16,
+    fontSize: 16,
   );
 
   //body small
 
-  static TextStyle bodySmallSemiBold =  TextStyle(
+  static TextStyle bodySmallSemiBold =  const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightSemiBold, // 600
-    fontSize: Sizes.size_14,
+    fontSize: 14,
   );
 
-  static TextStyle bodySmallRegular = TextStyle(
+  static TextStyle bodySmallRegular = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightRegular, // 400
-    fontSize: Sizes.size_14,
+    fontSize: 14,
   );
 
-  static TextStyle bodySmallMedium = TextStyle(
+  static TextStyle bodySmallMedium = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightMedium, //500
-    fontSize: Sizes.size_14,
+    fontSize: 14,
     // height: 1.6,
   );
 
-  static TextStyle bodySmallLight = TextStyle(
+  static TextStyle bodySmallLight = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightLight,
-    fontSize: Sizes.size_14,
+    fontSize: 14,
     // height: 1.6,
   );
 
   //Body extra Small
 
-  static TextStyle bodyExtraSmallSemiBold = TextStyle(
+  static TextStyle bodyExtraSmallSemiBold = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightSemiBold, // 600
-    fontSize: Sizes.size_12,
+    fontSize: 12,
   );
 
-  static TextStyle bodyExtraSmallRegular = TextStyle(
+  static TextStyle bodyExtraSmallRegular = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightRegular, // 400
-    fontSize: Sizes.size_12,
+    fontSize: 12,
   );
 
-  static TextStyle bodyExtraSmallMedium = TextStyle(
+  static TextStyle bodyExtraSmallMedium = const TextStyle(
     fontFamily: familyUrbanist,
     fontWeight: weightMedium, // 500
-    fontSize: Sizes.size_12,
+    fontSize: 12,
   );
 }

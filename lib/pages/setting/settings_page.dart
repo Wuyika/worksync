@@ -3,7 +3,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:jiffy/jiffy.dart';
 import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/utils/colors.dart';
@@ -86,9 +85,9 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void _updateLanguage(BuildContext context, Locale locale) {
-    Jiffy.setLocale(locale.languageCode);
     MyPref.saveLocaleCode(locale: locale.languageCode);
     context.setLocale(locale);
+    context.dispatchNotification("" as Notification);
   }
 
   String _getLanguageFromCode(Locale locale) {

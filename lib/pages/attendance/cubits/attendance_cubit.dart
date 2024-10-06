@@ -121,7 +121,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
     final now = DateTime.now();
     final lastSaveDay = MyPref.getLastSaveDay();
     if (lastSaveDay != null){
-      if (now != lastSaveDay) {
+      if (now.day == lastSaveDay.day) {
         final type = MyPref.getLastType();
         if (type == clockIn) {
           final time = MyPref.getLastCheckInTime();
