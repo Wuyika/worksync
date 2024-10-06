@@ -120,7 +120,7 @@ class _ChartPageState extends State<ChartPage> {
                 ),
               ),
               title: Text(
-                "Francis Fon Teboh",
+                "Wuyika",
                 style: AppTypography.headingH2.copyWith(
                   color: AppColors.white,
                 ),

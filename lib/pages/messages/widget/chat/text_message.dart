@@ -36,7 +36,7 @@ class TextMessage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            (message!.isSender) ? "You" : "Francis Fon Teboh",
+            (message!.isSender) ? "You" : "Wuyika",
             style: AppTypography.bodySmallRegular.copyWith(
               fontSize: 12,
               color: (message!.isSender)

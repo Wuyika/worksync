@@ -63,47 +63,56 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
                           if (value == true) {
                             await AppNavigator.push(context, const ScanQrPage())
                                 .then((value) async {
-                              if (value != null) {
-                                final code = value as String;
-                                final id = extractNumber(code);
-                                if (id == null) {
-                                  pd.close();
-                                  return null;
-                                }
-                                await cubit
-                                    .fetchCompanyBranch(companyId: id)
-                                    .then((value) async {
-                                  if (value == true) {
-                                    try {
-                                      await cubit
-                                          .calculateDistance()
-                                          .then((value) async {
-                                        if (value == true) {
-                                          pd.close();
-                                          await showDialogCard(
-                                            context,
-                                            titleText: LocaleKeys
-                                                .check_in_successful
-                                                .tr(),
-                                            actionText: LocaleKeys.okay.tr(),
-                                            descriptionText: LocaleKeys
-                                                .check_in_successful_desc
-                                                .tr(),
-                                          );
-                                        } else {
-                                          pd.close();
-                                        }
-                                      });
-                                    } catch (e) {
-                                      pd.close();
-                                    }
-                                  } else {
-                                    pd.close();
-                                  }
-                                });
-                              } else {
-                                pd.close();
-                              }
+                              // if (value != null) {
+                              //   final code = value as String;
+                              //   final id = extractNumber(code);
+                              //   if (id == null) {
+                              //     pd.close();
+                              //     return null;
+                              //   }
+                              //   await cubit
+                              //       .fetchCompanyBranch(companyId: id)
+                              //       .then((value) async {
+                              //     if (value == true) {
+                              //       try {
+                              //         await cubit
+                              //             .calculateDistance()
+                              //             .then((value) async {
+                              //           if (value == true) {
+                              //             pd.close();
+                              //             await showDialogCard(
+                              //               context,
+                              //               titleText: LocaleKeys
+                              //                   .check_in_successful
+                              //                   .tr(),
+                              //               actionText: LocaleKeys.okay.tr(),
+                              //               descriptionText: LocaleKeys
+                              //                   .check_in_successful_desc
+                              //                   .tr(),
+                              //             );
+                              //           } else {
+                              //             pd.close();
+                              //           }
+                              //         });
+                              //       } catch (e) {
+                              //         pd.close();
+                              //       }
+                              //     } else {
+                              //       pd.close();
+                              //     }
+                              //   });
+                              // } else {
+                              //   pd.close();
+                              // }
+                              pd.close();
+                              cubit.emitCheckOut();
+                              await showDialogCard(
+                                context,
+                                titleText: LocaleKeys.check_in_successful.tr(),
+                                actionText: LocaleKeys.okay.tr(),
+                                descriptionText:
+                                    LocaleKeys.check_in_successful_desc.tr(),
+                              );
                             });
                           } else {
                             pd.close();
@@ -141,45 +150,56 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
                                   context,
                                   const ScanQrPage(),
                                 ).then((value) async {
-                                  if (value != null) {
-                                    final code = value as String;
-                                    final id = extractNumber(code);
-                                    if (id == null) {
-                                      pd.close();
-                                      return null;
-                                    }
-                                    await cubit
-                                        .fetchCompanyBranch(companyId: id)
-                                        .then((value) async {
-                                      if (value == true) {
-                                        try {
-                                          await cubit.calculateDistance(forCheckIn: false).then((value) async {
-                                            if (value == true) {
-                                              pd.close();
-                                              await showDialogCard(
-                                                context,
-                                                titleText: LocaleKeys
-                                                    .check_out_successful
-                                                    .tr(),
-                                                actionText: LocaleKeys.okay.tr(),
-                                                descriptionText: LocaleKeys
-                                                    .check_out_successful_desc
-                                                    .tr(),
-                                              );
-                                            } else {
-                                              pd.close();
-                                            }
-                                          });
-                                        } catch (e) {
-                                          pd.close();
-                                        }
-                                      } else {
-                                        pd.close();
-                                      }
-                                    });
-                                  } else {
-                                    pd.close();
-                                  }
+                                  // if (value != null) {
+                                  //   final code = value as String;
+                                  //   final id = extractNumber(code);
+                                  //   if (id == null) {
+                                  //     pd.close();
+                                  //     return null;
+                                  //   }
+                                  //   await cubit
+                                  //       .fetchCompanyBranch(companyId: id)
+                                  //       .then((value) async {
+                                  //     if (value == true) {
+                                  //       try {
+                                  //         await cubit.calculateDistance(forCheckIn: false).then((value) async {
+                                  //           if (value == true) {
+                                  //             pd.close();
+                                  //             await showDialogCard(
+                                  //               context,
+                                  //               titleText: LocaleKeys
+                                  //                   .check_out_successful
+                                  //                   .tr(),
+                                  //               actionText: LocaleKeys.okay.tr(),
+                                  //               descriptionText: LocaleKeys
+                                  //                   .check_out_successful_desc
+                                  //                   .tr(),
+                                  //             );
+                                  //           } else {
+                                  //             pd.close();
+                                  //           }
+                                  //         });
+                                  //       } catch (e) {
+                                  //         pd.close();
+                                  //       }
+                                  //     } else {
+                                  //       pd.close();
+                                  //     }
+                                  //   });
+                                  // } else {
+                                  //   pd.close();
+                                  // }
+                                  pd.close();
+                                  cubit.emitEnd();
+                                  await showDialogCard(
+                                    context,
+                                    titleText:
+                                        LocaleKeys.check_out_successful.tr(),
+                                    actionText: LocaleKeys.okay.tr(),
+                                    descriptionText: LocaleKeys
+                                        .check_out_successful_desc
+                                        .tr(),
+                                  );
                                 });
                               } else {
                                 pd.close();

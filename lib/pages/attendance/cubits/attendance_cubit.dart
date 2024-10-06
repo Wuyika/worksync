@@ -80,8 +80,6 @@ class AttendanceCubit extends Cubit<AttendanceState> {
         endCoordinate: companyPosition!,
       );
       if (distance != null) {
-        print((distance/1000).toStringAsFixed(2));
-        print("ssssssssssss");
         final checkedIn = await apiService.checkInEmployee(
           siteId: "${companyBranch?.id ?? 0}",
           distance: (distance/1000).toStringAsFixed(2),
@@ -140,5 +138,13 @@ class AttendanceCubit extends Cubit<AttendanceState> {
         }
       }
     }
+  }
+
+  void emitCheckOut(){
+    emit(AttendanceCheckOutState());
+  }
+
+  void emitEnd(){
+    emit(AttendanceEndDayState());
   }
 }

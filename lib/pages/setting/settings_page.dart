@@ -87,7 +87,6 @@ class _SettingsPageState extends State<SettingsPage> {
   void _updateLanguage(BuildContext context, Locale locale) {
     MyPref.saveLocaleCode(locale: locale.languageCode);
     context.setLocale(locale);
-    context.dispatchNotification("" as Notification);
   }
 
   String _getLanguageFromCode(Locale locale) {

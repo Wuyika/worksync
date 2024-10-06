@@ -116,7 +116,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  "VTC",
+                  "Organization",
                   style: AppTypography.headingH2,
                 ),
                 trailing: const Icon(

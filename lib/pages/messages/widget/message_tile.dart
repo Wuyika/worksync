@@ -50,7 +50,7 @@ class MessageTile extends StatelessWidget {
                 ),
               ),
               title: Text(
-                "Francis Fon Teboh",
+                "Wuyika",
                 style: AppTypography.bodySmallSemiBold,
               ),
               subtitle: Text(
@@ -70,7 +70,7 @@ class MessageTile extends StatelessWidget {
                   ),
                   if (hasUnread)
                     Container(
-                      padding: EdgeInsets.all(Sizes.size_6),
+                      padding: EdgeInsets.all(Sizes.size_4),
                       decoration: const BoxDecoration(
                         color: AppColors.secondary,
                         shape: BoxShape.circle,
