@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:worklin/models/company_branch_model.dart';
 import 'package:worklin/models/user_model.dart';
@@ -9,7 +8,7 @@ import 'package:worklin/utils/app_alert.dart';
 
 
 class ApiService {
-  String baseUrl = dotenv.env['BASE_URL'] ?? "";
+  String baseUrl = "worklin-api-test.vtcinternationale.com";
 
   Future<UserModel?> signInUser({
     required String email,
