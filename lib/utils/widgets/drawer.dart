@@ -6,6 +6,7 @@ import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/auth/signin/view/signin_page.dart';
 import 'package:worklin/pages/profile/view/profile_page.dart';
 import 'package:worklin/pages/setting/settings_page.dart';
+import 'package:worklin/pages/test_page/test_page.dart';
 import 'package:worklin/providers/app_data.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
@@ -83,6 +84,9 @@ class SideDrawerWidget extends StatelessWidget {
             ),
           ),
           ListTile(
+            onTap: () {
+              AppNavigator.push(context, TestPage());
+            },
             leading: SvgPicture.asset(
               Assets.appIcons.svg.documentTextOutline,
               colorFilter: const ColorFilter.mode(
@@ -96,7 +100,7 @@ class SideDrawerWidget extends StatelessWidget {
             ),
           ),
           ListTile(
-            onTap: (){
+            onTap: () {
               print(AppData.token);
             },
             leading: SvgPicture.asset(
