@@ -66,7 +66,7 @@ workflows:
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.ahdus.camsol.gasvisor
+        bundle_identifier: com.app.worksync
       vars:
         APP_ID: 6498234960
       flutter: stable
