@@ -122,5 +122,8 @@ abstract class  LocaleKeys {
   static const last_month = 'last_month';
   static const english = 'english';
   static const french = 'french';
+  static const cameraPermissionError = 'cameraPermissionError';
+  static const needPermission = 'needPermission';
+  static const goToSettings = 'goToSettings';
 
 }

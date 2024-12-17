@@ -119,5 +119,8 @@
   "this_year": "This Year",
   "last_month": "Last Month",
   "english": "English",
-  "french": "Français"
+  "french": "Français",
+  "cameraPermissionError": "Camera permission is required. You can grant it in app settings.",
+  "needPermission": "Need Permission",
+  "goToSettings": "GO TO SETTINGS"
 }

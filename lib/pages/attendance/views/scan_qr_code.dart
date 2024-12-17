@@ -1,13 +1,13 @@
-import 'dart:developer';
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
+import 'dart:async';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
-import 'package:worklin/utils/sizes.dart';
+import 'package:worklin/utils/permission_denied_dialog.dart';
+import 'package:worklin/utils/qr_scan_overlay.dart';
 import 'package:worklin/utils/typography.dart';
 import 'package:worklin/utils/widgets/appbar.dart';
 import 'package:worklin/utils/widgets/button.dart';
@@ -19,24 +19,79 @@ class ScanQrPage extends StatefulWidget {
   State<ScanQrPage> createState() => _ScanQrPageState();
 }
 
-class _ScanQrPageState extends State<ScanQrPage> {
-  Barcode? result;
-  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  QRViewController? controller;
+class _ScanQrPageState extends State<ScanQrPage> with WidgetsBindingObserver {
+  final MobileScannerController controller = MobileScannerController(
+    autoStart: false,
+    useNewCameraSelector: true,
+  );
+  StreamSubscription<Object?>? _barcodeSubscription;
+
+  void _handleBarcodeDetection(
+      BarcodeCapture barcodeCapture,
+      ) {
+    final barcode = barcodeCapture.barcodes.firstOrNull?.rawValue;
+
+    if (barcode != null) {
+      HapticFeedback.vibrate();
+    }
+    AppNavigator.pop(context);
+  }
 
   @override
-  void reassemble() {
-    super.reassemble();
-    if (Platform.isAndroid) {
-      controller!.pauseCamera();
-    } else if (Platform.isIOS) {
-      controller!.resumeCamera();
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addObserver(this);
+
+    unawaited(controller.start());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // Restart the camera when coming back to this page
+    if (ModalRoute.of(context)?.isCurrent ?? false) {
+      unawaited(controller.start());
     }
   }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (!controller.value.hasCameraPermission) return;
+
+    switch (state) {
+      case AppLifecycleState.resumed:
+        if (ModalRoute.of(context)?.isCurrent ?? false) {
+          _startCamera();
+        }
+      case AppLifecycleState.paused:
+      case AppLifecycleState.inactive:
+        _stopCamera();
+      default:
+        break;
+    }
+  }
+
+  void _startCamera() {
+    unawaited(controller.start());
+    _barcodeSubscription ??= controller.barcodes.listen(
+            (barcodes) => _handleBarcodeDetection(barcodes),
+      );
+  }
+
+  void _stopCamera() {
+    unawaited(_barcodeSubscription?.cancel());
+    _barcodeSubscription = null;
+    unawaited(controller.stop());
+    // unawaited(controller.dispose());
+  }
+
+  @override
   void dispose() {
-    controller?.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+    _stopCamera();
+    unawaited(controller.dispose());
     super.dispose();
   }
 
@@ -115,65 +170,32 @@ class _ScanQrPageState extends State<ScanQrPage> {
   }
 
   Widget _buildQrView(BuildContext context) {
-    final scanArea = Sizes.size_248;
 
-    return QRView(
-      key: qrKey,
-      onQRViewCreated: _onQRViewCreated,
-      overlay: QrScannerOverlayShape(
-        borderColor: AppColors.secondary,
-        borderRadius: Sizes.size_2,
-        borderLength: Sizes.size_30,
-        borderWidth: Sizes.size_10,
-        cutOutSize: scanArea,
-      ),
-      onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),
-    );
-  }
-
-  void _onQRViewCreated(QRViewController controller) {
-    setState(() {
-      this.controller = controller;
-    });
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
-      });
-
-      if (result?.code != null) {
-        final scanResult = result?.code;
-
-        if (scanResult != null) {
-          final String? extractedCode = extractCode(scanResult);
-
-          if (extractedCode != null) {
-            HapticFeedback.vibrate();
-            controller.pauseCamera();
-            AppNavigator.pop(
-              context,
-              extractedCode,
-            );
-
-            if (kDebugMode) {
-              print('Url: $scanResult');
-              print('Extracted Code: $extractedCode');
+    return  Stack(
+      children: [
+        MobileScanner(
+          controller: controller,
+          overlayBuilder: (context, constraints) {
+            return buildScanOverlay(context);
+          },
+          errorBuilder: (context, error, child) {
+            if (error.errorCode ==
+                MobileScannerErrorCode.permissionDenied) {
+              return PermissionDeniedDialog(
+                permissionMessage:
+                LocaleKeys.cameraPermissionError.tr(),
+              );
+            } else {
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text('${error.errorDetails?.message}'),
+                ),
+              );
             }
-          }
-        }
-      }
-    });
-  }
-
-  void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
-    log('${DateTime.now().toLocal()}_onPermissionSet $p');
-    if (!p) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('no Permission')),
-      );
-    }
-  }
-
-  String? extractCode(String url) {
-    return url;
+          },
+        ),
+      ],
+    );
   }
 }

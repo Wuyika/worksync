@@ -3,7 +3,7 @@ import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/sizes.dart';
 
 class AppTypography {
-  AppTypography();
+  AppTypography._();
 
   //fonts
   static const String familyUrbanist = 'Urbanist';

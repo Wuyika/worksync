@@ -10,7 +10,7 @@
   "password_hint": "mot de passe",
   "forgot_password": "Mot de passe oublié",
   "log_me_in": "Me connecter",
-  "log_out":"Se déconnecter",
+  "log_out": "Se déconnecter",
   "continue_t": "Continuer",
   "confirm": "Confirmer",
   "verify": "Vérifier",
@@ -74,8 +74,8 @@
   "submit_report": "Soumettre un rapport",
   "report_submit_success": "Rapport envoyé avec succès.",
   "report_submit_success_desc": "Votre rapport a été envoyé avec succès.",
-  "report_edit_success" : "Rapport édité avec succès.",
-  "report_edit_success_desc" : "Votre rapport a été édité avec succès.",
+  "report_edit_success": "Rapport édité avec succès.",
+  "report_edit_success_desc": "Votre rapport a été édité avec succès.",
   "save_report": "Sauvegarder le rapport",
   "all_leaves": "Toutes les feuilles",
   "casual_leave": "Congé occasionnel",
@@ -119,5 +119,8 @@
   "this_year": "Cette année",
   "last_month": "Dernier mois",
   "english": "English",
-  "french": "Français"
+  "french": "Français",
+  "cameraPermissionError": "L'autorisation de la caméra est requise. Vous pouvez l'accorder dans les paramètres de l'application.",
+  "needPermission": "Besoin d'une autorisation",
+  "goToSettings": "ALLER AUX PARAMÈTRES"
 }

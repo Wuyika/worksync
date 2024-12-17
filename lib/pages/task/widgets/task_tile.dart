@@ -37,7 +37,7 @@ class _TaskTileState extends State<TaskTile> {
             children: [
               Expanded(
                 child: Text(
-                  "Design the landing page for WORKLIN",
+                  "Design the landing page for WORKSYNC",
                   style: AppTypography.bodySmallSemiBold,
                 ),
               ),
@@ -50,7 +50,7 @@ class _TaskTileState extends State<TaskTile> {
           ),
           const SizedBox(height: 4),
           Text(
-            "Design a landing page that talks for WORKLIN as a software product.... ",
+            "Design a landing page that talks for WORKSYNC as a software product.... ",
             style: AppTypography.bodySmallRegular,
           ),
           const SizedBox(height: 12),
