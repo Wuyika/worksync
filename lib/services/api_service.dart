@@ -26,8 +26,6 @@ class ApiService {
       user.token = jsonDecode(response.body)['data']['token'] as String?;
       return user;
     } else if (response.statusCode == 400) {
-      debugPrint(response.statusCode.toString());
-      debugPrint(response.body);
       AppAlerts.showInfoSnackBar(jsonDecode(response.body)['message'] as String);
       throw(jsonDecode(response.body)['message'] as String);
     } else if( response.body.isEmpty) {
@@ -51,8 +49,6 @@ class ApiService {
       final companyBranch = CompanyBranchModel.fromJson(jsonDecode(response.body)['data']);
       return companyBranch;
     } else if (response.statusCode == 400) {
-      debugPrint(response.statusCode.toString());
-      debugPrint(response.body);
       AppAlerts.showInfoSnackBar(jsonDecode(response.body)['message'] as String);
       return null;
     } else if( response.body.isEmpty) {

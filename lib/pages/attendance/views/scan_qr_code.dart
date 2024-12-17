@@ -34,7 +34,6 @@ class _ScanQrPageState extends State<ScanQrPage> with WidgetsBindingObserver {
     if (barcode != null) {
       HapticFeedback.vibrate();
     }
-    AppNavigator.pop(context);
   }
 
   @override
