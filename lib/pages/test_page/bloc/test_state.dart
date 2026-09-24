@@ -18,4 +18,3 @@ final class TestFinalState extends TestState {
   @override
   List<Object> get props => [count];
 }
-

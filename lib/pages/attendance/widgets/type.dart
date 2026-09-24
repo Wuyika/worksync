@@ -41,7 +41,7 @@ class TypeWidget extends StatelessWidget {
           Text(
             "$value%",
             style: AppTypography.bodyExtraSmallSemiBold.copyWith(
-              color: AppColors.textColor.withOpacity(0.5),
+              color: AppColors.textColor.withValues(alpha: 0.5),
             ),
           ),
         ],

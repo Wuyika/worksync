@@ -24,7 +24,7 @@ class GraphWidget extends StatelessWidget {
         color: AppColors.white,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: AppColors.inactive.withOpacity(0.8),
+          color: AppColors.inactive.withValues(alpha: 0.8),
           width: 0.5,
         ),
       ),

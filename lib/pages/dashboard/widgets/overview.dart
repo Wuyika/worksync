@@ -1,8 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
@@ -24,12 +21,12 @@ class DashboardOverview extends StatelessWidget {
         final cubit = context.read<AttendanceCubit>();
         return Container(
           padding: EdgeInsets.symmetric(
-              vertical: Sizes.size_12, horizontal: Sizes.size_12),
+              vertical: Sizes.size_12, horizontal: Sizes.size_12,),
           decoration: BoxDecoration(
             color: AppColors.secondary,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: AppColors.inactive.withOpacity(0.8),
+              color: AppColors.inactive.withValues(alpha: 0.8),
               width: 2,
             ),
           ),
@@ -179,9 +176,9 @@ class DashboardOverview extends StatelessWidget {
               SizedBox(height: Sizes.size_16),
               Container(
                 padding: EdgeInsets.symmetric(
-                    vertical: 12, horizontal: Sizes.size_8),
+                    vertical: 12, horizontal: Sizes.size_8,),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.white.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
@@ -216,7 +213,7 @@ class DashboardOverview extends StatelessWidget {
                                     style: AppTypography.bodyExtraSmallMedium
                                         .copyWith(
                                       color:
-                                          AppColors.textColor.withOpacity(0.5),
+                                          AppColors.textColor.withValues(alpha: 0.5),
                                     ),
                                   ),
                                   Row(
@@ -238,13 +235,13 @@ class DashboardOverview extends StatelessWidget {
                                         ),
                                       ),
                                       SvgPicture.asset(
-                                          Assets.appIcons.svg.checkin),
+                                          Assets.appIcons.svg.checkin,),
                                     ],
                                   ),
                                   const SizedBox(height: 8),
                                   Container(
                                     padding: const EdgeInsets.symmetric(
-                                        vertical: 2, horizontal: 4),
+                                        vertical: 2, horizontal: 4,),
                                     decoration: BoxDecoration(
                                       color: AppColors.orange,
                                       borderRadius: BorderRadius.circular(4),
@@ -279,7 +276,7 @@ class DashboardOverview extends StatelessWidget {
                                     style: AppTypography.bodyExtraSmallMedium
                                         .copyWith(
                                       color:
-                                          AppColors.textColor.withOpacity(0.5),
+                                          AppColors.textColor.withValues(alpha: 0.5),
                                     ),
                                   ),
                                   Row(
@@ -301,13 +298,13 @@ class DashboardOverview extends StatelessWidget {
                                         ),
                                       ),
                                       SvgPicture.asset(
-                                          Assets.appIcons.svg.checkin),
+                                          Assets.appIcons.svg.checkin,),
                                     ],
                                   ),
                                   const SizedBox(height: 8),
                                   Container(
                                     padding: const EdgeInsets.symmetric(
-                                        vertical: 2, horizontal: 4),
+                                        vertical: 2, horizontal: 4,),
                                     decoration: BoxDecoration(
                                       color: AppColors.warning,
                                       borderRadius: BorderRadius.circular(4),

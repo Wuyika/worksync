@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/utils/colors.dart';
@@ -41,10 +40,10 @@ class LeaveTile extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
                   color: status == LeaveCardStatus.pending
-                      ? AppColors.orange.withOpacity(0.2)
+                      ? AppColors.orange.withValues(alpha: 0.2)
                       : status == LeaveCardStatus.approved
-                          ? AppColors.green_1.withOpacity(0.2)
-                          : AppColors.warning.withOpacity(0.1),
+                          ? AppColors.green_1.withValues(alpha: 0.2)
+                          : AppColors.warning.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Text(

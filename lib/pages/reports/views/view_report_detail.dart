@@ -1,9 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/utils/app_navigator.dart';
@@ -212,7 +210,7 @@ class _ViewReportPageState extends State<ViewReportPage> {
                     Text(
                       LocaleKeys.add_attachment.tr(),
                       style: AppTypography.bodySmallMedium.copyWith(
-                        color: AppColors.textColor.withOpacity(0.5),
+                        color: AppColors.textColor.withValues(alpha: 0.5),
                       ),
                     ),
                   ],

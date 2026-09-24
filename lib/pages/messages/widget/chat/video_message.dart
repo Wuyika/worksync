@@ -53,7 +53,7 @@ class VideoMessage extends StatelessWidget {
                 size: 16,
                 color: Colors.white,
               ),
-            )
+            ),
           ],
         ),
       ),

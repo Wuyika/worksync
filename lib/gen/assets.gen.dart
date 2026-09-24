@@ -1,3 +1,5 @@
+// dart format width=80
+
 /// GENERATED CODE - DO NOT MODIFY BY HAND
 /// *****************************************************
 ///  FlutterGen
@@ -5,7 +7,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
+// ignore_for_file: deprecated_member_use,directives_ordering,implicit_dynamic_list_literal,unnecessary_import
 
 import 'package:flutter/widgets.dart';
 
@@ -20,10 +22,15 @@ class $AssetsAppIconsGen {
   AssetGenImage get appLogoWhite =>
       const AssetGenImage('assets/app_icons/app_logo_white.png');
 
+  /// File path: assets/app_icons/launcher.png
+  AssetGenImage get launcher =>
+      const AssetGenImage('assets/app_icons/launcher.png');
+
+  /// Directory path: assets/app_icons/svg
   $AssetsAppIconsSvgGen get svg => const $AssetsAppIconsSvgGen();
 
   /// List of all assets
-  List<AssetGenImage> get values => [appLogoDark, appLogoWhite];
+  List<AssetGenImage> get values => [appLogoDark, appLogoWhite, launcher];
 }
 
 class $AssetsAppImagesGen {
@@ -71,17 +78,17 @@ class $AssetsAppImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
-        attenanceCheckout,
-        avatar1,
-        handWave,
-        noMessage,
-        noReport,
-        onboardingImage1,
-        onboardingImage2,
-        onboardingImage3,
-        onboardingImage4,
-        onboardingImage5
-      ];
+    attenanceCheckout,
+    avatar1,
+    handWave,
+    noMessage,
+    noReport,
+    onboardingImage1,
+    onboardingImage2,
+    onboardingImage3,
+    onboardingImage4,
+    onboardingImage5,
+  ];
 }
 
 class $AssetsTranslationsGen {
@@ -232,53 +239,53 @@ class $AssetsAppIconsSvgGen {
 
   /// List of all assets
   List<String> get values => [
-        appLogoDark,
-        appLogoLight,
-        arrowDown,
-        calendarTick,
-        calendarTickWhite,
-        calendar,
-        calendarOutline,
-        chart,
-        checkin,
-        checkout,
-        clockTime,
-        dangerAnimation,
-        dashboard,
-        documentTextOutline,
-        doubleChecksFill,
-        editFormOutline,
-        editForm,
-        eyeSlash,
-        eye,
-        handWave,
-        lineArrowLeft,
-        lineArrowRight,
-        locationOutline,
-        logout,
-        messages2,
-        note,
-        notification,
-        notificationOutline,
-        people,
-        personalcard,
-        receiptTextWhite,
-        sendSquare,
-        settingOutline,
-        setting,
-        succeessAnimation,
-        svgTest,
-        taskSquareWhite,
-        taskSquareWhiteOutlined,
-        tickCircle,
-        timerRound,
-        timer,
-        trendUpWhite
-      ];
+    appLogoDark,
+    appLogoLight,
+    arrowDown,
+    calendarTick,
+    calendarTickWhite,
+    calendar,
+    calendarOutline,
+    chart,
+    checkin,
+    checkout,
+    clockTime,
+    dangerAnimation,
+    dashboard,
+    documentTextOutline,
+    doubleChecksFill,
+    editFormOutline,
+    editForm,
+    eyeSlash,
+    eye,
+    handWave,
+    lineArrowLeft,
+    lineArrowRight,
+    locationOutline,
+    logout,
+    messages2,
+    note,
+    notification,
+    notificationOutline,
+    people,
+    personalcard,
+    receiptTextWhite,
+    sendSquare,
+    settingOutline,
+    setting,
+    succeessAnimation,
+    svgTest,
+    taskSquareWhite,
+    taskSquareWhiteOutlined,
+    tickCircle,
+    timerRound,
+    timer,
+    trendUpWhite,
+  ];
 }
 
 class Assets {
-  Assets._();
+  const Assets._();
 
   static const $AssetsAppIconsGen appIcons = $AssetsAppIconsGen();
   static const $AssetsAppImagesGen appImages = $AssetsAppImagesGen();
@@ -286,9 +293,18 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+    this.animation,
+  });
 
   final String _assetName;
+
+  final Size? size;
+  final Set<String> flavors;
+  final AssetGenImageAnimation? animation;
 
   Image image({
     Key? key,
@@ -308,10 +324,10 @@ class AssetGenImage {
     ImageRepeat repeat = ImageRepeat.noRepeat,
     Rect? centerSlice,
     bool matchTextDirection = false,
-    bool gaplessPlayback = false,
+    bool gaplessPlayback = true,
     bool isAntiAlias = false,
     String? package,
-    FilterQuality filterQuality = FilterQuality.low,
+    FilterQuality filterQuality = FilterQuality.medium,
     int? cacheWidth,
     int? cacheHeight,
   }) {
@@ -343,18 +359,23 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;
 
   String get keyName => _assetName;
+}
+
+class AssetGenImageAnimation {
+  const AssetGenImageAnimation({
+    required this.isAnimation,
+    required this.duration,
+    required this.frames,
+  });
+
+  final bool isAnimation;
+  final Duration duration;
+  final int frames;
 }

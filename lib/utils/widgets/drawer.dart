@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously, avoid_print
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,7 +14,6 @@ import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/enums.dart';
 import 'package:worklin/utils/helpers.dart';
 import 'package:worklin/utils/my_pref.dart';
-import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
 
 class SideDrawerWidget extends StatelessWidget {
@@ -45,7 +45,7 @@ class SideDrawerWidget extends StatelessWidget {
             subtitle: Text(
               user?.position ?? "",
               style: AppTypography.bodySmallRegular.copyWith(
-                color: AppColors.textColor.withOpacity(0.5),
+                color: AppColors.textColor.withValues(alpha: 0.5),
               ),
             ),
             trailing: const Icon(
@@ -85,7 +85,7 @@ class SideDrawerWidget extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              AppNavigator.push(context, TestPage());
+              AppNavigator.push(context, const TestPage());
             },
             leading: SvgPicture.asset(
               Assets.appIcons.svg.documentTextOutline,
@@ -120,7 +120,7 @@ class SideDrawerWidget extends StatelessWidget {
             ),
           ),
           ListTile(
-            splashColor: AppColors.secondary.withOpacity(0.5),
+            splashColor: AppColors.secondary.withValues(alpha: 0.5),
             onTap: () {
               AppNavigator.push(context, const SettingsPage());
             },
@@ -148,7 +148,7 @@ class SideDrawerWidget extends StatelessWidget {
                 if (value == true) {
                   MyPref.logOutUser();
                   AppNavigator.removeAllPreviousAndPush(
-                      context, const SignInPage());
+                      context, const SignInPage(),);
                 }
               });
             },

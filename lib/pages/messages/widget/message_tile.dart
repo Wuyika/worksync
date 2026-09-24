@@ -38,7 +38,7 @@ class MessageTile extends StatelessWidget {
                 width: Sizes.size_46,
                 height:  Sizes.size_46,
                 decoration: BoxDecoration(
-                  color: AppColors.secondary.withOpacity(0.5),
+                  color: AppColors.secondary.withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
@@ -56,7 +56,7 @@ class MessageTile extends StatelessWidget {
               subtitle: Text(
                 "Hi are you still working? ",
                 style: AppTypography.bodySmallRegular.copyWith(
-                  color: AppColors.textColor.withOpacity(0.6),
+                  color: AppColors.textColor.withValues(alpha: 0.6),
                 ),
               ),
               trailing: Column(
@@ -65,7 +65,7 @@ class MessageTile extends StatelessWidget {
                   Text(
                     "10 mins",
                     style: AppTypography.bodySmallRegular.copyWith(
-                      color: AppColors.textColor.withOpacity(0.6),
+                      color: AppColors.textColor.withValues(alpha: 0.6),
                     ),
                   ),
                   if (hasUnread)
@@ -87,7 +87,7 @@ class MessageTile extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

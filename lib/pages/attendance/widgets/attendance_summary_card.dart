@@ -48,7 +48,7 @@ class _AttendanceSummaryCardState extends State<AttendanceSummaryCard> {
                         borderRadius: BorderRadius.circular(5),
                         color: AppColors.white,
                         border: Border.all(
-                          color: AppColors.textColor.withOpacity(0.2),
+                          color: AppColors.textColor.withValues(alpha: 0.2),
                           width: 0.8,
                         ),
                       ),
@@ -99,7 +99,7 @@ class _AttendanceSummaryCardState extends State<AttendanceSummaryCard> {
                           ),
                         ),
                       ];
-                    }),
+                    },),
               ],
             ),
           ),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:worklin/utils/colors.dart';
-import 'package:worklin/utils/sizes.dart';
 
 class AppTypography {
   AppTypography._();

@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/task/views/task_page.dart';
@@ -19,7 +18,7 @@ class RecentTaskBoard extends StatelessWidget {
         color: AppColors.white,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: AppColors.inactive.withOpacity(0.8),
+          color: AppColors.inactive.withValues(alpha: 0.8),
           width: 0.5,
         ),
       ),

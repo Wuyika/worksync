@@ -67,7 +67,7 @@ class _TaskPageState extends State<TaskPage> {
                             size: 28,
                             Icons.arrow_drop_down,
                             color: AppColors.selector,
-                          )
+                          ),
                         ],
                       ),
                     ),

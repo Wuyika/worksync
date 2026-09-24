@@ -12,10 +12,8 @@ class TestBloc extends Bloc<TestEvent, TestState> {
 
   Future<void> addValue(AddValue event, Emitter<TestState> emit) async {
     emit(TestLoadingState());
-    var url = Uri.https('reqbin.com', "echo");
-    var response = await http.get(url);
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
+    final url = Uri.https('reqbin.com', "echo");
+    final response = await http.get(url);
     emit(TestFinalState(count: response.statusCode));
   }
 

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:worklin/utils/colors.dart';
-import 'package:worklin/utils/typography.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSize {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
   final Widget? title;
   final String? subtitle;
@@ -32,8 +31,4 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
 
   @override
   Size get preferredSize => const Size.fromHeight(70);
-
-  @override
-  // TODO: implement child
-  Widget get child => throw UnimplementedError();
 }

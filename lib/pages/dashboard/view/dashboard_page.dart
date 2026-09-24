@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/dashboard/widgets/action_widget.dart';
@@ -13,10 +12,8 @@ import 'package:worklin/pages/dashboard/widgets/recent_task_board.dart';
 import 'package:worklin/pages/main_page/cubit/main_page_cubit.dart';
 import 'package:worklin/pages/reports/views/create_report_page.dart';
 import 'package:worklin/pages/task/views/task_page.dart';
-import 'package:worklin/pages/task/widgets/task_tile.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
-import 'package:worklin/utils/typography.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -42,7 +39,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 color: AppColors.white,
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                  color: AppColors.inactive.withOpacity(0.8),
+                  color: AppColors.inactive.withValues(alpha: 0.8),
                   width: 0.5,
                 ),
               ),
@@ -101,4 +98,3 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 }
-

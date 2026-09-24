@@ -87,7 +87,7 @@ String? validateEmail(String? value) {
 }
 
 int? extractNumber(String inputString) {
-  RegExp regExp = RegExp(r'/(\d+)$');
+  final RegExp regExp = RegExp(r'/(\d+)$');
 
   final match = regExp.firstMatch(inputString);
 

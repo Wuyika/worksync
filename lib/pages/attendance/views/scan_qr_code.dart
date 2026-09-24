@@ -119,7 +119,7 @@ class _ScanQrPageState extends State<ScanQrPage> with WidgetsBindingObserver {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  splashColor: AppColors.secondary.withOpacity(0.1),
+                  splashColor: AppColors.secondary.withValues(alpha: 0.1),
                   onTap: () {
                     AppNavigator.pop(context);
                   },
@@ -150,7 +150,7 @@ class _ScanQrPageState extends State<ScanQrPage> with WidgetsBindingObserver {
                   ),
                 ),
                 InkWell(
-                  splashColor: AppColors.secondary.withOpacity(0.1),
+                  splashColor: AppColors.secondary.withValues(alpha: 0.1),
                   onTap: () {},
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 6),

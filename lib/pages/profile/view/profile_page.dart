@@ -1,7 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/providers/app_data.dart';
 import 'package:worklin/utils/colors.dart';
@@ -60,7 +58,7 @@ class ProfilePage extends StatelessWidget {
                               Icon(
                                 Icons.circle,
                                 size: 8,
-                                color: AppColors.textColor.withOpacity(0.5),
+                                color: AppColors.textColor.withValues(alpha: 0.5),
                               ),
                               Text(
                                 user?.email ?? "",
@@ -112,7 +110,7 @@ class ProfilePage extends StatelessWidget {
                 title: Text(
                   "Your Organization",
                   style: AppTypography.bodySmallRegular.copyWith(
-                    color: AppColors.textColor.withOpacity(0.5),
+                    color: AppColors.textColor.withValues(alpha: 0.5),
                   ),
                 ),
                 subtitle: Text(
@@ -136,7 +134,7 @@ class ProfilePage extends StatelessWidget {
                 title: Text(
                   "Your Office Location",
                   style: AppTypography.bodySmallRegular.copyWith(
-                    color: AppColors.textColor.withOpacity(0.5),
+                    color: AppColors.textColor.withValues(alpha: 0.5),
                   ),
                 ),
                 subtitle: Text(

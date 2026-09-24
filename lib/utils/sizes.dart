@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class Sizes {
   static late BuildContext _context;
 
+  // ignore: use_setters_to_change_properties
   static void init(BuildContext context) {
     _context = context;
   }

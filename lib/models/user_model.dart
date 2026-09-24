@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_dynamic_calls
 import 'package:worklin/utils/helpers.dart';
 
 class UserModel {

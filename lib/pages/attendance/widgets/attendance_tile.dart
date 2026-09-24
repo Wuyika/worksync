@@ -53,10 +53,10 @@ class AttendanceTile extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     color: type == AttendanceTime.onTime
-                        ? AppColors.green_1.withOpacity(0.2)
+                        ? AppColors.green_1.withValues(alpha: 0.2)
                         : type == AttendanceTime.late
-                        ? AppColors.orange.withOpacity(0.2)
-                        : AppColors.secondary.withOpacity(0.1),
+                        ? AppColors.orange.withValues(alpha: 0.2)
+                        : AppColors.secondary.withValues(alpha: 0.1),
                     // color: AppColors.green_1.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(5),
                   ),
@@ -98,7 +98,7 @@ class AttendanceTile extends StatelessWidget {
                       Text(
                         LocaleKeys.check_in.tr(),
                         style: AppTypography.bodySmallSemiBold.copyWith(
-                          color: AppColors.textColor.withOpacity(0.5),
+                          color: AppColors.textColor.withValues(alpha: 0.5),
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -114,7 +114,7 @@ class AttendanceTile extends StatelessWidget {
                   height: 44,
                   width: 0,
                   child: VerticalDivider(
-                    color: AppColors.textColor.withOpacity(0.5),
+                    color: AppColors.textColor.withValues(alpha: 0.5),
                     thickness: 1.5,
                   ),
                 ),
@@ -124,7 +124,7 @@ class AttendanceTile extends StatelessWidget {
                       Text(
                         LocaleKeys.check_out.tr(),
                         style: AppTypography.bodySmallSemiBold.copyWith(
-                          color: AppColors.textColor.withOpacity(0.5),
+                          color: AppColors.textColor.withValues(alpha: 0.5),
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -139,7 +139,7 @@ class AttendanceTile extends StatelessWidget {
                 SizedBox(
                   height: 44,
                   child: VerticalDivider(
-                    color: AppColors.textColor.withOpacity(0.5),
+                    color: AppColors.textColor.withValues(alpha: 0.5),
                     thickness: 1.5,
                     width: 0,
                   ),
@@ -150,7 +150,7 @@ class AttendanceTile extends StatelessWidget {
                       Text(
                         LocaleKeys.total_hours.tr(),
                         style: AppTypography.bodySmallSemiBold.copyWith(
-                          color: AppColors.textColor.withOpacity(0.5),
+                          color: AppColors.textColor.withValues(alpha: 0.5),
                         ),
                         textAlign: TextAlign.center,
                       ),

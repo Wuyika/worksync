@@ -173,9 +173,9 @@ class _BouncingButtonState extends State<BouncingButton>
                 color: Colors.transparent,
               ),
             ),
-            child: InkWell(
+            child: const InkWell(
               splashColor: Colors.red,
-              child: const SizedBox(
+              child: SizedBox(
                 width: 56, // Button size
                 height: 56,
                 // child: Icon(Icons.camera_alt),

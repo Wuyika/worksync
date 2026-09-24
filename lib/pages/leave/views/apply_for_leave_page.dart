@@ -1,5 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
@@ -66,7 +66,7 @@ class _ApplyForLeavePageState extends State<ApplyForLeavePage> {
                 child: SvgPicture.asset(
                   Assets.appIcons.svg.arrowDown,
                   colorFilter: ColorFilter.mode(
-                    AppColors.textColor.withOpacity(0.5),
+                    AppColors.textColor.withValues(alpha: 0.5),
                     BlendMode.srcIn,
                   ),
                 ),
@@ -114,7 +114,7 @@ class _ApplyForLeavePageState extends State<ApplyForLeavePage> {
                       child: SvgPicture.asset(
                         Assets.appIcons.svg.calendarOutline,
                         colorFilter: ColorFilter.mode(
-                          AppColors.textColor.withOpacity(0.5),
+                          AppColors.textColor.withValues(alpha: 0.5),
                           BlendMode.srcIn,
                         ),
                       ),
@@ -148,7 +148,7 @@ class _ApplyForLeavePageState extends State<ApplyForLeavePage> {
                       child: SvgPicture.asset(
                         Assets.appIcons.svg.calendarOutline,
                         colorFilter: ColorFilter.mode(
-                          AppColors.textColor.withOpacity(0.5),
+                          AppColors.textColor.withValues(alpha: 0.5),
                           BlendMode.srcIn,
                         ),
                       ),

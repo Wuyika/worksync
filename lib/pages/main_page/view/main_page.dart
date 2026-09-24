@@ -10,17 +10,15 @@ import 'package:worklin/pages/dashboard/view/dashboard_page.dart';
 import 'package:worklin/pages/leave/views/leave_page.dart';
 import 'package:worklin/pages/main_page/cubit/main_page_cubit.dart';
 import 'package:worklin/pages/messages/view/message_page.dart';
-import 'package:worklin/pages/profile/view/profile_page.dart';
 import 'package:worklin/pages/reports/views/report_page.dart';
 import 'package:worklin/providers/app_data.dart';
-import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
+import 'package:worklin/utils/globals.dart';
 import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
 import 'package:worklin/utils/widgets/appbar.dart';
 import 'package:worklin/utils/widgets/bottom_appbar.dart';
 import 'package:worklin/utils/widgets/drawer.dart';
-import 'package:worklin/utils/globals.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -83,7 +81,7 @@ class _MainPageState extends State<MainPage>
                       subtitle: Text(
                         LocaleKeys.welcome_text.tr(),
                         style: AppTypography.bodySmallRegular.copyWith(
-                          color: AppColors.textColor.withOpacity(0.5),
+                          color: AppColors.textColor.withValues(alpha: 0.5),
                         ),
                       ),
                     )

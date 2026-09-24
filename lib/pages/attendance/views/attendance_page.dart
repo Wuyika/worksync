@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
-import 'package:worklin/pages/attendance/cubits/attendance_cubit.dart';
 import 'package:worklin/pages/attendance/views/attendance_history_view.dart';
 import 'package:worklin/pages/attendance/views/attendance_summary_view.dart';
 import 'package:worklin/utils/colors.dart';

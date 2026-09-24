@@ -1,7 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/messages/models/message_models.dart';
 import 'package:worklin/pages/messages/widget/chat/message.dart';
@@ -41,13 +39,11 @@ class _ChartPageState extends State<ChartPage> {
       isSender: false,
     ),
     ChatMessage(
-      text: "",
       messageType: ChatMessageType.audio,
       messageStatus: MessageStatus.viewed,
       isSender: true,
     ),
     ChatMessage(
-      text: "",
       messageType: ChatMessageType.audio,
       messageStatus: MessageStatus.viewed,
       isSender: false,
@@ -79,7 +75,6 @@ class _ChartPageState extends State<ChartPage> {
       isSender: false,
     ),
     ChatMessage(
-      text: "",
       messageType: ChatMessageType.audio,
       messageStatus: MessageStatus.viewed,
       isSender: true,
@@ -108,7 +103,7 @@ class _ChartPageState extends State<ChartPage> {
                 width: 45,
                 height: 45,
                 decoration: BoxDecoration(
-                  color: AppColors.primary.withOpacity(0.5),
+                  color: AppColors.primary.withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Center(
@@ -171,7 +166,7 @@ class _ChartPageState extends State<ChartPage> {
                     child: Text(
                       LocaleKeys.today.tr(),
                       style: AppTypography.bodyLargeRegular.copyWith(
-                        color: AppColors.textColor.withOpacity(0.5),
+                        color: AppColors.textColor.withValues(alpha: 0.5),
                         fontSize: 18,
                       ),
                     ),
@@ -237,14 +232,14 @@ class _ChartPageState extends State<ChartPage> {
                             SizedBox(
                               height: 28,
                               child: VerticalDivider(
-                                color: AppColors.textColor.withOpacity(0.5),
+                                color: AppColors.textColor.withValues(alpha: 0.5),
                               ),
                             ),
                           ],
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

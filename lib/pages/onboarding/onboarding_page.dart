@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/auth/signin/view/signin_page.dart';

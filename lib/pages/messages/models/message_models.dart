@@ -14,5 +14,3 @@ class ChatMessage {
     required this.isSender,
   });
 }
-
-

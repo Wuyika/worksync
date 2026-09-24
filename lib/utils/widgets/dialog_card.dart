@@ -58,7 +58,7 @@ class DialogCardWidget extends StatelessWidget {
                       descriptionText!,
                       textAlign: TextAlign.center,
                       style: AppTypography.bodySmallMedium.copyWith(
-                        color: AppColors.textColor.withOpacity(0.9),
+                        color: AppColors.textColor.withValues(alpha: 0.9),
                         fontSize: 16,
                       ),
                     ),

@@ -19,10 +19,6 @@ class ActionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Split the text into two parts based on the space
-    final splitText = text.split(' ');
-    final firstWord = splitText[0];
-    final secondWord = splitText.length > 1 ? splitText[1] : '';
     return Column(
       children: [
         InkWell(

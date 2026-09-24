@@ -1,8 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
-import 'package:worklin/pages/main_page/view/main_page.dart';
 import 'package:worklin/utils/app_navigator.dart';
 import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/helpers.dart';

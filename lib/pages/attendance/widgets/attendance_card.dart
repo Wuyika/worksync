@@ -6,7 +6,6 @@ import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
 import 'package:worklin/pages/attendance/cubits/attendance_cubit.dart';
 import 'package:worklin/utils/colors.dart';
-import 'package:worklin/utils/helper_classes.dart';
 import 'package:worklin/utils/helpers.dart';
 import 'package:worklin/utils/sizes.dart';
 import 'package:worklin/utils/typography.dart';
@@ -54,7 +53,7 @@ class AttendanceCard extends StatelessWidget {
               Text(
                 dateFormat.format(DateTime.now()),
                 style: AppTypography.bodySmallMedium.copyWith(
-                  color: AppColors.textColor.withOpacity(0.8),
+                  color: AppColors.textColor.withValues(alpha: 0.8),
                 ),
               ),
               const SizedBox(height: 16),
@@ -80,7 +79,7 @@ class AttendanceCard extends StatelessWidget {
                       shape: BoxShape.circle,
                       border: Border.all(
                         width: 6,
-                        color: AppColors.white.withOpacity(0.85),
+                        color: AppColors.white.withValues(alpha: 0.85),
                       ),
                     ),
                     child: Text(
@@ -100,7 +99,7 @@ class AttendanceCard extends StatelessWidget {
                     children: [
                       const SizedBox(height: 2),
                       Divider(
-                        color: AppColors.textColor.withOpacity(0.2),
+                        color: AppColors.textColor.withValues(alpha: 0.2),
                         thickness: 1.5,
                       ),
                       const SizedBox(height: 12),
@@ -123,7 +122,7 @@ class AttendanceCard extends StatelessWidget {
                                   LocaleKeys.check_in.tr(),
                                   style:
                                       AppTypography.bodySmallSemiBold.copyWith(
-                                    color: AppColors.textColor.withOpacity(0.5),
+                                    color: AppColors.textColor.withValues(alpha: 0.5),
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
@@ -133,7 +132,7 @@ class AttendanceCard extends StatelessWidget {
                           SizedBox(
                             height: 28,
                             child: VerticalDivider(
-                              color: AppColors.textColor.withOpacity(0.5),
+                              color: AppColors.textColor.withValues(alpha: 0.5),
                               thickness: 1.5,
                               width: Sizes.size_2,
                             ),
@@ -142,7 +141,7 @@ class AttendanceCard extends StatelessWidget {
                             child: Column(
                               children: [
                                 SvgPicture.asset(
-                                    Assets.appIcons.svg.timerRound),
+                                    Assets.appIcons.svg.timerRound,),
                                 const SizedBox(height: 4),
                                 Text(
                                   cubit.checkOutTime != null
@@ -155,7 +154,7 @@ class AttendanceCard extends StatelessWidget {
                                   LocaleKeys.check_out.tr(),
                                   style:
                                       AppTypography.bodySmallSemiBold.copyWith(
-                                    color: AppColors.textColor.withOpacity(0.5),
+                                    color: AppColors.textColor.withValues(alpha: 0.5),
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
@@ -165,7 +164,7 @@ class AttendanceCard extends StatelessWidget {
                           SizedBox(
                             height: 28,
                             child: VerticalDivider(
-                              color: AppColors.textColor.withOpacity(0.5),
+                              color: AppColors.textColor.withValues(alpha: 0.5),
                               thickness: 1.5,
                               width: Sizes.size_2,
                             ),
@@ -186,7 +185,7 @@ class AttendanceCard extends StatelessWidget {
                                   LocaleKeys.total_hours.tr(),
                                   style:
                                       AppTypography.bodySmallSemiBold.copyWith(
-                                    color: AppColors.textColor.withOpacity(0.5),
+                                    color: AppColors.textColor.withValues(alpha: 0.5),
                                   ),
                                   textAlign: TextAlign.center,
                                 ),

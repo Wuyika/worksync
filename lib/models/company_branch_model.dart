@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_dynamic_calls
 // "data": {
 // "id": 1,
 // "name": "Branch Damas",

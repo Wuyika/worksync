@@ -41,7 +41,7 @@ class TextMessage extends StatelessWidget {
               fontSize: 12,
               color: (message!.isSender)
                   ? AppColors.backGroundColor
-                  : AppColors.textColor.withOpacity(0.5),
+                  : AppColors.textColor.withValues(alpha: 0.5),
             ),
           ),
           const SizedBox(height: 4),
@@ -61,7 +61,7 @@ class TextMessage extends StatelessWidget {
                 color: (message!.isSender)
                     ? AppColors.backGroundColor
                     : AppColors.textColor,
-                fontWeight: AppTypography.weightLight
+                fontWeight: AppTypography.weightLight,
               ),
             ),
           ),

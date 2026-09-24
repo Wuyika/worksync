@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:worklin/pages/test_page/bloc/test_bloc.dart';
 import 'package:worklin/utils/app_alert.dart';
-import 'package:worklin/utils/app_navigator.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({super.key});
@@ -42,7 +41,7 @@ class _TestPageState extends State<TestPage> {
                       onPressed: () {
                         bloc.add(AddValue());
                       },
-                      child: Text(
+                      child: const Text(
                         'Switch',
                         style: TextStyle(
                           fontSize: 30,
@@ -53,7 +52,7 @@ class _TestPageState extends State<TestPage> {
                       onPressed: () {
                         bloc.add(AddValue());
                       },
-                      child: Text(
+                      child: const Text(
                         'Switch',
                         style: TextStyle(
                           fontSize: 30,

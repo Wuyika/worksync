@@ -9,7 +9,7 @@ Widget buildScanOverlay(BuildContext context) {
         shape: QrScannerOverlayShape(
           borderColor: Colors.green,
           borderWidth: 4.0,
-          overlayColor: Colors.black.withOpacity(0.5),
+          overlayColor: Colors.black.withValues(alpha: 0.5),
           borderLength: 20.0,
           cutOutSize: 250.0,
           borderRadius: 12.0,
@@ -31,18 +31,24 @@ class QrScannerOverlayShape extends ShapeBorder {
     double? cutOutHeight,
     this.cutOutBottomOffset = 0,
   })  : cutOutWidth = cutOutWidth ?? cutOutSize ?? 250,
-        cutOutHeight = cutOutHeight ?? cutOutSize ?? 250 {
-    assert(
-    borderLength <=
-        min(this.cutOutWidth, this.cutOutHeight) / 2 + borderWidth * 2,
-    "Border can't be larger than ${min(this.cutOutWidth, this.cutOutHeight) / 2 + borderWidth * 2}",
-    );
-    assert(
-    (cutOutWidth == null && cutOutHeight == null) ||
-        (cutOutSize == null && cutOutWidth != null && cutOutHeight != null),
-    'Use only cutOutWidth and cutOutHeight or only cutOutSize',
-    );
-  }
+        cutOutHeight = cutOutHeight ?? cutOutSize ?? 250,
+        assert(
+          borderLength <=
+              min(
+                    cutOutWidth ?? cutOutSize ?? 250,
+                    cutOutHeight ?? cutOutSize ?? 250,
+                  ) /
+                  2 +
+                  borderWidth * 2,
+          "Border can't be larger than",
+        ),
+        assert(
+          (cutOutWidth == null && cutOutHeight == null) ||
+              (cutOutSize == null &&
+                  cutOutWidth != null &&
+                  cutOutHeight != null),
+          'Use only cutOutWidth and cutOutHeight or only cutOutSize',
+        );
 
   final Color borderColor;
   final double borderWidth;

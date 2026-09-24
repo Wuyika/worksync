@@ -39,7 +39,7 @@ class Message extends StatelessWidget {
               height: 25,
               width: 25,
               decoration: BoxDecoration(
-                color: AppColors.secondary.withOpacity(0.5),
+                color: AppColors.secondary.withValues(alpha: 0.5),
                 borderRadius: BorderRadius.circular(5),
               ),
               child: const Icon(
@@ -56,7 +56,7 @@ class Message extends StatelessWidget {
               height: 25,
               width: 25,
               decoration: BoxDecoration(
-                color: AppColors.secondary.withOpacity(0.5),
+                color: AppColors.secondary.withValues(alpha: 0.5),
                 borderRadius: BorderRadius.circular(5),
               ),
               child: const Icon(

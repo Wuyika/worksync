@@ -28,7 +28,7 @@ class CustomBottomAppBar extends StatelessWidget {
         selectedLabelStyle: AppTypography.bodyExtraSmallMedium,
         unselectedLabelStyle: AppTypography.bodyExtraSmallMedium,
         selectedItemColor: AppColors.secondary,
-        unselectedItemColor: AppColors.textColor.withOpacity(0.5),
+        unselectedItemColor: AppColors.textColor.withValues(alpha: 0.5),
         type: BottomNavigationBarType.fixed,
         currentIndex: MainPageState.values.indexOf(state),
         onTap: onTap,
@@ -41,7 +41,7 @@ class CustomBottomAppBar extends StatelessWidget {
               colorFilter: ColorFilter.mode(
                 state == MainPageState.dashboard
                     ? AppColors.secondary
-                    : AppColors.textColor.withOpacity(0.5),
+                    : AppColors.textColor.withValues(alpha: 0.5),
                 BlendMode.srcIn,
               ),
             ),
@@ -55,7 +55,7 @@ class CustomBottomAppBar extends StatelessWidget {
               colorFilter: ColorFilter.mode(
                 state == MainPageState.attendance
                     ? AppColors.secondary
-                    : AppColors.textColor.withOpacity(0.5),
+                    : AppColors.textColor.withValues(alpha: 0.5),
                 BlendMode.srcIn,
               ),
             ),
@@ -69,7 +69,7 @@ class CustomBottomAppBar extends StatelessWidget {
               colorFilter: ColorFilter.mode(
                 state == MainPageState.reports
                     ? AppColors.secondary
-                    : AppColors.textColor.withOpacity(0.5),
+                    : AppColors.textColor.withValues(alpha: 0.5),
                 BlendMode.srcIn,
               ),
             ),
@@ -83,7 +83,7 @@ class CustomBottomAppBar extends StatelessWidget {
               colorFilter: ColorFilter.mode(
                 state == MainPageState.messages
                     ? AppColors.secondary
-                    : AppColors.textColor.withOpacity(0.5),
+                    : AppColors.textColor.withValues(alpha: 0.5),
                 BlendMode.srcIn,
               ),
             ),
@@ -97,7 +97,7 @@ class CustomBottomAppBar extends StatelessWidget {
               colorFilter: ColorFilter.mode(
                 state == MainPageState.leaves
                     ? AppColors.secondary
-                    : AppColors.textColor.withOpacity(0.5),
+                    : AppColors.textColor.withValues(alpha: 0.5),
                 BlendMode.srcIn,
               ),
             ),

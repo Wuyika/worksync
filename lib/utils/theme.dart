@@ -7,7 +7,7 @@ class AppTheme {
 
   static final ThemeData lightTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
-      background: AppColors.backGroundColor,
+      surface: AppColors.backGroundColor,
       seedColor: AppColors.primary,
       primary: AppColors.primary,
       secondary: AppColors.secondary,

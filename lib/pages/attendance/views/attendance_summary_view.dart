@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +10,6 @@ import 'package:worklin/pages/attendance/widgets/attendance_card.dart';
 import 'package:worklin/pages/attendance/widgets/attendance_summary_card.dart';
 import 'package:worklin/utils/app_alert.dart';
 import 'package:worklin/utils/app_navigator.dart';
-import 'package:worklin/utils/colors.dart';
 import 'package:worklin/utils/enums.dart';
 import 'package:worklin/utils/helpers.dart';
 import 'package:worklin/utils/sizes.dart';

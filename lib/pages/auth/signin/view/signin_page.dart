@@ -59,7 +59,7 @@ class _SignInPageState extends State<SignInPage> {
                           children: [
                             SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height / 20),
+                                    MediaQuery.of(context).size.height / 20,),
                             Align(
                               child: SvgPicture.asset(
                                 Assets.appIcons.svg.appLogoDark,
@@ -68,7 +68,7 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                             SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height / 20),
+                                    MediaQuery.of(context).size.height / 20,),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

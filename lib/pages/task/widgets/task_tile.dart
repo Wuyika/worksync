@@ -27,7 +27,7 @@ class _TaskTileState extends State<TaskTile> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       decoration: BoxDecoration(
-        color: widget.isRecent != true ? AppColors.white : AppColors.inactive.withOpacity(0.2),
+        color: widget.isRecent != true ? AppColors.white : AppColors.inactive.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
@@ -61,7 +61,7 @@ class _TaskTileState extends State<TaskTile> {
                   color: widget.progress == 100
                       ? AppColors.green_1
                       : AppColors.secondary,
-                  backgroundColor: AppColors.inactive.withOpacity(0.5),
+                  backgroundColor: AppColors.inactive.withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(5),
                   minHeight: 8,
                   value: widget.progress / 100,
@@ -84,7 +84,7 @@ class _TaskTileState extends State<TaskTile> {
           ),
           const SizedBox(height: 4),
           Divider(
-            color: AppColors.inactive.withOpacity(0.5),
+            color: AppColors.inactive.withValues(alpha: 0.5),
             thickness: 1.2,
           ),
           const SizedBox(height: 4),
@@ -100,7 +100,7 @@ class _TaskTileState extends State<TaskTile> {
                   SvgPicture.asset(
                     Assets.appIcons.svg.calendarOutline,
                     colorFilter: ColorFilter.mode(
-                      AppColors.textColor.withOpacity(0.5),
+                      AppColors.textColor.withValues(alpha: 0.5),
                       BlendMode.srcIn,
                     ),
                   ),
@@ -108,7 +108,7 @@ class _TaskTileState extends State<TaskTile> {
                   Text(
                     '03 Apr, 2024',
                     style: AppTypography.bodySmallRegular.copyWith(
-                      color: AppColors.textColor.withOpacity(0.7),
+                      color: AppColors.textColor.withValues(alpha: 0.7),
                     ),
                   ),
                 ],

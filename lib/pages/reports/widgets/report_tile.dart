@@ -1,7 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:worklin/gen/assets.gen.dart';
 import 'package:worklin/gen/translations/codegen_loader.g.dart';
@@ -41,7 +39,7 @@ class ReportTile extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    color: AppColors.secondary.withOpacity(0.1),
+                    color: AppColors.secondary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: Text(
@@ -92,7 +90,7 @@ class ReportTile extends StatelessWidget {
                                   TextSpan(
                                     text: " I’ve redesigned the screen for the demartologist",
                                     style: AppTypography.bodySmallMedium.copyWith(
-                                      color: AppColors.textColor.withOpacity(0.5),
+                                      color: AppColors.textColor.withValues(alpha: 0.5),
                                     ),
                                   ),
                                 ],
@@ -122,7 +120,7 @@ class ReportTile extends StatelessWidget {
                                   TextSpan(
                                     text: " I’ve redesigned the screen for the demartologist",
                                     style: AppTypography.bodySmallMedium.copyWith(
-                                      color: AppColors.textColor.withOpacity(0.5),
+                                      color: AppColors.textColor.withValues(alpha: 0.5),
                                     ),
                                   ),
                                 ],
@@ -152,7 +150,7 @@ class ReportTile extends StatelessWidget {
                                   TextSpan(
                                     text: " Try to complete",
                                     style: AppTypography.bodySmallMedium.copyWith(
-                                      color: AppColors.textColor.withOpacity(0.5),
+                                      color: AppColors.textColor.withValues(alpha: 0.5),
                                     ),
                                   ),
                                 ],
@@ -163,7 +161,7 @@ class ReportTile extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ],

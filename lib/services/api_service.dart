@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_dynamic_calls
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -27,7 +28,7 @@ class ApiService {
       return user;
     } else if (response.statusCode == 400) {
       AppAlerts.showInfoSnackBar(jsonDecode(response.body)['message'] as String);
-      throw(jsonDecode(response.body)['message'] as String);
+      throw jsonDecode(response.body)['message'] as String;
     } else if( response.body.isEmpty) {
       AppAlerts.showInfoSnackBar("Unknown Error");
       throw "Invalid Credentials";
@@ -86,7 +87,7 @@ class ApiService {
     } else if (response.statusCode == 400) {
       debugPrint(response.statusCode.toString());
       AppAlerts.showInfoSnackBar(jsonDecode(response.body)['message'] as String);
-      throw (jsonDecode(response.body)['message'] as String);
+      throw jsonDecode(response.body)['message'] as String;
     } else if( response.body.isEmpty) {
       throw "Invalid Credentials";
     }

@@ -21,15 +21,15 @@ class SummaryCard extends StatelessWidget {
             width: 4,
           ),
           right: BorderSide(
-              color: AppColors.textColor.withOpacity(0.2),
+              color: AppColors.textColor.withValues(alpha: 0.2),
               width: 0.8,
           ),
           bottom: BorderSide(
-            color: AppColors.textColor.withOpacity(0.2),
+            color: AppColors.textColor.withValues(alpha: 0.2),
             width: 0.8,
           ),
           top: BorderSide(
-            color: AppColors.textColor.withOpacity(0.2),
+            color: AppColors.textColor.withValues(alpha: 0.2),
             width: 0.8,
           ),
         ),
@@ -48,7 +48,7 @@ class SummaryCard extends StatelessWidget {
           Text(
             title,
             style: AppTypography.bodyExtraSmallRegular.copyWith(
-              color: AppColors.textColor.withOpacity(0.7),
+              color: AppColors.textColor.withValues(alpha: 0.7),
               fontWeight: AppTypography.weightLight,
             ),
           ),

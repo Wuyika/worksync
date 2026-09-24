@@ -30,7 +30,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               border: Border.all(
-                color: AppColors.textColor.withOpacity(0.2),
+                color: AppColors.textColor.withValues(alpha: 0.2),
               ),
             ),
             child: Row(
@@ -43,7 +43,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                 ),
                 VerticalDivider(
                   width: 0,
-                  color: AppColors.textColor.withOpacity(0.2),
+                  color: AppColors.textColor.withValues(alpha: 0.2),
                   thickness: Sizes.size_2,
                 ),
                 TypeWidget(
@@ -53,7 +53,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                 ),
                 VerticalDivider(
                   width: 0,
-                  color: AppColors.textColor.withOpacity(0.2),
+                  color: AppColors.textColor.withValues(alpha: 0.2),
                   thickness: Sizes.size_2,
                 ),
                 TypeWidget(
@@ -63,7 +63,7 @@ class _AttendanceHistoryViewState extends State<AttendanceHistoryView> {
                 ),
                 VerticalDivider(
                   width: 0,
-                  color: AppColors.textColor.withOpacity(0.2),
+                  color: AppColors.textColor.withValues(alpha: 0.2),
                   thickness: Sizes.size_2,
                 ),
                 TypeWidget(
