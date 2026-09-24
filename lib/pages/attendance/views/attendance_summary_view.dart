@@ -52,169 +52,77 @@ class _AttendanceSummaryViewState extends State<AttendanceSummaryView> {
               return AttendanceCard(
                 checkIn: () async {
                   try {
-                    cubit.requestLocationPermission().then((value) async {
-                      if (value == true) {
-                        pd.show(
-                          msg: "Checking In...",
-                          barrierColor: Colors.black45,
-                          progressBgColor: Colors.transparent,
+                    final permission = await cubit.requestLocationPermission();
+                    if (permission == true) {
+                      pd.show(
+                        msg: "Checking In...",
+                        barrierColor: Colors.black45,
+                        progressBgColor: Colors.transparent,
+                      );
+                      final location = await cubit.getLocation();
+                      if (location == true) {
+                        await AppNavigator.push(context, const ScanQrPage());
+                        pd.close();
+                        cubit.emitCheckOut();
+                        await showDialogCard(
+                          context,
+                          titleText: LocaleKeys.check_in_successful.tr(),
+                          actionText: LocaleKeys.okay.tr(),
+                          descriptionText:
+                              LocaleKeys.check_in_successful_desc.tr(),
                         );
-                        cubit.getLocation().then((value) async {
-                          if (value == true) {
-                            await AppNavigator.push(context, const ScanQrPage())
-                                .then((value) async {
-                              // if (value != null) {
-                              //   final code = value as String;
-                              //   final id = extractNumber(code);
-                              //   if (id == null) {
-                              //     pd.close();
-                              //     return null;
-                              //   }
-                              //   await cubit
-                              //       .fetchCompanyBranch(companyId: id)
-                              //       .then((value) async {
-                              //     if (value == true) {
-                              //       try {
-                              //         await cubit
-                              //             .calculateDistance()
-                              //             .then((value) async {
-                              //           if (value == true) {
-                              //             pd.close();
-                              //             await showDialogCard(
-                              //               context,
-                              //               titleText: LocaleKeys
-                              //                   .check_in_successful
-                              //                   .tr(),
-                              //               actionText: LocaleKeys.okay.tr(),
-                              //               descriptionText: LocaleKeys
-                              //                   .check_in_successful_desc
-                              //                   .tr(),
-                              //             );
-                              //           } else {
-                              //             pd.close();
-                              //           }
-                              //         });
-                              //       } catch (e) {
-                              //         pd.close();
-                              //       }
-                              //     } else {
-                              //       pd.close();
-                              //     }
-                              //   });
-                              // } else {
-                              //   pd.close();
-                              // }
-                              pd.close();
-                              cubit.emitCheckOut();
-                              await showDialogCard(
-                                context,
-                                titleText: LocaleKeys.check_in_successful.tr(),
-                                actionText: LocaleKeys.okay.tr(),
-                                descriptionText:
-                                    LocaleKeys.check_in_successful_desc.tr(),
-                              );
-                            });
-                          } else {
-                            pd.close();
-                          }
-                        });
                       } else {
                         pd.close();
                       }
-                    });
+                    } else {
+                      pd.close();
+                    }
                   } catch (e) {
                     pd.close();
                   }
-                  pd.close();
                 },
                 checkOut: () async {
-                  await showDialogCard(
-                    context,
-                    dialogType: DialogType.failure,
-                    titleText: LocaleKeys.check_out_warning.tr(),
-                    actionText: LocaleKeys.check_out.tr(),
-                    descriptionText: LocaleKeys.check_out_warning_desc.tr(),
-                  ).then((value) {
-                    if (value == true) {
-                      try {
-                        cubit.requestLocationPermission().then((value) async {
-                          if (value == true) {
-                            pd.show(
-                              msg: "Checking out...",
-                              barrierColor: Colors.black45,
-                              progressBgColor: Colors.transparent,
-                            );
-                            cubit.getLocation().then((value) async {
-                              if (value == true) {
-                                await AppNavigator.push(
-                                  context,
-                                  const ScanQrPage(),
-                                ).then((value) async {
-                                  // if (value != null) {
-                                  //   final code = value as String;
-                                  //   final id = extractNumber(code);
-                                  //   if (id == null) {
-                                  //     pd.close();
-                                  //     return null;
-                                  //   }
-                                  //   await cubit
-                                  //       .fetchCompanyBranch(companyId: id)
-                                  //       .then((value) async {
-                                  //     if (value == true) {
-                                  //       try {
-                                  //         await cubit.calculateDistance(forCheckIn: false).then((value) async {
-                                  //           if (value == true) {
-                                  //             pd.close();
-                                  //             await showDialogCard(
-                                  //               context,
-                                  //               titleText: LocaleKeys
-                                  //                   .check_out_successful
-                                  //                   .tr(),
-                                  //               actionText: LocaleKeys.okay.tr(),
-                                  //               descriptionText: LocaleKeys
-                                  //                   .check_out_successful_desc
-                                  //                   .tr(),
-                                  //             );
-                                  //           } else {
-                                  //             pd.close();
-                                  //           }
-                                  //         });
-                                  //       } catch (e) {
-                                  //         pd.close();
-                                  //       }
-                                  //     } else {
-                                  //       pd.close();
-                                  //     }
-                                  //   });
-                                  // } else {
-                                  //   pd.close();
-                                  // }
-                                  pd.close();
-                                  cubit.emitEnd();
-                                  await showDialogCard(
-                                    context,
-                                    titleText:
-                                        LocaleKeys.check_out_successful.tr(),
-                                    actionText: LocaleKeys.okay.tr(),
-                                    descriptionText: LocaleKeys
-                                        .check_out_successful_desc
-                                        .tr(),
-                                  );
-                                });
-                              } else {
-                                pd.close();
-                              }
-                            });
-                          } else {
-                            pd.close();
-                          }
-                        });
-                      } catch (e) {
+                  try {
+                    final shouldCheckout = await showDialogCard(
+                      context,
+                      dialogType: DialogType.failure,
+                      titleText: LocaleKeys.check_out_warning.tr(),
+                      actionText: LocaleKeys.check_out.tr(),
+                      descriptionText: LocaleKeys.check_out_warning_desc.tr(),
+                    );
+                    if (shouldCheckout == true) {
+                      final permission = await cubit.requestLocationPermission();
+                      if (permission == true) {
+                        pd.show(
+                          msg: "Checking out...",
+                          barrierColor: Colors.black45,
+                          progressBgColor: Colors.transparent,
+                        );
+                        final location = await cubit.getLocation();
+                        if (location == true) {
+                          await AppNavigator.push(
+                            context,
+                            const ScanQrPage(),
+                          );
+                          pd.close();
+                          cubit.emitEnd();
+                          await showDialogCard(
+                            context,
+                            titleText: LocaleKeys.check_out_successful.tr(),
+                            actionText: LocaleKeys.okay.tr(),
+                            descriptionText:
+                                LocaleKeys.check_out_successful_desc.tr(),
+                          );
+                        } else {
+                          pd.close();
+                        }
+                      } else {
                         pd.close();
                       }
-                      pd.close();
                     }
-                  });
+                  } catch (e) {
+                    pd.close();
+                  }
                 },
               );
             },

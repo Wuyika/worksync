@@ -138,19 +138,20 @@ class SideDrawerWidget extends StatelessWidget {
           ),
           ListTile(
             onTap: () async {
-              showDialogCard(
+              final value = await showDialogCard(
                 context,
                 titleText: LocaleKeys.log_out.tr(),
                 actionText: LocaleKeys.log_out.tr(),
                 descriptionText: "Are you sure you want to logout?",
                 dialogType: DialogType.failure,
-              ).then((value) {
-                if (value == true) {
-                  MyPref.logOutUser();
-                  AppNavigator.removeAllPreviousAndPush(
-                      context, const SignInPage(),);
-                }
-              });
+              );
+              if (value == true) {
+                MyPref.logOutUser();
+                AppNavigator.removeAllPreviousAndPush(
+                  context,
+                  const SignInPage(),
+                );
+              }
             },
             leading: SvgPicture.asset(
               Assets.appIcons.svg.logout,
