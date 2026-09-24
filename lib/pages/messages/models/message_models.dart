@@ -1,5 +1,3 @@
-import 'package:worklin/pages/messages/widget/chat/message.dart';
-
 enum ChatMessageType { text, audio, image, video }
 enum MessageStatus { notSent, notView, viewed }
 

@@ -54,7 +54,7 @@ class ProfilePage extends StatelessWidget {
                                 user?.position ?? "",
                                 style:
                                     AppTypography.bodySmallRegular.copyWith(
-                                  color: AppColors.textColor.withOpacity(0.5),
+                                  color: AppColors.textColor.withValues(alpha: 0.5),
                                 ),
                               ),
                               Icon(
